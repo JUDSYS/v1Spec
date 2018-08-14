@@ -13,7 +13,7 @@ Main points:
     {"name": "República Federativa do Brasil 🇧🇷", "name_ascii: "Republica Federativa do Brasil"}
     {"name": "中华人民共和国 🇨🇳", "name_ascii: "Zhong1hua2 Ren2min2 Gong4he2guo2"}
     ```
-  * No crazy location settings, just the quivalents of country (or international organization) and common name.
+  * No crazy location values, just the equivalents of country (or international organization) and common name.
   * Full certification chain is always included (except for the root CAs).
   * Rules for dealing with illiterate people (no reading, computer illiterate or functionaly illiterate).
   * Simple and consistent JSON syntax with base64 to avoid canonicalization problems.
