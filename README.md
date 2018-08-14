@@ -39,12 +39,14 @@ Open questions:
   * Should the expression "digital signature" or "cryptographic signature" be used?
   * Which government ids be included on the certificate instead of on a revocation certificate? CPF and RG/RNE only? What about: NIT (empoyee identification number), Título de Eleitor (voter's card), CNH (driver's license)?
   * Should a picture of the user be included in the certificate?
+    * I think that support for placing pictures should be mandatory for all CAs, but the user should be free to decide to include one or not.
   * How to deal with social names and nicknames?
   * Should people's personal certificates be separated from those used in their jobs?
     * Example: should a judge have a single certificate and an attribute certificate or should they have two separate certificates? 
     * The first one is cheaper, as people won't have to pay for two separate certificates, but the second one is easier to implement.
   * Who can issue attribute certificates?
     * I think that allowing anyone to issue them can makes things easier, as it can easily work as "procuração" (a document syaing that someone else is allowed to do certain specified things in your name).
+  * Should smart cards be allowed and mandatory or nither? (other combinations can lead to interoperability problems)
 
 Algortithm candidates:
 
