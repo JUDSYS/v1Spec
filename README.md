@@ -29,3 +29,9 @@ Open questions:
 
   * Should quantum resistent algorithms be used?
   * Should `.par2` be automatically generated?
+
+Algortithm candidates:
+
+  * Hashing: [SHA3-512](https://en.wikipedia.org/wiki/SHA-3)
+  * Encryptions and signing: [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) with a minimum of 4096 bits (better safe than sorry :)
+  * Key derivation from passwords: [Argon2id](https://en.wikipedia.org/wiki/Argon2)
