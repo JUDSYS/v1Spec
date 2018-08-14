@@ -13,6 +13,7 @@ Main points:
     {"name": "República Federativa do Brasil 🇧🇷", "name_ascii: "Republica Federativa do Brasil"}
     {"name": "中华人民共和国 🇨🇳", "name_ascii: "Zhong1hua2 Ren2min2 Gong4he2guo2"}
     ```
+  * No crazy location settings, just the quivalents of country (or international organization) and common name.
   * Full certification chain is always included (except for the root CAs).
   * Rules for dealing with illiterate people (no reading, computer illiterate or functionaly illiterate).
   * Simple and consistent JSON syntax with base64 to avoid canonicalization problems.
@@ -20,7 +21,10 @@ Main points:
   * Single document for all the rules. (timestamps, CA rules, hardware interaction, user interaction and naming conventions)
   * Single web API for timestamping. (just change the base URL)
   * Single web API for getting the public key for encrypting messages. (unified base URL)
-  * Spearate key pairs for identifing the person and for signing documents.
+  * All user certificates have three key pairs:
+    * One for identification.
+    * One for signing messages.
+    * One for others to encrypt them messages.
   * Ease for users: Minimal options and variations to make digital signatures easy (or at least easier) to use.
     * Standard naming conventions.
     * Detached only signatures: this is for interoperability and to avoid unnecessary backups. (it also reduces the memory needed to parse the files)
