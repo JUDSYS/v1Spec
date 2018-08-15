@@ -1,16 +1,19 @@
 ## Brazil
 
-Remember that, as Portuguese speaking nation, the language specific rules for Portuguese MUST be used when handling Brazilian certificates. 
-
 All certificates issued for natural persons MUST have the following attributes: 
 
   1. `BR/CPF`
-  2. `BR/RG` or `BR/RNE` or `INT/Passport`: The certificate MAY have any combination of them so long as there is at least one.
-
+  2. `BR/RG` or `BR/RNE` or `INT/passport`: The certificate MAY have any combination of them so long as there is at least one.
 
 All certificates issued for legal persons MUST have the following attributes: 
 
   1. `BR/CNPJ`
+
+For legal persons, they SHOULD also have, when possible:
+
+  1. `BR/IE` (inscrição estadual)
+  2. `BR/IM` (inscrição municipal)
+  3. `BR/NIRE` (junta comercial)
 
 ## Subject Attributes
 
@@ -88,3 +91,7 @@ If a person has more than one RG and wishes to include them into the certificate
 ```
 
 Which RG will be the "main" one MUST be decided by the subject of the certificate.
+
+### BR/Título de Eleitor
+
+### BR/NIT
