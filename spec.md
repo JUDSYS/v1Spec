@@ -14,11 +14,15 @@ status_color: red
 
 # Naming conventions
 
+**User**: A human being using a JUDSYS app. Unless otherwise specified, users MUST ALWAYS be considered as non-tech-savvy people.
+
 **Signing app**: A computer program that digitally signs documents according to this standard.
 
 **Verifier app**: A computer program that verifies a digital signature according to this standard.
 
-**JUDSYS app**: A computer program that is both a singing app and a verifier app.
+(**App**) **JUDSYS app**: A computer program that is either a singing app or a verifier app or both.
+
+**Subject properties**: Certain values that qualify the subject. Ex: email, full name, government issued identification numbers, et cetera.
 
 **Digital signature**:
 
@@ -94,9 +98,43 @@ All apps MUST use only the file extensions show below:
 
 ✏️
 
-## Standard GovIDs
+## Subject Properties
 
-`INT/Passport`: 
+### INT/emails
+
+An array of the subject's email addresses.
+
+If a user has an email address containing non ASCII character, the `INT/emails` array, there MUST be at least one ASCII only email address.
+
+A subject MAY have no email address. In this case this property should be undefined or an empty array.
+
+Examples:
+```js
+// Okay:
+[]
+["someone@example.com"]
+["josé@construções-ltda.br", "jose@construcoes-ltda.br"]
+["josé@construções-ltda.br", "jose@xn--construes-ltda-mjb8t.br"]
+["josé@construções-ltda.br", "jose@construcoes-ltda.br", "josé@xn--construes-ltda-mjb8t.br"]
+// This should NEVER be done:
+["josé@construções-ltda.br"]
+```
+
+### INT/phones
+
+For SPAM/robo-calling prevention the user MUST have the right to refuse the inclusion of the `INT/phone` property.
+
+### INT/addresses
+
+For security reasons the user MUST have the right to refuse the inclusion of `INT/address` property.
+
+### INT/picture
+
+For privacy reasons the user SHOULD have the right to refuse the inclusion of `INT/picture` property. The CA CAN require this property but its is encouraged not to require it.
+
+### INT/passport
+
+`INT/passport`: 
 ```
 {
 
@@ -143,13 +181,17 @@ All signing apps MUST check extension in a case insensitive manner.
 
 ## Accidental changes 
 
+👉 Decide how to handle the case of a user who opened a word file, accidentally added a new line and saved it. The best option seems to be mandatory PAR2 support.
+
 ## Archive files
 
-# Country specific rules
+👉 Decide how to handle the case of a user trying to sign a `.zip` or `.rar` file. Should they be warned about the fact the signature will only apply to all those files together instead of separately? 
 
-## Brazil
+# Language specific rules
 
-The generation of the ASCII string variants MUST be done automatically by converting the string into NFKD and removing all non-ASCII characters. Code example:
+## Portuguese
+
+The generation of the ASCII string variants MUST be done automatically by converting the string into NFKD and removing all non-ASCII characters. Code example (in Python 3):
 
 ```py
 import unicodedata
@@ -157,6 +199,12 @@ print(unicodedata.normalize("NFKD", "João Pereira da Silva e Müller").
     encode("ascii", "ignore")) 
 # b'Joao Pereira da Silva e Muller'
 ```
+
+# Country specific rules
+
+## Brazil
+
+Remember that, as Portuguese speaking nation, the language specific rules for Portuguese MUST be used when handling Brazilian certificates. 
 
 All certificates issued for natural persons MUST have the following attributes: 
 
@@ -168,7 +216,7 @@ All certificates issued for legal persons MUST have the following attributes:
 
   1. `BR/CNPJ`
 
-# GovIDs
+# Subject Properties
 
 ## BR/CPF
 
