@@ -1,1 +1,2 @@
-spec.draft.html
+tmp/
+*.sublime-project

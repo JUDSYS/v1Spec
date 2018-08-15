@@ -10,8 +10,8 @@ Main points:
 
   * Full Unicode support for strings with an ASCII fallback. Examples:
     ```
-    {"name": "República Federativa do Brasil 🇧🇷", "name_ascii: "Republica Federativa do Brasil"}
-    {"name": "中华人民共和国 🇨🇳", "name_ascii: "Zhong1hua2 Ren2min2 Gong4he2guo2"}
+    {"name": "República Federativa do Brasil 🇧🇷", "name_ascii": "Republica Federativa do Brasil"}
+    {"name": "中华人民共和国 🇨🇳", "name_ascii": "Zhong1hua2 Ren2min2 Gong4he2guo2"}
     ```
   * No crazy location values, just the equivalents of country (or international organization) and common name.
   * Full certification chain is always included (except for the root CAs).
@@ -51,5 +51,7 @@ Open questions:
 Algortithm candidates:
 
   * Hashing: [SHA3-512](https://en.wikipedia.org/wiki/SHA-3)
-  * Encryptions and signing: [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) with a minimum of 4096 bits (better safe than sorry :)
+  * Signing: [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm)
+  * Encryption: [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) on [CBC](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_Block_Chaining_(CBC)) mode
+  * Encryption key agreement: [ECDH](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman)
   * Key derivation from passwords: [Argon2id](https://en.wikipedia.org/wiki/Argon2)

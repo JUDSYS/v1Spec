@@ -55,7 +55,6 @@ h3 {
     counter-reset: subsubsubsection;
     counter-reset: paragraph;
 }
-}
 
 h4 {
     counter-increment: subsection;
@@ -63,13 +62,11 @@ h4 {
     counter-reset: subsubsubsection;
     counter-reset: paragraph;
 }
-}
 
 h5 {
     counter-increment: subsubsection;
     counter-reset: subsubsubsection;
     counter-reset: paragraph;
-}
 }
 
 h6 {
