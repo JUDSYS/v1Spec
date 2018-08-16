@@ -5,6 +5,10 @@ All certificates issued for natural persons MUST have the following attributes:
   1. `BR/CPF`
   2. `BR/RG` or `BR/RNE` or `INT/passport`: The certificate MAY have any combination of them so long as there is at least one.
 
+For legal persons, the `INT/name` attribute MUST be the full "razão social".
+
+Even if official documents show a name in all caps, all names MUST have propper capitalization. Ex: "Pedro de Alântara", not "PEDRO DE ALCÂNTARA" nor "Pedro De Alcântara".
+
 All certificates issued for legal persons MUST have the following attributes: 
 
   1. `BR/CNPJ`

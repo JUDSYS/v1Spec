@@ -1,6 +1,8 @@
 ## Portuguese
 
-The generation of the ASCII string variants MUST be done automatically by converting the string into NFKD and removing all non-ASCII characters. Code example (in Python 3):
+### ASCII transliteration
+
+The generation of the ASCII transliterations MUST be done automatically by converting the string into NFKD and removing all non-ASCII characters. Code example (in Python 3):
 
 ```py
 import unicodedata

@@ -9,7 +9,42 @@ The CA MUST verify the attributes it will use on certificates it issues. If any 
 1. If the CA fails to verify that a phone number really belongs to the subject, it MUST never be included.
 2. If the subject of the certificate to be issued forgets to bring their US/SSN, this attribute MUST not be included in the certificate.
 
-If a CA MAY refuse to issue a certificate if essential properties could not verified. Examples: US/SSN, BR/RG, BR/CPF.
+If a CA MAY refuse to issue a certificate if essential properties could not verified. Examples: INT/name, US/SSN, BR/RG, BR/CPF.
+
+### INT/name and INT/names
+
+All certificates MUST have the `INT/name` and `INT/name_ascii` attributes, even when they are identical.
+
+The `INT/name` attribute is a one line string containing the subject's name and `INT/name_ascii` is its ASCII transliteration.
+
+Any prefixes and honofics attached to the name MUST be verified. Example: a person may never use the prefix "Dr." if they have no valid doctorates degree.
+
+Generic prefixes like "Mr." or "Ms." MUST never be included in the name.
+
+For legal persons, it is recommended that the `INT/name` attribute follow the convention: `(<Acroymum>) <Full Legal Name> <Any special endings>` Examples:
+
+1. (USP) Universidade São Paulo
+2. Monsters Inc
+3. Empresa Qualquer Serviços e Comércio LTDA
+
+For natural persons, it is recommended that the `INT/name` attribute follow the convention: `(<Nick Name>) <First Name> <Full Middle Name> <Last Name>` Examples:
+
+1. Dennis MacAlister Ritchie
+2. (FHC) Fernando Henrique Cardoso
+3. (Dom Pedro II) Pedro de Alcântara João Carlos Leopoldo Salvador Bibiano Francisco Xavier de Paula Leocádio Miguel Gabriel Rafael Gonzaga
+
+All apps MUST suport such long names. They MAY, however, show only the begining of the name by default and have a simple way to show the full name. Example: a tooltip or a button close to the name.
+
+Names MUST never include the following punctuation: period (`.`), comma (`,`) and semi-colon (`;`).
+
+The `INT/names` attribute MUST be an array of strings. The name present on `INT/name` MUST be included in `INT/names`.
+
+Some possible uses for the `INT/names` attribute are:
+
+1. Brand names.
+2. Social names.
+3. Nicknames more known or important than the legal name.
+
 
 ### INT/emails
 
@@ -64,6 +99,8 @@ For privacy reasons the subject SHOULD have the right to refuse the inclusion of
 The picture MUST always be static: no animated GIFs or similar.
 
 For natural persons the image MUST be picture of the subject. The specific are left to the CA, but it SHOULD follow the traditions and conventions of the CA's country.
+
+One suggestion for CAs is to follow the ICAO guidlines on photos for passports.
 
 For legal persons the image MUST be a logo or other symbol that represents the subject. It MUST NOT be a picture of the owners or of the place where the subject is. Again, specific are left to the CA.
 

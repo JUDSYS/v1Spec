@@ -4,13 +4,25 @@ All JUDSYS-1 files are JSON encoded with UTF-8 in NFD (Normal Form Decomposition
 
 To avoid canonicalization problems, all signed messages are encoded in base64.
 
-Examples:
+Example:
 
-✏️
+```js
+{"b": 1, "a":2}
+// becomes
+{
+    "what": "JUDSYS-1 base64" // This is to aid humans debuging, not for machines to use 
+    "raw": "eyJiIjogMSwgImEiOjJ9Cg=="
+    ...
+}
+```
+
+All strings MUST be in NFC (Normal Form Composition).
+
+All string comparisons MUST be case insentive.
 
 All countries or similar MUST be represented by the upper case two letter codes defined on ISO 3166-1. If a country or similar does not have such code, it MUST be full English name with spaces and proper capitalization. Ex: `Principality of Sealand` not `principality of sealand` nor `PrincipalityOf_Sealand`.
 
-International organizations MUST use their upper case English acronym if it has more than two letters. Ex: `ICAO` and `ICJ`. Otherwise the full English name with spaces and capitalization MUST be used. Ex: `African Union`.
+International organizations MUST use their upper case English acronym if it has more than two letters. Ex: `ICAO` and `ICJ`. Otherwise the full English name with spaces and capitalization MUST be used. Ex: `League of Nations`.
 
 Special cases are:
 
