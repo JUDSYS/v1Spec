@@ -124,12 +124,31 @@ body {
   font-size: 16pt; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
   font-weight: 400;
-  font-family: 'PT Serif', serif;
+  font-family: 'PT Sans', sans-serif;
   text-align: justify;
   color: #222;
   counter-reset: section;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'PT Serif', serif;
+}
+
+@media print {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'PT Sans', sans-serif;
+  }
+  body {
+    font-size: 12pt;
+    font-family: 'PT Serif', serif;
+  }
+  h1 { font-size: 4.2rem; }
+  h2 { font-size: 3.6rem; }
+  h3 { font-size: 3.0rem; }
+  h4 { font-size: 2.4rem; }
+  h5 { font-size: 1.5rem; }
+  h6 { font-size: 1.2rem; }
+}
 
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

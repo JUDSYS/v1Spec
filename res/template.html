@@ -23,14 +23,6 @@ $if(quotes)$
       q { quotes: "“" "”" "‘" "’"; }
 $endif$
   </style>
-$if(highlighting-css)$
-  <style type="text/css">
-$highlighting-css$
-  </style>
-$endif$
-$for(css)$
-  <link rel="stylesheet" href="$css$" />
-$endfor$
 $if(math)$
   $math$
 $endif$
@@ -82,9 +74,14 @@ $body$
 $for(include-after)$
 $include-after$
 $endfor$
-  <link rel="stylesheet" href="../res/fonts.css"/>
-  <link rel="stylesheet" href="../res/normalize.css"/>
-  <link rel="stylesheet" href="../res/skeleton.css"/>
-  <link rel="stylesheet" href="../res/custom.css"/>
+$if(highlighting-css)$
+  <style type="text/css">
+$highlighting-css$
+  </style>
+$endif$
+$for(css)$
+  <link rel="stylesheet" href="$css$" />
+$endfor$
+  <link rel="stylesheet" href="unified.min.css"/>
 </body>
 </html>
