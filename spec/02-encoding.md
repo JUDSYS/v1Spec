@@ -1,6 +1,8 @@
 # Encoding
 
-All JUDSYS-1 files are JSON encoded with UTF-8 in NFD (Normal Form Decomposition) or NFKD (Normal Form Compatibility Decomposition). The choice between either depends on the language of the text. When in doubt, use NFD.
+## Files
+
+All JUDSYS-1 files are JSON encoded with UTF-8.
 
 To avoid canonicalization problems, all signed messages are encoded in base64.
 
@@ -16,9 +18,33 @@ Example:
 }
 ```
 
-All strings MUST be in NFC (Normal Form Composition).
+### File extensions
 
-All string comparisons MUST be case insentive.
+All JUDSYS-1 extensions begin with `.j1` (dot, jay, one). 
+
+For JUDSYS-1 files, all apps MUST use only the file extensions show below:
+
+| Extension | Usage |
+|-----------|-------|
+| `.j1c` | Certificates (no private keys) |
+| `.j1a` | Attribute certificates |
+| `.j1k` | Certificates with the private keys |
+| `.j1s` | Detached digital signature |
+| `.j1e` | Encrypted file |
+| `.j1r` | Revocation information |
+
+## Strings
+
+All apps MUST have propper Unicode support and fonts to display any characters that may be necessary for the country of intended use. This is, an app for France MUST have fonts with accented charactes, but MAY NOT have any CJK nor Cyrilic support. An app for Russia MUST have Cyrilic and Latin support, but MAY NOT have CJK or Mongolian support.
+
+All apps MUST have propper Unicode support and fonts for the following Unicode blocks:
+
+1. Basic Latin (U+0000..U+007F).
+2. Latin-1 Supplement (U+00A0..U+00FF). This range excludes the need for supporting C1 Controls.
+
+It is RECOMMENDED that all apps support as much Unicode characters and scripts as possible. It is also RECOMMENDED that all apps include the nececessary fonts.
+
+## Country codes
 
 All countries or similar MUST be represented by the upper case two letter codes defined on ISO 3166-1. If a country or similar does not have such code, it MUST be full English name with spaces and proper capitalization. Ex: `Principality of Sealand` not `principality of sealand` nor `PrincipalityOf_Sealand`.
 
@@ -34,19 +60,4 @@ Special cases are:
   1. `NAFTA` for the *North American Free Trade Agreement*.
 
 All apps MUST NOT use fake international organizations, even if they were mentioned in presidential debates :)
-
-## File extensions
-
-All JUDSYS-1 extensions begin with `.j1` (dot, jay, one). 
-
-All apps MUST use only the file extensions show below:
-
-| Extension | Usage |
-|-----------|-------|
-| `.j1c` | Certificates (no private keys) |
-| `.j1a` | Attribute certificates |
-| `.j1k` | Certificates with the private keys |
-| `.j1s` | Detached digital signature |
-| `.j1e` | Encrypted file |
-| `.j1r` | Revocation information |
 
