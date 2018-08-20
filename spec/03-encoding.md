@@ -12,9 +12,8 @@ Example:
 {"b": 1, "a":2}
 // becomes
 {
-    "what": "JUDSYS-1 base64" // This is to aid humans debuging, not for machines to use 
+    "what": "JUDSYS-1 base64" // This is to aid humans debugging, not for machines to use 
     "raw": "eyJiIjogMSwgImEiOjJ9Cg=="
-    ...
 }
 ```
 
@@ -35,11 +34,11 @@ For JUDSYS-1 files, all apps MUST use only the file extensions show below:
 
 ## Strings
 
-All apps MUST have propper Unicode support and fonts to display any characters that may be necessary for the country of intended use. This is, an app for France MUST have fonts with accented charactes, but MAY NOT have any CJK nor Cyrilic support. An app for Russia MUST have Cyrilic and Latin support, but MAY NOT have CJK or Mongolian support.
+All apps MUST have proper Unicode support and fonts to display any characters that may be necessary for the country of intended use. This is, an app for France MUST have fonts with accented characters, but MAY NOT have any CJK nor Cyrillic support. An app for Russia MUST have Cyrillic and Latin support, but MAY NOT have CJK or Mongolian support.
 
 It is RECOMMENDED to store string in NFC (Normal Form Composition).
 
-It is RECOMMENDED that all apps support as much Unicode characters and scripts as possible. It is also RECOMMENDED that all apps include the nececessary fonts.
+It is RECOMMENDED that all apps support as much Unicode characters and scripts as possible. It is also RECOMMENDED that all apps include the necessary fonts.
 
 Emoji usage is discouraged.
 
@@ -48,6 +47,8 @@ Emoji usage is discouraged.
 All dates MUST be encoded as strings according to the [RFC 3339].
 
 If the time is not available, it MUST be assumed to be midnight.
+
+Times MUST NOT include fractions of a second.
 
 ## Country codes
 
@@ -66,3 +67,8 @@ Special cases are:
 
 All apps MUST NOT use fake international organizations, even if they were mentioned in presidential debates :)
 
+## Certificate chains
+
+All JUDSYS-1 files MUST include all the necessary certificates, attribute certificates and revocation files for verifying the file in question.
+
+An exception is made to the root CAs which MUST NOT be included in any JUDSYS-1 file, as they MUST be a part of the apps themselves, preferably in the app's source code.
