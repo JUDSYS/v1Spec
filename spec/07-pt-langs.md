@@ -1,15 +1,11 @@
 ## Portuguese
 
-### ASCII transliteration
+### Unicode Support
 
-The generation of the ASCII transliterations MUST be done automatically by converting the string into NFKD and removing all non-ASCII characters. Code example (in Python 3):
+All apps aimed to support Portuguese MUST support the following Unicode blocks:
 
-```py
-import unicodedata
-print(unicodedata.normalize("NFKD", "João Pereira da Silva e Müller").
-    encode("ascii", "ignore")) 
-# b'Joao Pereira da Silva e Muller'
-```
+1. Basic Latin (U+0000..U+007F).
+2. Latin-1 Supplement (U+00A0..U+00FF). This range excludes the need for supporting C1 Controls.
 
 ### Standard Translations
 

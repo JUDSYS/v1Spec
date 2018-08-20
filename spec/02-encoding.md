@@ -37,12 +37,17 @@ For JUDSYS-1 files, all apps MUST use only the file extensions show below:
 
 All apps MUST have propper Unicode support and fonts to display any characters that may be necessary for the country of intended use. This is, an app for France MUST have fonts with accented charactes, but MAY NOT have any CJK nor Cyrilic support. An app for Russia MUST have Cyrilic and Latin support, but MAY NOT have CJK or Mongolian support.
 
-All apps MUST have propper Unicode support and fonts for the following Unicode blocks:
-
-1. Basic Latin (U+0000..U+007F).
-2. Latin-1 Supplement (U+00A0..U+00FF). This range excludes the need for supporting C1 Controls.
+It is RECOMMENDED to store string in NFC (Normal Form Composition).
 
 It is RECOMMENDED that all apps support as much Unicode characters and scripts as possible. It is also RECOMMENDED that all apps include the nececessary fonts.
+
+Emoji usage is discouraged.
+
+## Dates
+
+All dates MUST be encoded as strings according to the [RFC 3339].
+
+If the time is not available, it MUST be assumed to be midnight.
 
 ## Country codes
 

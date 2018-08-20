@@ -15,13 +15,13 @@ If a CA MAY refuse to issue a certificate if essential properties could not veri
 
 ### INT/name
 
-Each name is a dictionary with two keys: `unicode` (mandatory) and `ascii` (optional). The latter MUST be a transliteration of the first.
+Each name is a one line Unicode string.
 
 All name entries each MUST be at most 5 KiB long.
 
 All apps MUST suport such long names. They MAY, however, show only the begining of the name by default and have a simple way to show the full name. Example: a tooltip or a button close to the name.
 
-There MUST be at least one name in the `INT/name` attribute, this will be called the "main" name and it MUST have an ASCII transliteration.
+There MUST be at least one name in the `INT/name` attribute.
 
 Any prefixes, sufixes, infixes, honorifics and similar things attached to the name MUST be verified. Example: a person may never use the prefix "Dr." if they have no valid doctorates degree.
 
@@ -29,26 +29,27 @@ Generic prefixes like "Mr." or "Ms." and job titles MUST NOT be included in any 
 
 For legal persons, it is recommended to follow the convention: `(<Acroymum>) <Full Legal Name> <Any special endings>` Examples:
 
-1. `[{"unicode": "(USP) Universidade São Paulo", "ascii": "(USP) Universidade de Sao Paulo"}]`
-2. `[{"unicode": "Monsters Inc", "ascii": "Monsters Inc"}`
-3. `[{"unicode": "Empresa Qualquer Serviços e Comércio LTDA", "ascii": "Empresa Qualquer Servicos e Comercio LTDA"}]`
+1. (USP) Universidade São Paulo
+2. Monsters Inc.
+3. Empresa Qualquer Serviços e Comércio LTDA
 
 For natural persons, it is recommended to follow the convention: `(<Nick Name>) <First Name> <Full Middle Name> <Last Name>` Examples:
 
-1. `{"unicode": "Dennis MacAlister Ritchie", ...}`
-2. `{"unicode": "(FHC) Fernando Henrique Cardoso", ...}`
-3. `{"unicode": "(Dom Pedro II) Pedro de Alcântara João Carlos Leopoldo Salvador Bibiano Francisco Xavier de Paula Leocádio Miguel Gabriel Rafael Gonzaga", ...}`
+1. Dennis MacAlister Ritchie
+2. (FHC) Fernando Henrique Cardoso
+3. (Dom Pedro II) Pedro de Alcântara João Carlos Leopoldo Salvador Bibiano Francisco Xavier de Paula Leocádio Miguel Gabriel Rafael Gonzaga
 
-Names SHOULD NOT include the following punctuation: period (`.`), comma (`,`) and semi-colon (`;`).
+### INT/parents
 
 ### INT/email
 
 An array of the subject's email addresses.
 
-Unless the subject has no email account:
+The fist entry is considered the main one.
 
-1. The fist entry is considered the main one.
-2. The last entry MUST be ASCII-only.
+The subject MAY have no email address.
+
+It is RECOMENDED to have at least one ASCII email address.
 
 Examples:
 ```js
@@ -58,7 +59,6 @@ Examples:
 ["josé@construções-ltda.br", "jose@construcoes-ltda.br"]
 ["josé@construções-ltda.br", "jose@xn--construes-ltda-mjb8t.br"]
 ["josé@construções-ltda.br", "jose@construcoes-ltda.br", "josé@xn--construes-ltda-mjb8t.br"]
-// This should NEVER be done:
 ["josé@construções-ltda.br"]
 ["jose@construcoes-ltda.br", "josé@construções-ltda.br"]
 ```
@@ -114,4 +114,44 @@ Example: (Tux, the Linux mascot)
 ```
 
 ### INT/passport
+
+An [ICAO Doc 9303] passport.
+
+Each passport is encoded as a dictionary with the following keys:
+
+1. `type` (mandatory): Indicates the type of document, for passports this is a `P`.
+2. `number` (mandatory): A string, which MAY contain letters, the identifies this passport.
+3. `country` (mandatory): The country that issued the passort.
+4. `surname` (optional): The subject's last name.
+5. `given_name` (optional): The subject's first name.
+6. `nationality` (optional): The subject's nationality.
+7. `date_of_birth` (mandatory): The subject's date of birth.
+8. `place_of_birth` (optional): The subject's place of birth.
+9. `personal_number` (optional): An id number identifying the subject.
+10. `sex` (optional): The sex or gender of the subject. Note that `X` and other characters may be used instead of the traditional `F` and `M`. 
+11. `date_of_issue` (mandatory): The date in which the passport was issued.
+12. `date_of_expiry` (optional): The date in which the passport will expire.
+13. `MRZ` (optional): the contents on the MRZ (machine redable zone).
+
+The `given_name` and `surname` are optional beacuse some people may have no first or last name. However, at least one of them MUST be included.
+
+Except of dates, it is RECOMMENDED that all fields match the way they are presented on the VIZ (Visual Inpection Zone), rather than the MRZ.
+
+```js
+{
+    "type": "P",
+    "country": "UTO", // This may not match ISO 3166-1, read ICAO Doc 9303 (pages 22 to 29) for deatils.
+    "number": "L898902C3",
+    "surname": "ERIKSSON",
+    "given_name": "ANNA MARIA",
+    "nationality": "UTOPIAN",
+    "date_of_birth": "1974-08-12",
+    "place_of_birth": "ZENITH",
+    "personal_number": "Z E 184226 B",
+    "sex": "F", // Do NOT assume it is "F" or "M", other chacraters, such as "X" may de used.
+    "date_of_issue": "2007-04-16",
+    "date_of_expiry": "2012-04-15",
+    "MRZ": "P<UTOERIKSSON<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<\nL898902C36UTO7408122F1204159ZE184226B<<<<<10"
+}
+```
 
