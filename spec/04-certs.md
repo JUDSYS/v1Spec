@@ -148,10 +148,27 @@ Except of dates, it is RECOMMENDED that all fields match the way they are presen
     "date_of_birth": "1974-08-12",
     "place_of_birth": "ZENITH",
     "personal_number": "Z E 184226 B",
-    "sex": "F", // Do NOT assume it is "F" or "M", other chacraters, such as "X" may de used.
+    "sex": "F", // Do NOT assume it is "F" or "M", other characters, such as "X" may de used.
     "date_of_issue": "2007-04-16",
     "date_of_expiry": "2012-04-15",
     "MRZ": "P<UTOERIKSSON<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<\nL898902C36UTO7408122F1204159ZE184226B<<<<<10"
 }
 ```
+
+## Keys
+
+All keys are encoded as a dictionaries, which MUST have the following keys:
+
+1. `algorithm`
+2. `id`: A hash of the key that uniquely identifies it.
+3. `usage`: A dictionary that indicates what the key may be used for. Possible keys:
+   1. `signing`: The key MAY be used to sign digital documents, issue and revoke attribute certificates.
+   2. `identification`: They key MAY be used to identify the subject.
+   3. `encryption`: The key MAY be used for everyone to encrypt messages to the subject.
+   4. `certification`: The key MAY be used to issue digital certificates.
+   5. `revocation`: They key MAY be used to issue certificate revocations.
+
+Each key MUST NOT be used in any algorithms other than the one prescribed on the key `algorithm`.
+
+
 

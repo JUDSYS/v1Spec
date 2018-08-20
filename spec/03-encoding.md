@@ -60,7 +60,7 @@ Special cases are:
 
   1. `UN` for the *United Nations* (already on the ISO 3166-1).
   1. `EU` for the *European Union* (already on the ISO 3166-1).
-  1. `INT` for international things such as passports.
+  1. `INT` for international things such as passports, names and date of birth.
   1. `MERCOSU` for the *Southern Common Market*, *Mercosur* in Spanish and *Mercosul* in Portuguese.
   1. `UNASU` for the *Union of South American Nations*, *UNSAUR* in Spanish and *UNASUL* in Portuguese.
   1. `NAFTA` for the *North American Free Trade Agreement*.

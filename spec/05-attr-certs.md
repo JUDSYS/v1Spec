@@ -4,6 +4,8 @@
 
 ### INT/job
 
+This MUST NOT be an array.
+
 A simple trimmed one line string containing the subject's job title.
 
 The job title MUST NOT include the name of the organization.
@@ -29,6 +31,4 @@ Wrong examples (organization MUST NOT be in the job title):
 3. Justice of the Supreme Court
 3. Presidente do Senado
 4. Ministro da 1ª turma do Supremo Tribunal Federal
-
-### INT/
 
