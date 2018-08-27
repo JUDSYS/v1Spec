@@ -12,8 +12,9 @@ Example:
 {"b": 1, "a":2}
 // becomes
 {
-    "what": "JUDSYS-1 base64" // This is to aid humans debugging, not for machines to use 
-    "raw": "eyJiIjogMSwgImEiOjJ9Cg=="
+    "raw": "eyJiIjogMSwgImEiOjJ9Cg==",
+    // This is to aid humans debugging, not for machines to use 
+    "what": "JUDSYS-1 base64"
 }
 ```
 

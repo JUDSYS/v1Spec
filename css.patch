@@ -11,3 +11,55 @@
  	  }
  	  cite {
  	  font-style: normal;
+--- judsys-spec.2.html	2018-08-27 11:55:25.132263426 -0300
++++ judsys-spec.html	2018-08-27 12:20:25.556907398 -0300
+@@ -123,7 +123,14 @@
+ 	  pre {
+ 	  margin-left: 3em;
+ 	  background-color: lightyellow;
++	  font-family: 'PT Mono', monospace;
+ 	  padding: .25em;
++	  border-radius: 7px;
++	  border: 1px solid DarkKhaki;
++	  }
++	  samp {
++	  color: DarkSlateGrey;
++	  font-family: 'PT Mono', monospace;
+ 	  }
+ 	  pre.text2 {
+ 	  border-style: dotted;
+@@ -149,13 +155,14 @@
+ 	  }
+ 	  table {
+ 	  margin-left: 2em;
++	  border: none;
+ 	  }
+ 	  table.tt {
+ 	  vertical-align: top;
++	  border-spacing: 0;
+ 	  }
+ 	  table.full {
+-	  border-style: outset;
+-	  border-width: 1px;
++	  border: 1px solid #888;
+ 	  }
+ 	  table.headers {
+ 	  border-style: outset;
+@@ -165,15 +172,13 @@
+ 	  vertical-align: top;
+ 	  }
+ 	  table.full td {
+-	  border-style: inset;
+-	  border-width: 1px;
++	  border: 1px solid #888;
+ 	  }
+ 	  table.tt th {
+ 	  vertical-align: top;
+ 	  }
+ 	  table.full th {
+-	  border-style: inset;
+-	  border-width: 1px;
++	  border: 1px solid #888;
+ 	  }
+ 	  table.headers th {
+ 	  border-style: none none inset none;
