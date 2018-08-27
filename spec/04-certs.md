@@ -2,6 +2,21 @@
 
 ✏️
 
+## Keys
+
+All keys are encoded as a dictionaries, which MUST have the following keys:
+
+1. `algorithm`
+2. `id`: A hash of the key that uniquely identifies it.
+3. `usage`: A dictionary that indicates what the key may be used for. Possible keys:
+   1. `signing`: The key MAY be used to sign digital documents, issue and revoke attribute certificates.
+   2. `identification`: They key MAY be used to identify the subject.
+   3. `encryption`: The key MAY be used for everyone to encrypt messages to the subject.
+   4. `certification`: The key MAY be used to issue digital certificates.
+   5. `revocation`: They key MAY be used to issue certificate revocations.
+
+Each key MUST NOT be used in any algorithms other than the one prescribed on the key `algorithm`.
+
 ## Subject Attributes
 
 Unless otherwise specified, all attributes are arrays.
@@ -19,15 +34,15 @@ Each name is a one line Unicode string.
 
 All name entries each MUST be at most 5 KiB long.
 
-All apps MUST suport such long names. They MAY, however, show only the begining of the name by default and have a simple way to show the full name. Example: a tooltip or a button close to the name.
+All apps MUST support such long names. They MAY, however, show only the beginning of the name by default and have a simple way to show the full name. Example: a tooltip or a button close to the name.
 
 There MUST be at least one name in the `INT/name` attribute.
 
-Any prefixes, sufixes, infixes, honorifics and similar things attached to the name MUST be verified. Example: a person may never use the prefix "Dr." if they have no valid doctorates degree.
+Any prefixes, suffixes, infixes, honorifics and similar things attached to the name MUST be verified. Example: a person may never use the prefix "Dr." if they have no valid doctorates degree.
 
 Generic prefixes like "Mr." or "Ms." and job titles MUST NOT be included in any of the names.
 
-For legal persons, it is recommended to follow the convention: `(<Acroymum>) <Full Legal Name> <Any special endings>` Examples:
+For legal persons, it is recommended to follow the convention: `(<Acronym>) <Full Legal Name> <Any special endings>` Examples:
 
 1. (USP) Universidade São Paulo
 2. Monsters Inc.
@@ -140,7 +155,7 @@ Except of dates, it is RECOMMENDED that all fields match the way they are presen
 ```js
 {
     "type": "P",
-    "country": "UTO", // This may not match ISO 3166-1, read ICAO Doc 9303 (pages 22 to 29) for deatils.
+    "country": "UTO", // This may not match ISO 3166-1, read ICAO Doc 9303 (pages 22 to 29) for details.
     "number": "L898902C3",
     "surname": "ERIKSSON",
     "given_name": "ANNA MARIA",
@@ -155,20 +170,18 @@ Except of dates, it is RECOMMENDED that all fields match the way they are presen
 }
 ```
 
-## Keys
+## Certification Chain
 
-All keys are encoded as a dictionaries, which MUST have the following keys:
+👉 Open Question: Should software recieve certificates? Ex: Should a bank have a specific certificate only for its web server that is used not for SSL but for singing that it approved clients requests (loans for instance) and singing bank statements?  
 
-1. `algorithm`
-2. `id`: A hash of the key that uniquely identifies it.
-3. `usage`: A dictionary that indicates what the key may be used for. Possible keys:
-   1. `signing`: The key MAY be used to sign digital documents, issue and revoke attribute certificates.
-   2. `identification`: They key MAY be used to identify the subject.
-   3. `encryption`: The key MAY be used for everyone to encrypt messages to the subject.
-   4. `certification`: The key MAY be used to issue digital certificates.
-   5. `revocation`: They key MAY be used to issue certificate revocations.
+### Self-signed User Certificates
 
-Each key MUST NOT be used in any algorithms other than the one prescribed on the key `algorithm`.
+👉 Open Question: It is feature a good idea?
+
+All self-signed user certificates (SSUC) MUST have, on both `subject` and `issuer`, the `INT/name` attribute with a single element `Self Signed User Certificate`. There MUST NOT be any other names.
+
+The choice to prohibit names is intentional, as it ensures that no app will be able to display an unverified name, thus forcing the user to keep an "address book" to associate each person to their certificate. 
 
 
+### Revocation
 

@@ -20,15 +20,15 @@
 
 (**KP**) **Key Pair**:
 
-**Certificate**:
+**Certificate**: A short signed message that states a key pair is in the control of a specific subject.
 
 (**CA**) **Certificate Authority**: A certificate that is allowed to sign other certificates. This is, a CA is an entity (usually a company or government body) that ensures that the subject on a certificate is really the person it names. 
 
-(**CAT**) **Attribute certificate**: A short signed message in which the issuer certifies that a certain attribute is true. Examples: job titles and permissions delegated by the issuer to the subject.
+(**PA**) **Proof of attribute**: A short signed message in which the issuer certifies that a certain attribute is true. Examples: job titles and permissions delegated by the issuer to the subject.
 
-**CAT chain**: a chain of attribute certificates that allows the final issuer to do so.
+(**TA**) **Timestamping Authority**
 
-👉 Draft note: the use of the word "certificate" for two different things, certificates and attribute certificates, can lead to confusion. Some possible replacements for the expression "attribute certificate" are: "proof of attribute" and "attribute receipt".
+This is very similar to the concept of attribute certificates. The names was changed to avoid using the "certificate" in two different contexts that may confuse users.
 
 All apps MUST use the standard translations present in this document when they present in the [Language specific rules](#language-specific-rules) section.
 

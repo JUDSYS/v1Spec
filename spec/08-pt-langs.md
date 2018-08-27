@@ -11,14 +11,11 @@ All apps aimed to support Portuguese MUST support the following Unicode blocks:
 
 | English               | Portuguese              |
 |-----------------------|-------------------------|
-| (CAT) Attribute certificate | (CAT) Comprovante de Atributo |
+| (PA) Proof of certificate | (CA) Comprovante de Atributo |
 | Certificate | Certificado |
 | (CA) Certificate Authority | (AC) Autoridade Certificadora |
 | (PKI) Public Key Infrastructure | (ICP) Infraestrutura de Chaves Públicas |
+| (TA) Timestamping Authority | (ACT) Autoridade de Carimbo de Tempo |
 | Subject | Titular |
 | Issuer | Emissor |
-
-Reasons for non literal translations:
-
-  1. (**CAT**) **Comprovante de Atributo**: Using the word "certificado" in two different contexts can lead to confusion.
 

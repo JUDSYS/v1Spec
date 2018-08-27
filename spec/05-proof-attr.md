@@ -1,4 +1,4 @@
-# Attribute certificates
+# Proof of attrbiute
 
 ## Standard attributes
 
