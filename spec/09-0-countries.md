@@ -1,2 +1,0 @@
-# Country specific rules
-
