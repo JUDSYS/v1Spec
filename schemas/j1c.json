@@ -1,8 +1,3 @@
-# JSON Schemas
-
-## Certificate File (.j1c)
-
-```js
 {
   "$id": "https://judsys.github.io/schema/j1c.json",
   "title": "JUDSYS-1 .j1c file",
@@ -21,5 +16,3 @@
     }
   }
 }
-```
-

@@ -1,0 +1,43 @@
+{
+  "$id": "https://judsys.github.io/schema/encrypted-object.json",
+  "title": "JUDSYS-1 Signed Object",
+  "type": "object",
+  "required": ["what", "raw", "alg", "key_src"],
+  "additionalProperties": false,
+  "properties": {
+    "what": {
+      "const": "JUDSYS-1 Encrypted Object"
+    },
+    "raw": {
+      "type": "string",
+      "description": "A base64 encoding of the encrypted JSON object."
+    },
+    "algorithm": {
+      "description": "The encryption algorithm.",
+      "oneOf": [
+        { "$ref": "https://judsys.github.io/schema/aes-256-cbc.json" }
+      ]
+    },
+    "key_src": {
+      "enum": ["password", "key-file"]
+    },
+    "key_id": {
+      "type": "string",
+      "description": "The ID of the public key"
+    },
+    "key_password": {
+      "type": "object",
+      "properties": {
+        "derivation": {
+          "description": "The key derivation algorithm.",
+          "oneOf": [
+            { "$ref": "https://judsys.github.io/schema/argon2id.json" }
+          ]
+        },
+        "hash": {
+          "$ref": "https://judsys.github.io/schema/hash.json"
+        }
+      }
+    }
+  }
+}

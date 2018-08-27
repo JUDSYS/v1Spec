@@ -1,0 +1,16 @@
+{
+  "$id": "https://judsys.github.io/schema/aes-256-cbc.json",
+  "title": "JUDSYS-1 Algorithm Identifier for AES-256-CBC",
+  "type": "object",
+  "required": ["name", "IV"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "const": "AES-256-CBC"
+    },
+    "IV": {
+      "type": "string",
+      "description": "A base64 encoding of the initialization vector"
+    }
+  }
+}

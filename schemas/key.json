@@ -1,0 +1,22 @@
+{
+  "$id": "https://judsys.github.io/schema/key.json",
+  "title": "JUDSYS-1 key",
+  "type": "object",
+  "required": ["algorithm", "kind", "id", "usage"],
+  "additionalProperties": true,
+  "properties": {
+    "algorithm": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": ["public", "private"]  
+    },
+    "id": {
+      "type": "string",
+      "description": "A value that uniquely identifies that key (algorithm dependent)"  
+    },
+    "usage": {
+      "enum": ["identification", "signing", "encryption", "issue-certs", "revoke-certs"]
+    }
+  }
+}

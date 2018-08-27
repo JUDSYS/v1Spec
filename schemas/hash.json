@@ -1,0 +1,21 @@
+{
+  "$id": "https://judsys.github.io/schema/hash.json",
+  "title": "JUDSYS-1 salted hash",
+  "type": "object",
+  "required": ["algorithm", "value"],
+  "additionalProperties": true,
+  "properties": {
+    "algorithm": {
+      "enum": ["SHA-3-512"],
+      "description": "The hashing algorithm"
+    },
+    "value": {
+      "type": "string",
+      "description": "The hash of the salted password, hex encoded"
+    },
+    "salt": {
+      "type": "string",
+      "description": "The password salt, hex encoded"
+    }
+  }
+}

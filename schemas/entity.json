@@ -1,0 +1,65 @@
+{
+  "$id": "https://judsys.github.io/schema/entity.json",
+  "title": "JUDSYS-1 Entity",
+  "type": "object",
+  "required": ["id", "INT/names"],
+  "additionalProperties": true,
+  "properties": {
+    "INT/vulnerable": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "A list of entries explaining the reasons why this entity is vulnerable. Ex: iliterate, child, mentally ill, et cetera"
+    },
+    "INT/names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "INT/emails": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "idn-email"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "INT/phones": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^\+[0-9]{1,} .*$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "INT/addresses": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/address.json"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "INT/picture": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "contentMediaType": "image"
+    },
+    "INT/passport": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/passport.json"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  }
+}

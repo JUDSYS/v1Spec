@@ -7,7 +7,7 @@
 <title abbrev="JUDSYS1">JSON Unified Digital Signatures System Standard 1</title><author initials="G." surname="Queiroz" fullname="Gabriel Villela Noriega de Queiroz"><organization></organization><address><postal><street></street>
 <city></city>
 <code></code>
-<country></country>
+<country>Brazil</country>
 <region></region>
 </postal><phone></phone>
 <email>gabrieljvnq@gmail.com</email>
@@ -54,6 +54,10 @@ And this is for a simple reason: even though we live in an information society, 
 </list>
 </t>
 <t>This document aims to provide a digital signature standard that address points one through three. Hopefully, this standard may fulfil the fourth point in the near future.</t>
+
+<section anchor="right-of-implementation" title="Right of Implementation">
+<t>Any person, group or organization can freely implement this standard so long as the implementation is complete.</t>
+</section>
 
 <section anchor="terminology" title="Terminology">
 <t>The keywords MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD,
@@ -126,7 +130,7 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 </section>
 
 <section anchor="strings" title="Strings">
-<t>All apps MUST have proper Unicode support and fonts to display any characters that may be necessary for the country of intended use. This is, an app for France MUST have fonts with accented characters, but MAY NOT have any CJK nor Cyrillic support. An app for Russia MUST have Cyrillic and Latin support, but MAY NOT have CJK or Mongolian support.</t>
+<t>All apps MUST have proper Unicode support and fonts to display any characters that may be necessary for the country of intended use. This is, an app for France MUST have fonts with accented characters, but SHOULD NOT have any CJK nor Cyrillic support. An app for Russia MUST have Cyrillic and Latin support, but SHOULD NOT have CJK or Mongolian support.</t>
 <t>It is RECOMMENDED to store string in NFC (Normal Form Composition).</t>
 <t>It is RECOMMENDED that all apps support as much Unicode characters and scripts as possible. It is also RECOMMENDED that all apps include the necessary fonts.</t>
 <t>Emoji usage is discouraged.</t>
@@ -189,10 +193,14 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 <t>
 <list style="numbers">
 <t>If the CA fails to verify that a phone number really belongs to the subject, it MUST never be included.</t>
-<t>If the subject of the certificate to be issued forgets to bring their US/SSN, this attribute <spanx style="strong">MUST not</spanx> be included in the certificate.</t>
+<t>If the subject of the certificate to be issued forgets to bring their US/SSN, this attribute MUST NOT be included in the certificate.</t>
 </list>
 </t>
 <t>If a CA MAY refuse to issue a certificate if essential properties could not verified. Examples: INT/name, US/SSN, BR/RG, BR/CPF.</t>
+
+<section anchor="int-type" title="INT/type">
+<t>An enum describing the type of the subject. Possible values are: <spanx style="verb">natural person</spanx>, <spanx style="verb">legal person</spanx>, <spanx style="verb">authority</spanx> (certificate authority and time-stamping authorities) and <spanx style="verb">other</spanx> (ex: software).</t>
+</section>
 
 <section anchor="int-name" title="INT/name">
 <t>Each name is a one line Unicode string.</t>
@@ -272,24 +280,7 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 <t>The picture MUST be data URL encoded using base64 and MUST NOT exceed 1 MiB. The size restriction applies to the image itself, not to the string that encodes it.</t>
 <t>Example: (Tux, the Linux mascot)</t>
 
-<figure><artwork>[&quot;data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gAiUmVzaXplZCB3aXRoIGV6Z2lm
- LmNvbSBHSUYgbWFrZXL/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQa
- FRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4e
- Hh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAmACADASIAAhEBAxEB/8QAGQAAAwEB
- AQAAAAAAAAAAAAAABgcIAAUE/8QALRAAAQMDAgQFAwUAAAAAAAAAAQIDBAUGEQAHEiExQQgTFCJxFVGB
- MlJhcrH/xAAXAQEBAQEAAAAAAAAAAAAAAAADAgQF/8QAJhEAAgICAQMCBwAAAAAAAAAAAQIDBAARMQUh
- QRNxEhQigaHR8P/aAAwDAQACEQMRAD8AsvUleN/cDcWk1yNb1lyajTqbGhtyajLhZStS3XFIbQVjmB7e
- g6lXPtqtdIDcOnRbm3bqkyNR/rkWkw40GTggoRJKnFlscsFQSWyRk4ynvrNbnavC0ioXI8Dk4kSB3Ck6
- 98C/CbuduEncRG2u4Sp77kmnqlRXZ6wt9C0ZJHEOZSUhXI5IKfkarPUYXbHVs34gLGvKsQU06hSWnI3C
- 0StDJdW55xUScgguhZ65GemNWWy4260h1paVtrSFJUk5CgehB+2kgkMsauVKk+DyPfWS6/CxG94Gb4Xi
- 1Ym19auFTwbktx1NQh3XJWOFsAdzxHPwDrw7AWc7ZO2NLpk6U/JqcsmdUHXFlSlyHfevJ6nGQM98Z0P7
- xRYF8Nrt2tQEKhwZfmtKS4oLDqUlKVgggAjiJAORrsbN3nWLglVS3bho70eo0QoHr22iIs5pYPAtB6JX
- ge5HY9P45dPrtO7akqxH6k58cHR17HnNM1KWGNZGHY5w/F5Y0C7dnKxMkrd9RRmVVGN7iQC2CVDGeWUc
- Q+caFvANe0y4ttqhbdRkuSXrfkpbjuOElXpnEkoSf6lKwPsMDtpj7+TfUWbLtGLLYaqFdhyGG0KUCrgK
- CFK4evCOIZP40u/B9ZI22g1KJWJTDlSqzjZU42CEAI4glHPv7lHOBn8aSbrVOCyKsr6c60D53v8AWSlS
- V4/VUbGNavWIuXKel02ruR3nlqcLb7QdQVHmeYwQPydB7G1941SpuTX7/n2021llLVCXzewf1OFxOOXY
- BJIz11tbRJ0ajBdWzHGA533G/P4xDbmeEozbHbOKrYOZQLoXetPvWq1+rqbLL/157jy2f2rQnII5YGMd
- emmzaFqtU2O1KqCm5dQ5KKwD5bZ+yAf9PP41tbSN02rLe+ZdAXAGif7X35yRYlWD0w2hvP/Z&quot;]
+<figure><artwork>[&quot;data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gAiUmVzaXplZCB3aXRoIGV6Z2lmLmNvbSBHSUYgbWFrZXL/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAmACADASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAABgcIAAUE/8QALRAAAQMDAgQFAwUAAAAAAAAAAQIDBAUGEQAHEiExQQgTFCJxFVGBMlJhcrH/xAAXAQEBAQEAAAAAAAAAAAAAAAADAgQF/8QAJhEAAgICAQMCBwAAAAAAAAAAAQIDBAARMQUhQRNxEhQigaHR8P/aAAwDAQACEQMRAD8AsvUleN/cDcWk1yNb1lyajTqbGhtyajLhZStS3XFIbQVjmB7eg6lXPtqtdIDcOnRbm3bqkyNR/rkWkw40GTggoRJKnFlscsFQSWyRk4ynvrNbnavC0ioXI8Dk4kSB3Ck698C/CbuduEncRG2u4Sp77kmnqlRXZ6wt9C0ZJHEOZSUhXI5IKfkarPUYXbHVs34gLGvKsQU06hSWnI3C0StDJdW55xUScgguhZ65GemNWWy4260h1paVtrSFJUk5CgehB+2kgkMsauVKk+DyPfWS6/CxG94Gb4Xi1Ym19auFTwbktx1NQh3XJWOFsAdzxHPwDrw7AWc7ZO2NLpk6U/JqcsmdUHXFlSlyHfevJ6nGQM98Z0P7xRYF8Nrt2tQEKhwZfmtKS4oLDqUlKVgggAjiJAORrsbN3nWLglVS3bho70eo0QoHr22iIs5pYPAtB6JXge5HY9P45dPrtO7akqxH6k58cHR17HnNM1KWGNZGHY5w/F5Y0C7dnKxMkrd9RRmVVGN7iQC2CVDGeWUcQ+caFvANe0y4ttqhbdRkuSXrfkpbjuOElXpnEkoSf6lKwPsMDtpj7+TfUWbLtGLLYaqFdhyGG0KUCrgKCFK4evCOIZP40u/B9ZI22g1KJWJTDlSqzjZU42CEAI4glHPv7lHOBn8aSbrVOCyKsr6c60D53v8AWSlSV4/VUbGNavWIuXKel02ruR3nlqcLb7QdQVHmeYwQPydB7G1941SpuTX7/n2021llLVCXzewf1OFxOOXYBJIz11tbRJ0ajBdWzHGA533G/P4xDbmeEozbHbOKrYOZQLoXetPvWq1+rqbLL/157jy2f2rQnII5YGMdemmzaFqtU2O1KqCm5dQ5KKwD5bZ+yAf9PP41tbSN02rLe+ZdAXAGif7X35yRYlWD0w2hvP/Z&quot;]
 </artwork></figure>
 </section>
 
@@ -297,28 +288,28 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 <t>Each passport (see <xref target="ICAO-9303"></xref>) is encoded as a dictionary with the following keys:</t>
 <t>
 <list style="numbers">
-<t><spanx style="verb">type</spanx> (REQUIRED): Indicates the type of document, for passports this is a <spanx style="verb">P</spanx>.</t>
-<t><spanx style="verb">number</spanx> (REQUIRED): A string, which MAY contain letters, the identifies this passport.</t>
-<t><spanx style="verb">country</spanx> (REQUIRED): The country that issued the passort.</t>
-<t><spanx style="verb">surname</spanx> (OPTIONAL): The subject's last name.</t>
-<t><spanx style="verb">given_name</spanx> (OPTIONAL): The subject's first name.</t>
-<t><spanx style="verb">nationality</spanx> (OPTIONAL): The subject's nationality.</t>
-<t><spanx style="verb">date_of_birth</spanx> (REQUIRED): The subject's date of birth.</t>
-<t><spanx style="verb">place_of_birth</spanx> (OPTIONAL): The subject's place of birth.</t>
-<t><spanx style="verb">personal_number</spanx> (OPTIONAL): An id number identifying the subject.</t>
-<t><spanx style="verb">sex</spanx> (OPTIONAL): The sex or gender of the subject. Note that <spanx style="verb">X</spanx> and other characters may be used instead of the traditional <spanx style="verb">F</spanx> and <spanx style="verb">M</spanx>.</t>
-<t><spanx style="verb">date_of_issue</spanx> (REQUIRED): The date in which the passport was issued.</t>
-<t><spanx style="verb">date_of_expiry</spanx> (OPTIONAL): The date in which the passport will expire.</t>
-<t><spanx style="verb">MRZ</spanx> (OPTIONAL): the contents on the MRZ (machine redable zone).</t>
+<t><spanx style="verb">type</spanx>: Indicates the type of document, for passports this is a <spanx style="verb">P</spanx>.</t>
+<t><spanx style="verb">number</spanx>: A string, which MAY contain letters, the identifies this passport.</t>
+<t><spanx style="verb">country</spanx>: The country that issued the passport.</t>
+<t><spanx style="verb">surname</spanx>: The subject's last name.</t>
+<t><spanx style="verb">given_name</spanx>: The subject's first name.</t>
+<t><spanx style="verb">nationality</spanx>: The subject's nationality.</t>
+<t><spanx style="verb">date_of_birth</spanx>: The subject's date of birth.</t>
+<t><spanx style="verb">place_of_birth</spanx>: The subject's place of birth.</t>
+<t><spanx style="verb">personal_number</spanx>: An id number identifying the subject.</t>
+<t><spanx style="verb">sex</spanx>: The sex or gender of the subject. Note that <spanx style="verb">X</spanx> and other characters may be used instead of the traditional <spanx style="verb">F</spanx> and <spanx style="verb">M</spanx>.</t>
+<t><spanx style="verb">date_of_issue</spanx>: The date in which the passport was issued.</t>
+<t><spanx style="verb">date_of_expiry</spanx>: The date in which the passport will expire.</t>
+<t><spanx style="verb">MRZ</spanx>: the contents on the MRZ (machine readable zone).</t>
 </list>
 </t>
-<t>The <spanx style="verb">given_name</spanx> and <spanx style="verb">surname</spanx> are OPTIONAL beacuse some people may have no first or last name. However, at least one of them MUST be included.</t>
-<t>Except of dates, it is RECOMMENDED that all fields match the way they are presented on the VIZ (Visual Inpection Zone), rather than the MRZ.</t>
+<t>Only <spanx style="verb">type</spanx>, <spanx style="verb">country</spanx> and <spanx style="verb">number</spanx> <spanx style="strong">MUST BE</spanx> present.</t>
+<t>The <spanx style="verb">given_name</spanx> and <spanx style="verb">surname</spanx> are OPTIONAL because some people may have no first or last name. However, at least one of them MUST be included.</t>
+<t>Except of dates, it is RECOMMENDED that all fields match the way they are presented on the VIZ (Visual Inspection Zone), rather than the MRZ.</t>
 
 <figure><artwork type="js">{
     &quot;type&quot;: &quot;P&quot;,
-    &quot;country&quot;: &quot;UTO&quot;, /* This may not match ISO 3166-1, read ICAO Doc 9303
-                         (pages 22 to 29) for details.*/
+    &quot;country&quot;: &quot;UTO&quot;, // This **MAY NOT** match ISO 3166-1, read ICAO Doc 9303 (pages 22 to 29) for details.
     &quot;number&quot;: &quot;L898902C3&quot;,
     &quot;surname&quot;: &quot;ERIKSSON&quot;,
     &quot;given_name&quot;: &quot;ANNA MARIA&quot;,
@@ -330,28 +321,31 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
                    such as &quot;X&quot; may de used. */
     &quot;date_of_issue&quot;: &quot;2007-04-16&quot;,
     &quot;date_of_expiry&quot;: &quot;2012-04-15&quot;,
-    &quot;MRZ&quot;: &quot;P&lt;UTOERIKSSON&lt;&lt;ANNA&lt;MARIA&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\nL898902C36UTO7408122F
-    1204159ZE184226B&lt;&lt;&lt;&lt;&lt;10&quot;
+    &quot;MRZ&quot;: &quot;P&lt;UTOERIKSSON&lt;&lt;ANNA&lt;MARIA&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\nL898902C36UTO7408122F1204159ZE184226B&lt;&lt;&lt;&lt;&lt;10&quot;
 }
 </artwork></figure>
 </section>
 </section>
+</section>
 
 <section anchor="certification-chain" title="Certification Chain">
-<t>👉 Open Question: Should software recieve certificates? Ex: Should a bank have a specific certificate only for its web server that is used not for SSL but for singing that it approved clients requests (loans for instance) and singing bank statements?</t>
+<t>👉 Open Question: Should software receive certificates? Ex: Should a bank have a specific certificate only for its web server that is used not for SSL but for singing that it approved clients requests (loans for instance) and singing bank statements?</t>
 
-<section anchor="self-signed-user-certificates" title="Self-signed User Certificates">
+<section anchor="public-key-infrastructure" title="Public Key Infrastructure">
+</section>
+
+<section anchor="nameless-certificates" title="Nameless Certificates">
 <t>👉 Open Question: It is feature a good idea?</t>
-<t>All self-signed user certificates (SSUC) MUST have, on both <spanx style="verb">subject</spanx> and <spanx style="verb">issuer</spanx>, the <spanx style="verb">INT/name</spanx> attribute with a single element <spanx style="verb">Self Signed User Certificate</spanx>. There MUST NOT be any other names.</t>
+<t>Nameless certificates are self signed certificates meant for the end user. They are intended to serve as a way for people to start using and testing JUDSYS-1 without the need to pay the CAs.</t>
+<t>All nameless certificates MUST have, on both <spanx style="verb">subject</spanx> and <spanx style="verb">issuer</spanx>, the <spanx style="verb">INT/name</spanx> attribute with a single element <spanx style="verb">Nameless Certificate</spanx>. There MUST NOT be any other names.</t>
 <t>The choice to prohibit names is intentional, as it ensures that no app will be able to display an unverified name, thus forcing the user to keep an &quot;address book&quot; to associate each person to their certificate.</t>
 </section>
 
 <section anchor="revocation" title="Revocation">
 </section>
 </section>
-</section>
 
-<section anchor="proof-of-attrbiute" title="Proof of attrbiute">
+<section anchor="proof-of-attribute" title="Proof of attribute">
 
 <section anchor="standard-attributes" title="Standard attributes">
 
@@ -417,7 +411,7 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 <section anchor="int-location" title="INT/location">
 <t>A dictionary with the following keys:</t>
 <t>
-<list style="symbols">
+<list style="numbers">
 <t><spanx style="verb">country</spanx>: A string with the country code.</t>
 <t><spanx style="verb">zip</spanx>: A string with the place's ZIP code equivalent according to the the country.</t>
 <t><spanx style="verb">lat</spanx>: A float in the interval [-90, +90] representing the latitude of the place.</t>
@@ -430,8 +424,8 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 <t><spanx style="verb">text</spanx>: A multi line string describing the place according to the rule sin the country. This is mainly intended for countries with different postal conventions.</t>
 </list>
 </t>
-<t>Except for <spanx style="strong">country</spanx> which is MANDATORY, all other keys are OPTIONAL.</t>
-<t><spanx style="strong">lat</spanx> and <spanx style="strong">lon</spanx> are mainly intended to automatically show markers on maps for the end user.</t>
+<t>The <spanx style="verb">country</spanx> key MUST be present. All others are MAY be empty.</t>
+<t><spanx style="verb">lat</spanx> and <spanx style="verb">lon</spanx> are mainly intended to automatically show markers on maps for the end user.</t>
 </section>
 
 <section anchor="int-date" title="INT/date">
@@ -453,19 +447,40 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 
 <section anchor="int-counter" title="INT/counter">
 <t>An array of base64 string encoding the previous signatures.</t>
-
-<figure><artwork type="js">[&quot;ewogICAgImZpbGVuYW1lIjogImNvbnRyYWN0LnR4dCIsCiAgICAiaGFzaCI6ICJTSEEtMy01MTI9QTY5RjczQ0NBMjNBOUFDNUM4QjU2N0RDMTg1QTc1NkU5N0M5ODIxNjRGRTI1ODU5RTBEMURDQzE0NzVDODBBNjE1QjIxMjNBRjFGNUY5NEMxMUUzRTk0MDJDM0FDNTU4RjUwMDE5OUQ5NUI2RDNFMzAxNzU4NTg2MjgxRENEMjYiCn0K&quot;]
-</artwork></figure>
 <t>A signature verification MUST NOT fail because the file was renamed.</t>
 </section>
 </section>
 
-<section anchor="signature-resquest" title="Signature Resquest">
+<section anchor="signature-request" title="Signature Request">
 </section>
+</section>
+
+<section anchor="internet-apis" title="Internet APIs">
+
+<section anchor="online-restful" title="Online RESTful">
+
+<section anchor="sign-certificate" title="Sign certificate">
+</section>
+
+<section anchor="certificate-revocation-status" title="Certificate revocation status">
+</section>
+
+<section anchor="timestamp-servers" title="Timestamp servers">
+</section>
+</section>
+
+<section anchor="browser-interaction" title="Browser interaction">
+</section>
+</section>
+
+<section anchor="smartcards" title="Smartcards">
 </section>
 
 <section anchor="security-and-usability-considerations" title="Security and Usability Considerations">
 <t>✏️</t>
+
+<section anchor="mixing-digital-and-paper-signatures" title="Mixing digital and paper signatures">
+</section>
 
 <section anchor="dynamic-content" title="Dynamic Content">
 <t>All signing apps MUST warn the user when the document they are trying to sign seems to have dynamic content.</t>
@@ -474,7 +489,7 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 <t>For PDF, the verification MUST check for, and fail to find all of the following:</t>
 <t>
 <list style="numbers">
-<t>Any signs of Javascript.</t>
+<t>Any signs of JavaScript.</t>
 </list>
 </t>
 <t>For HTML, the verification MUST check for, and fail to find all of the following:</t>
@@ -511,6 +526,703 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 
 <section anchor="archive-files" title="Archive files">
 <t>👉 Decide how to handle the case of a user trying to sign a <spanx style="verb">.zip</spanx> or <spanx style="verb">.rar</spanx> file. Should they be warned about the fact the signature will only apply to all those files together instead of separately?</t>
+</section>
+
+<section anchor="user-misinterpretation-and-excessive-trust-on-the-machine" title="User misinterpretation and excessive trust on the machine">
+</section>
+
+<section anchor="certificate-and-password-sharing" title="Certificate and password sharing">
+</section>
+
+<section anchor="cloud-usage" title="Cloud usage">
+</section>
+
+<section anchor="side-channel-attacks" title="Side channel attacks">
+</section>
+
+<section anchor="document-replacement" title="Document replacement">
+</section>
+</section>
+
+<section anchor="language-specific-rules" title="Language Specific Rules">
+
+<section anchor="portuguese" title="Portuguese">
+
+<section anchor="unicode-support" title="Unicode Support">
+<t>All apps aimed to support Portuguese MUST support the following Unicode blocks:</t>
+<t>
+<list style="numbers">
+<t>Basic Latin (U+0000..U+007F).</t>
+<t>Latin-1 Supplement (U+00A0..U+00FF). This range excludes the need for supporting C1 Controls.</t>
+</list>
+</t>
+</section>
+
+<section anchor="standard-translations" title="Standard Translations">
+<texttable>
+<ttcol>English</ttcol>
+<ttcol>Portuguese</ttcol>
+
+
+<c>(PA) Proof of certificate</c>
+<c>(CA) Comprovante de Atributo</c>
+
+<c>Certificate</c>
+<c>Certificado</c>
+
+<c>(CA) Certificate Authority</c>
+<c>(AC) Autoridade Certificadora</c>
+
+<c>(PKI) Public Key Infrastructure</c>
+<c>(ICP) Infraestrutura de Chaves Públicas</c>
+
+<c>(TA) Timestamping Authority</c>
+<c>(ACT) Autoridade de Carimbo de Tempo</c>
+
+<c>Subject</c>
+<c>Titular</c>
+
+<c>Issuer</c>
+<c>Emissor</c>
+
+</texttable></section>
+</section>
+</section>
+
+<section anchor="country-specific-rules" title="Country Specific Rules">
+
+<section anchor="brazil" title="Brazil">
+<t>All certificates issued for natural persons MUST have the following attributes:</t>
+<t>
+<list style="numbers">
+<t><spanx style="verb">BR/CPF</spanx></t>
+<t><spanx style="verb">BR/RG</spanx> or <spanx style="verb">BR/RNE</spanx> or <spanx style="verb">INT/passport</spanx>: The certificate MAY have any combination of them so long as there is at least one.</t>
+</list>
+</t>
+<t>For legal persons, the <spanx style="verb">INT/name</spanx> attribute MUST be the full &quot;razão social&quot;.</t>
+<t>Even if official documents show a name in all caps, all names MUST have propper capitalization. Ex: &quot;Pedro de Alântara&quot;, not &quot;PEDRO DE ALCÂNTARA&quot; nor &quot;Pedro De Alcântara&quot;.</t>
+<t>All certificates issued for legal persons MUST have the following attributes:</t>
+<t>
+<list style="numbers">
+<t><spanx style="verb">BR/CNPJ</spanx></t>
+</list>
+</t>
+<t>For legal persons, they SHOULD also have, when possible:</t>
+<t>
+<list style="numbers">
+<t><spanx style="verb">BR/IE</spanx> (inscrição estadual)</t>
+<t><spanx style="verb">BR/IM</spanx> (inscrição municipal)</t>
+<t><spanx style="verb">BR/NIRE</spanx> (junta comercial)</t>
+</list>
+</t>
+</section>
+
+<section anchor="subject-attributes-1" title="Subject Attributes">
+
+<section anchor="br-cpf" title="BR/CPF">
+<t>CPF (<spanx style="emph">Cadastro de Pessoas Físicas</spanx>) number. This MUST be encoded as a trimmed string with the format: <spanx style="verb">999.999.999/99</spanx>.</t>
+<t><spanx style="verb">BR/CPF</spanx> MUST NOT be encoded as an array.</t>
+<t>Example: <spanx style="verb">001.456.789/00</spanx></t>
+<t>All apps MUST NOT reject a BR/CPF entry because the verification digits (the last two) are incorrect.</t>
+</section>
+
+<section anchor="br-cnpj" title="BR/CNPJ">
+<t>CNPJ (<spanx style="emph">Cadastro Nacional de Pessoas Jurídicas</spanx>) number. This MUST be encoded as a trimmed string with the format: <spanx style="verb">99.999.999/9999-99</spanx>.</t>
+<t><spanx style="verb">BR/CNPJ</spanx> MUST NOT be encoded as an array.</t>
+<t>Example: <spanx style="verb">01.012.123/0001-99</spanx></t>
+<t>All apps MUST NOT reject a <spanx style="verb">BR/CNPJ</spanx> entry because the verification digits (the last two) are incorrect.</t>
+</section>
+
+<section anchor="br-rne" title="BR/RNE">
+<t>RNE (<spanx style="emph">Registro Nacional de Estrangeiros</spanx>) MUST be encoded as a string with all punctuation.</t>
+<t>Example: ✏️</t>
+</section>
+
+<section anchor="br-rg" title="BR/RG">
+<t>RG (<spanx style="emph">Registro Geral</spanx>) MUST be encoded as an array of dictionaries with the keys:</t>
+<t>
+<list style="numbers">
+<t><spanx style="verb">number</spanx> for the RG number which MUST include punctuation.</t>
+<t><spanx style="verb">digit</spanx> for the verification digit, i.e. the character after the hyphen. If the subject RG has no digit this string MUST be empty.</t>
+<t><spanx style="verb">state</spanx> the two letter uppercase code for the federative unit that issued the document.</t>
+<t><spanx style="verb">issuer</spanx> the institution that actually issued the RG.</t>
+<t><spanx style="verb">short_form</spanx> a concise string expressing the main things about the RG. The following algorithm MUST be used:</t>
+</list>
+</t>
+
+<figure><artwork type="pseudo">IF digit IS present THEN
+    short_form = number + &quot;-&quot; + digit + &quot; /&quot; + state
+ELSE
+    short_form = number + &quot; /&quot; + state
+END IF
+</artwork></figure>
+<t>Example of an RG:</t>
+
+<figure><artwork type="js">{
+    // Number with punctuation
+    &quot;number&quot;: &quot;12.345.678&quot;,
+    // The character after the hyphen when present
+    &quot;digit&quot;: &quot;X&quot;,
+    // The issuing state (two letter upper case code)
+    &quot;state&quot;: &quot;DF&quot;,
+    // Issuing organization (&quot;órgão emissor&quot;) with diacritics
+    &quot;issuer&quot;: &quot;Secretaria de Segurança Pública&quot;,
+    // number + &quot; &quot; + state (if digit == &quot;&quot;)
+    // number + &quot;-&quot; + digit + &quot; &quot; + state (if digit == &quot;&quot;)
+    &quot;short_form&quot;: &quot;12.345.678-X DF&quot;
+}
+</artwork></figure>
+</section>
+
+<section anchor="br-título-de-eleitor" title="BR/Título de Eleitor">
+</section>
+
+<section anchor="br-nit" title="BR/NIT">
+</section>
+</section>
+</section>
+
+<section anchor="json-schemas" title="JSON Schemas">
+
+<section anchor="certificate-file-j1c" title="Certificate File (.j1c)">
+
+<figure><artwork type="json">{
+  &quot;$id&quot;: &quot;https://judsys.github.io/schema/j1c.json&quot;,
+  &quot;title&quot;: &quot;JUDSYS-1 .j1c file&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;what&quot;, &quot;certificates&quot;],
+  &quot;additionalProperties&quot;: true,
+  &quot;properties&quot;: {
+    &quot;what&quot;: {
+      &quot;const&quot;: &quot;JUDSYS-1 Certificate File (.j1c)&quot;
+    },
+    &quot;certificates&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;$ref&quot;: &quot;https://judsys.github.io/schema/signed-object.json&quot;
+      }
+    }
+  }
+}
+</artwork></figure>
+</section>
+
+<section anchor="private-keys-file-j1k" title="Private Keys File (.j1k)">
+
+<figure><artwork type="json">{
+  &quot;$id&quot;: &quot;https://judsys.github.io/schema/j1c.json&quot;,
+  &quot;title&quot;: &quot;JUDSYS-1 .j1c file&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;what&quot;, &quot;certificates&quot;],
+  &quot;additionalProperties&quot;: false,
+  &quot;properties&quot;: {
+    &quot;what&quot;: {
+      &quot;const&quot;: &quot;JUDSYS-1 Private Keys File (.j1k)&quot;
+    },
+    &quot;certificates&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;$ref&quot;: &quot;https://judsys.github.io/schema/signed-object.json&quot;
+      }
+    },
+    &quot;private-keys&quot;: {
+      &quot;description&quot;: &quot;An encrypted message containing an array of private keys for the first certificate present on the certificates array.&quot;,
+      &quot;$ref&quot;: &quot;https://judsys.github.io/schema/encrypted-object.json&quot;
+    }
+  }
+}
+</artwork></figure>
+</section>
+
+<section anchor="proof-of-attribute-file-j1a" title="Proof of Attribute File (.j1a)">
+</section>
+
+<section anchor="detached-digital-signature-file-j1s" title="Detached Digital Signature File (.j1s)">
+</section>
+
+<section anchor="encrypted-file-j1e" title="Encrypted File (.j1e)">
+</section>
+
+<section anchor="revocation-information-file-j1r" title="Revocation Information File (.j1r)">
+</section>
+
+<section anchor="hash-optionally-salted" title="Hash (optionally salted)">
+
+<figure><artwork type="json">{
+  &quot;$id&quot;: &quot;https://judsys.github.io/schema/hash.json&quot;,
+  &quot;title&quot;: &quot;JUDSYS-1 salted hash&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;algorithm&quot;, &quot;value&quot;],
+  &quot;additionalProperties&quot;: true,
+  &quot;properties&quot;: {
+    &quot;algorithm&quot;: {
+      &quot;enum&quot;: [&quot;SHA-3-512&quot;],
+      &quot;description&quot;: &quot;The hashing algorithm&quot;
+    },
+    &quot;value&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;The hash of the salted password, hex encoded&quot;
+    },
+    &quot;salt&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;The password salt, hex encoded&quot;
+    }
+  }
+}
+</artwork></figure>
+</section>
+
+<section anchor="aes-256-cbc" title="AES-256-CBC">
+<t>Advanced Encryption Standard with 256 bit keys in CBC (Cipher Block Chaining) mode.</t>
+
+<figure><artwork type="json">{
+  &quot;$id&quot;: &quot;https://judsys.github.io/schema/aes-256-cbc.json&quot;,
+  &quot;title&quot;: &quot;JUDSYS-1 Algorithm Identifier for AES-256-CBC&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;name&quot;, &quot;IV&quot;],
+  &quot;additionalProperties&quot;: false,
+  &quot;properties&quot;: {
+    &quot;name&quot;: {
+      &quot;const&quot;: &quot;AES-256-CBC&quot;
+    },
+    &quot;IV&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;A base64 encoding of the initialization vector&quot;
+    }
+  }
+}
+</artwork></figure>
+</section>
+
+<section anchor="argon2" title="Argon2">
+</section>
+
+<section anchor="ecdsa" title="ECDSA">
+</section>
+
+<section anchor="encrypted-object" title="Encrypted Object">
+
+<figure><artwork type="json">{
+  &quot;$id&quot;: &quot;https://judsys.github.io/schema/encrypted-object.json&quot;,
+  &quot;title&quot;: &quot;JUDSYS-1 Signed Object&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;what&quot;, &quot;raw&quot;, &quot;alg&quot;, &quot;key_src&quot;],
+  &quot;additionalProperties&quot;: false,
+  &quot;properties&quot;: {
+    &quot;what&quot;: {
+      &quot;const&quot;: &quot;JUDSYS-1 Encrypted Object&quot;
+    },
+    &quot;raw&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;A base64 encoding of the encrypted JSON object.&quot;
+    },
+    &quot;algorithm&quot;: {
+      &quot;description&quot;: &quot;The encryption algorithm.&quot;,
+      &quot;oneOf&quot;: [
+        { &quot;$ref&quot;: &quot;https://judsys.github.io/schema/aes-256-cbc.json&quot; }
+      ]
+    },
+    &quot;key_src&quot;: {
+      &quot;enum&quot;: [&quot;password&quot;, &quot;key-file&quot;]
+    },
+    &quot;key_id&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;The ID of the public key&quot;
+    },
+    &quot;key_password&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;derivation&quot;: {
+          &quot;description&quot;: &quot;The key derivation algorithm.&quot;,
+          &quot;oneOf&quot;: [
+            { &quot;$ref&quot;: &quot;https://judsys.github.io/schema/argon2id.json&quot; }
+          ]
+        },
+        &quot;hash&quot;: {
+          &quot;$ref&quot;: &quot;https://judsys.github.io/schema/hash.json&quot;
+        }
+      }
+    }
+  }
+}
+</artwork></figure>
+</section>
+
+<section anchor="signed-object" title="Signed Object">
+
+<figure><artwork type="json">{
+  &quot;$id&quot;: &quot;https://judsys.github.io/schema/signed-object.json&quot;,
+  &quot;title&quot;: &quot;JUDSYS-1 Signed Object&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;what&quot;, &quot;raw&quot;, &quot;sig&quot;],
+  &quot;additionalProperties&quot;: true,
+  &quot;properties&quot;: {
+    &quot;what&quot;: {
+      &quot;const&quot;: &quot;JUDSYS-1 Signed Object&quot;
+    },
+    &quot;raw&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;A base64 encoding of the JSON object.&quot;
+    },
+    &quot;sig&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;A base64 encoding of the signature.&quot;
+    }
+  }
+}
+</artwork></figure>
+</section>
+
+<section anchor="key" title="Key">
+
+<figure><artwork type="json">{
+  &quot;$id&quot;: &quot;https://judsys.github.io/schema/key.json&quot;,
+  &quot;title&quot;: &quot;JUDSYS-1 key&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;algorithm&quot;, &quot;kind&quot;, &quot;id&quot;, &quot;usage&quot;],
+  &quot;additionalProperties&quot;: true,
+  &quot;properties&quot;: {
+    &quot;algorithm&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;kind&quot;: {
+      &quot;enum&quot;: [&quot;public&quot;, &quot;private&quot;]  
+    },
+    &quot;id&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;A value that uniquely identifies that key (algorithm dependent)&quot;  
+    },
+    &quot;usage&quot;: {
+      &quot;enum&quot;: [&quot;identification&quot;, &quot;signing&quot;, &quot;encryption&quot;, &quot;issue-certs&quot;, &quot;revoke-certs&quot;]
+    }
+  }
+}
+</artwork></figure>
+
+<section anchor="rsa" title="RSA">
+<t>All RSA private keys MUST have exactly two primes.</t>
+<t>The key ID MUST be <spanx style="verb">&quot;RSA/&quot; + sha-3-512(N + &quot;|&quot; + E)</spanx> (all values are strings and all numbers are in base 10).</t>
+
+<section anchor="rsa-public" title="RSA Public">
+
+<figure><artwork type="json">{
+  &quot;$id&quot;: &quot;https://judsys.github.io/schema/key-rsa-public.json&quot;,
+  &quot;title&quot;: &quot;JUDSYS-1 key&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;algorithm&quot;, &quot;kind&quot;, &quot;id&quot;, &quot;N&quot;, &quot;E&quot;],
+  &quot;additionalProperties&quot;: false,
+  &quot;properties&quot;: {
+    &quot;algorithm&quot;: {
+      &quot;const&quot;: &quot;RSA&quot;
+    },
+    &quot;kind&quot;: {
+      &quot;const&quot;: &quot;public&quot;
+    },
+    &quot;id&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;pattern&quot;: &quot;^RSA:[0-9a-fA-F]{128}$&quot;
+    },
+    &quot;N&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;RSA public modulus N, in base 10&quot;
+    },
+    &quot;E&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;RSA public exponent E, in base 10&quot;
+    }
+  }
+}
+</artwork></figure>
+</section>
+
+<section anchor="rsa-private" title="RSA Private">
+
+<figure><artwork type="json">{
+  &quot;$id&quot;: &quot;https://judsys.github.io/schema/key-rsa-private.json&quot;,
+  &quot;title&quot;: &quot;JUDSYS-1 key&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;algorithm&quot;, &quot;kind&quot;, &quot;id&quot;, &quot;N&quot;, &quot;E&quot;, &quot;D&quot;, &quot;P&quot;, &quot;Q&quot;, &quot;DQ&quot;, &quot;DP&quot;, &quot;QINV&quot;],
+  &quot;additionalProperties&quot;: false,
+  &quot;properties&quot;: {
+    &quot;algorithm&quot;: {
+      &quot;const&quot;: &quot;RSA&quot;
+    },
+    &quot;kind&quot;: {
+      &quot;const&quot;: &quot;private&quot;
+    },
+    &quot;id&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;pattern&quot;: &quot;^RSA:[0-9a-fA-F]{128}$&quot;
+    },
+    &quot;N&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;RSA public modulus N, in base 10&quot;
+    },
+    &quot;E&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;RSA public exponent E, in base 10&quot;
+    },
+    &quot;D&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;RSA private exponent D, in base 10&quot;
+    },
+    &quot;P&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;RSA secret prime P, in base 10&quot;
+    },
+    &quot;Q&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;RSA secret prime Q, in base 10&quot;
+    },
+    &quot;DP&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;D mod (P-1), in base 10&quot;
+    },
+    &quot;DQ&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;D mod (Q-1), in base 10&quot;
+    },
+    &quot;QINV&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;Q^-1 mod P, in base 10&quot;
+    }
+  }
+}
+</artwork></figure>
+</section>
+</section>
+
+<section anchor="ecdsa-public-key" title="ECDSA Public Key">
+</section>
+</section>
+
+<section anchor="entity-subject-of-issuer" title="Entity (subject of issuer)">
+
+<figure><artwork type="json">{
+  &quot;$id&quot;: &quot;https://judsys.github.io/schema/entity.json&quot;,
+  &quot;title&quot;: &quot;JUDSYS-1 Entity&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;id&quot;, &quot;INT/names&quot;],
+  &quot;additionalProperties&quot;: true,
+  &quot;properties&quot;: {
+    &quot;INT/vulnerable&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;type&quot;: &quot;string&quot;
+      },
+      &quot;minItems&quot;: 1,
+      &quot;uniqueItems&quot;: true,
+      &quot;description&quot;: &quot;A list of entries explaining the reasons why this entity is vulnerable. Ex: iliterate, child, mentally ill, et cetera&quot;
+    },
+    &quot;INT/names&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;type&quot;: &quot;string&quot;
+      },
+      &quot;minItems&quot;: 1,
+      &quot;uniqueItems&quot;: true
+    },
+    &quot;INT/emails&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;format&quot;: &quot;idn-email&quot;
+      },
+      &quot;minItems&quot;: 1,
+      &quot;uniqueItems&quot;: true
+    },
+    &quot;INT/phones&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;pattern&quot;: &quot;^\+[0-9]{1,} .*$&quot;
+      },
+      &quot;minItems&quot;: 1,
+      &quot;uniqueItems&quot;: true
+    },
+    &quot;INT/addresses&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;$ref&quot;: &quot;https://judsys.github.io/schema/address.json&quot;
+      },
+      &quot;minItems&quot;: 1,
+      &quot;uniqueItems&quot;: true
+    },
+    &quot;INT/picture&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;contentEncoding&quot;: &quot;base64&quot;,
+      &quot;contentMediaType&quot;: &quot;image&quot;
+    },
+    &quot;INT/passport&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;$ref&quot;: &quot;https://judsys.github.io/schema/passport.json&quot;
+      },
+      &quot;minItems&quot;: 1,
+      &quot;uniqueItems&quot;: true
+    }
+  }
+}
+</artwork></figure>
+</section>
+
+<section anchor="certificate" title="Certificate">
+
+<figure><artwork type="json">{
+  &quot;$id&quot;: &quot;https://judsys.github.io/schema/certificate.json&quot;,
+  &quot;title&quot;: &quot;JUDSYS-1 Certificate&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;subject&quot;, &quot;notBefore&quot;, &quot;notAfter&quot;, &quot;serial&quot;, &quot;keys&quot;],
+  &quot;properties&quot;: {
+    &quot;serial&quot;: { &quot;type&quot;: &quot;string&quot; },
+    &quot;subject&quot;: {
+      &quot;$ref&quot;: &quot;https://judsys.github.io/schema/entity.json&quot;
+    },
+    &quot;issuer&quot;: {
+      &quot;$ref&quot;: &quot;https://judsys.github.io/schema/entity.json&quot;
+    },
+    &quot;notBefore&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;format&quot;: &quot;date-time&quot;
+    },
+    &quot;notAfter&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;format&quot;: &quot;date-time&quot;
+    },
+    &quot;keys&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;$ref&quot;: &quot;https://judsys.github.io/schema/key.json&quot;
+      }
+    },
+    &quot;legal-recognition&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;enum&quot;: [&quot;timestamp&quot;, &quot;authentic-scan&quot;]
+      }
+    }
+  }
+}
+</artwork></figure>
+</section>
+
+<section anchor="address" title="Address">
+
+<figure><artwork type="json">{
+  &quot;$id&quot;: &quot;https://judsys.github.io/schema/int-address.json&quot;,
+  &quot;title&quot;: &quot;JUDSYS-1 Address&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;country&quot;, &quot;state&quot;, &quot;city&quot;],
+  &quot;additionalProperties&quot;: false,
+  &quot;properties&quot;: {
+    &quot;country&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;zip&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;comment&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;Text describing addresses that do not fit into the structured model AND/OR additional comments about how to get to the place AND/OR access codes&quot;
+    },
+    &quot;recipient&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;complement&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;numberOrBuildingName&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;street&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;neighbourhood&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;city&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;state&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;If the country does not have states or provinces, this value MUST be a single hyphen '-'&quot;
+    },
+    &quot;lat&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;minimum&quot;: -90,
+      &quot;maximum&quot;: 90,
+      &quot;description&quot;: &quot;The latitude of the address, preferably of the building entrance&quot;
+    },
+    &quot;lon&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;minimum&quot;: -180,
+      &quot;maximum&quot;: 180,
+      &quot;description&quot;: &quot;The longitude of the address, preferably of the building entrance&quot;
+    }
+  }
+}
+</artwork></figure>
+</section>
+
+<section anchor="passport" title="Passport">
+
+<figure><artwork type="json">{
+  &quot;$id&quot;: &quot;https://judsys.github.io/schema/int-passport.json&quot;,
+  &quot;title&quot;: &quot;JUDSYS-1 Entity&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;country&quot;, &quot;number&quot;],
+  &quot;additionalProperties&quot;: true,
+  &quot;properties&quot;: {
+    &quot;type&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;Type of travel document, usually a 'P' indicating passport.&quot;
+    },
+    &quot;country&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;The country that ISSUED the passport.&quot;
+    },
+    &quot;number&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;surname&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;The surname as it appears on the VIZ (Visual Inspection Zone)&quot;
+    },
+    &quot;givenName&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;The given name as it appears on the VIZ (Visual Inspection Zone)&quot;
+    },
+    &quot;nationality&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;date_of_birth&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;format&quot;: &quot;date&quot;
+    },
+    &quot;place_of_birth&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;personal_number&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;sex&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;The sex of the passport holder. It may be 'X'.&quot;
+    },
+    &quot;date_of_issue&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;format&quot;: &quot;date&quot;
+    },
+    &quot;date_of_expiry&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;format&quot;: &quot;date&quot;
+    },
+    &quot;MRZ&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    }
+  }
+}
+</artwork></figure>
 </section>
 </section>
 

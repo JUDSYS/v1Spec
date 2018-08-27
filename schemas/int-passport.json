@@ -1,0 +1,56 @@
+{
+  "$id": "https://judsys.github.io/schema/int-passport.json",
+  "title": "JUDSYS-1 Entity",
+  "type": "object",
+  "required": ["country", "number"],
+  "additionalProperties": true,
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Type of travel document, usually a 'P' indicating passport."
+    },
+    "country": {
+      "type": "string",
+      "description": "The country that ISSUED the passport."
+    },
+    "number": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string",
+      "description": "The surname as it appears on the VIZ (Visual Inspection Zone)"
+    },
+    "givenName": {
+      "type": "string",
+      "description": "The given name as it appears on the VIZ (Visual Inspection Zone)"
+    },
+    "nationality": {
+      "type": "string"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date"
+    },
+    "place_of_birth": {
+      "type": "string"
+    },
+    "personal_number": {
+      "type": "string"
+    },
+    "sex": {
+      "type": "string",
+      "description": "The sex of the passport holder. It may be 'X'."
+    },
+    "date_of_issue": {
+      "type": "string",
+      "format": "date"
+    },
+    "date_of_expiry": {
+      "type": "string",
+      "format": "date"
+    },
+    "MRZ": {
+      "type": "string"
+    }
+  }
+}

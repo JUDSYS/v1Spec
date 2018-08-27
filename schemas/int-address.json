@@ -1,0 +1,53 @@
+{
+  "$id": "https://judsys.github.io/schema/int-address.json",
+  "title": "JUDSYS-1 Address",
+  "type": "object",
+  "required": ["country", "state", "city"],
+  "additionalProperties": false,
+  "properties": {
+    "country": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "string",
+      "description": "Text describing addresses that do not fit into the structured model AND/OR additional comments about how to get to the place AND/OR access codes"
+    },
+    "recipient": {
+      "type": "string"
+    },
+    "complement": {
+      "type": "string"
+    },
+    "numberOrBuildingName": {
+      "type": "string"
+    },
+    "street": {
+      "type": "string"
+    },
+    "neighbourhood": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string",
+      "description": "If the country does not have states or provinces, this value MUST be a single hyphen '-'"
+    },
+    "lat": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90,
+      "description": "The latitude of the address, preferably of the building entrance"
+    },
+    "lon": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180,
+      "description": "The longitude of the address, preferably of the building entrance"
+    }
+  }
+}

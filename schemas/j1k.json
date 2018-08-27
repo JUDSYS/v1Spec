@@ -1,25 +1,22 @@
-# JSON Schemas
-
-## Certificate File (.j1c)
-
-```js
 {
   "$id": "https://judsys.github.io/schema/j1c.json",
   "title": "JUDSYS-1 .j1c file",
   "type": "object",
   "required": ["what", "certificates"],
-  "additionalProperties": true,
+  "additionalProperties": false,
   "properties": {
     "what": {
-      "const": "JUDSYS-1 Certificate File (.j1c)"
+      "const": "JUDSYS-1 Private Keys File (.j1k)"
     },
     "certificates": {
       "type": "array",
       "items": {
         "$ref": "https://judsys.github.io/schema/signed-object.json"
       }
+    },
+    "private-keys": {
+      "description": "An encrypted message containing an array of private keys for the first certificate present on the certificates array.",
+      "$ref": "https://judsys.github.io/schema/encrypted-object.json"
     }
   }
 }
-```
-

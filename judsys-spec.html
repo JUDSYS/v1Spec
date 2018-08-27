@@ -127,6 +127,8 @@
 	  padding: .25em;
 	  border-radius: 7px;
 	  border: 1px solid DarkKhaki;
+	  white-space: pre-wrap;
+	  word-break: break-all;
 	  }
 	  samp {
 	  color: DarkSlateGrey;
@@ -383,7 +385,8 @@
 
   <link href="#rfc.toc" rel="Contents">
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction">
-<link href="#rfc.section.1.1" rel="Chapter" title="1.1 Terminology">
+<link href="#rfc.section.1.1" rel="Chapter" title="1.1 Right of Implementation">
+<link href="#rfc.section.1.2" rel="Chapter" title="1.2 Terminology">
 <link href="#rfc.section.2" rel="Chapter" title="2 Encoding">
 <link href="#rfc.section.2.1" rel="Chapter" title="2.1 Files">
 <link href="#rfc.section.2.1.1" rel="Chapter" title="2.1.1 File extensions">
@@ -394,34 +397,82 @@
 <link href="#rfc.section.3" rel="Chapter" title="3 Certificates">
 <link href="#rfc.section.3.1" rel="Chapter" title="3.1 Keys">
 <link href="#rfc.section.3.2" rel="Chapter" title="3.2 Subject Attributes">
-<link href="#rfc.section.3.2.1" rel="Chapter" title="3.2.1 INT/name">
-<link href="#rfc.section.3.2.2" rel="Chapter" title="3.2.2 INT/parents">
-<link href="#rfc.section.3.2.3" rel="Chapter" title="3.2.3 INT/emails">
-<link href="#rfc.section.3.2.4" rel="Chapter" title="3.2.4 INT/phones">
-<link href="#rfc.section.3.2.5" rel="Chapter" title="3.2.5 INT/addresses">
-<link href="#rfc.section.3.2.6" rel="Chapter" title="3.2.6 INT/pictures">
-<link href="#rfc.section.3.2.7" rel="Chapter" title="3.2.7 INT/passports">
-<link href="#rfc.section.3.3" rel="Chapter" title="3.3 Certification Chain">
-<link href="#rfc.section.3.3.1" rel="Chapter" title="3.3.1 Self-signed User Certificates">
-<link href="#rfc.section.3.3.2" rel="Chapter" title="3.3.2 Revocation">
-<link href="#rfc.section.4" rel="Chapter" title="4 Proof of attrbiute">
-<link href="#rfc.section.4.1" rel="Chapter" title="4.1 Standard attributes">
-<link href="#rfc.section.4.1.1" rel="Chapter" title="4.1.1 INT/job">
-<link href="#rfc.section.5" rel="Chapter" title="5 Signatures">
+<link href="#rfc.section.3.2.1" rel="Chapter" title="3.2.1 INT/type">
+<link href="#rfc.section.3.2.2" rel="Chapter" title="3.2.2 INT/name">
+<link href="#rfc.section.3.2.3" rel="Chapter" title="3.2.3 INT/parents">
+<link href="#rfc.section.3.2.4" rel="Chapter" title="3.2.4 INT/emails">
+<link href="#rfc.section.3.2.5" rel="Chapter" title="3.2.5 INT/phones">
+<link href="#rfc.section.3.2.6" rel="Chapter" title="3.2.6 INT/addresses">
+<link href="#rfc.section.3.2.7" rel="Chapter" title="3.2.7 INT/pictures">
+<link href="#rfc.section.3.2.8" rel="Chapter" title="3.2.8 INT/passports">
+<link href="#rfc.section.4" rel="Chapter" title="4 Certification Chain">
+<link href="#rfc.section.4.1" rel="Chapter" title="4.1 Public Key Infrastructure">
+<link href="#rfc.section.4.2" rel="Chapter" title="4.2 Nameless Certificates">
+<link href="#rfc.section.4.3" rel="Chapter" title="4.3 Revocation">
+<link href="#rfc.section.5" rel="Chapter" title="5 Proof of attribute">
 <link href="#rfc.section.5.1" rel="Chapter" title="5.1 Standard attributes">
-<link href="#rfc.section.5.1.1" rel="Chapter" title="5.1.1 INT/reason">
-<link href="#rfc.section.5.1.2" rel="Chapter" title="5.1.2 INT/location">
-<link href="#rfc.section.5.1.3" rel="Chapter" title="5.1.3 INT/date">
-<link href="#rfc.section.5.1.4" rel="Chapter" title="5.1.4 INT/file">
-<link href="#rfc.section.5.1.5" rel="Chapter" title="5.1.5 INT/counter">
-<link href="#rfc.section.5.2" rel="Chapter" title="5.2 Signature Resquest">
-<link href="#rfc.section.6" rel="Chapter" title="6 Security and Usability Considerations">
-<link href="#rfc.section.6.1" rel="Chapter" title="6.1 Dynamic Content">
-<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Accidental changes">
-<link href="#rfc.section.6.3" rel="Chapter" title="6.3 Archive files">
-<link href="#rfc.references" rel="Chapter" title="7 References">
-<link href="#rfc.references.1" rel="Chapter" title="7.1 Normative References">
-<link href="#rfc.references.2" rel="Chapter" title="7.2 Informative References">
+<link href="#rfc.section.5.1.1" rel="Chapter" title="5.1.1 INT/job">
+<link href="#rfc.section.6" rel="Chapter" title="6 Signatures">
+<link href="#rfc.section.6.1" rel="Chapter" title="6.1 Standard attributes">
+<link href="#rfc.section.6.1.1" rel="Chapter" title="6.1.1 INT/reason">
+<link href="#rfc.section.6.1.2" rel="Chapter" title="6.1.2 INT/location">
+<link href="#rfc.section.6.1.3" rel="Chapter" title="6.1.3 INT/date">
+<link href="#rfc.section.6.1.4" rel="Chapter" title="6.1.4 INT/file">
+<link href="#rfc.section.6.1.5" rel="Chapter" title="6.1.5 INT/counter">
+<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Signature Request">
+<link href="#rfc.section.7" rel="Chapter" title="7 Internet APIs">
+<link href="#rfc.section.7.1" rel="Chapter" title="7.1 Online RESTful">
+<link href="#rfc.section.7.1.1" rel="Chapter" title="7.1.1 Sign certificate">
+<link href="#rfc.section.7.1.2" rel="Chapter" title="7.1.2 Certificate revocation status">
+<link href="#rfc.section.7.1.3" rel="Chapter" title="7.1.3 Timestamp servers">
+<link href="#rfc.section.7.2" rel="Chapter" title="7.2 Browser interaction">
+<link href="#rfc.section.8" rel="Chapter" title="8 Smartcards">
+<link href="#rfc.section.9" rel="Chapter" title="9 Security and Usability Considerations">
+<link href="#rfc.section.9.1" rel="Chapter" title="9.1 Mixing digital and paper signatures">
+<link href="#rfc.section.9.2" rel="Chapter" title="9.2 Dynamic Content">
+<link href="#rfc.section.9.3" rel="Chapter" title="9.3 Accidental changes">
+<link href="#rfc.section.9.4" rel="Chapter" title="9.4 Archive files">
+<link href="#rfc.section.9.5" rel="Chapter" title="9.5 User misinterpretation and excessive trust on the machine">
+<link href="#rfc.section.9.6" rel="Chapter" title="9.6 Certificate and password sharing">
+<link href="#rfc.section.9.7" rel="Chapter" title="9.7 Cloud usage">
+<link href="#rfc.section.9.8" rel="Chapter" title="9.8 Side channel attacks">
+<link href="#rfc.section.9.9" rel="Chapter" title="9.9 Document replacement">
+<link href="#rfc.section.10" rel="Chapter" title="10 Language Specific Rules">
+<link href="#rfc.section.10.1" rel="Chapter" title="10.1 Portuguese">
+<link href="#rfc.section.10.1.1" rel="Chapter" title="10.1.1 Unicode Support">
+<link href="#rfc.section.10.1.2" rel="Chapter" title="10.1.2 Standard Translations">
+<link href="#rfc.section.11" rel="Chapter" title="11 Country Specific Rules">
+<link href="#rfc.section.11.1" rel="Chapter" title="11.1 Brazil">
+<link href="#rfc.section.11.2" rel="Chapter" title="11.2 Subject Attributes">
+<link href="#rfc.section.11.2.1" rel="Chapter" title="11.2.1 BR/CPF">
+<link href="#rfc.section.11.2.2" rel="Chapter" title="11.2.2 BR/CNPJ">
+<link href="#rfc.section.11.2.3" rel="Chapter" title="11.2.3 BR/RNE">
+<link href="#rfc.section.11.2.4" rel="Chapter" title="11.2.4 BR/RG">
+<link href="#rfc.section.11.2.5" rel="Chapter" title="11.2.5 BR/T&#237;tulo de Eleitor">
+<link href="#rfc.section.11.2.6" rel="Chapter" title="11.2.6 BR/NIT">
+<link href="#rfc.section.12" rel="Chapter" title="12 JSON Schemas">
+<link href="#rfc.section.12.1" rel="Chapter" title="12.1 Certificate File (.j1c)">
+<link href="#rfc.section.12.2" rel="Chapter" title="12.2 Private Keys File (.j1k)">
+<link href="#rfc.section.12.3" rel="Chapter" title="12.3 Proof of Attribute File (.j1a)">
+<link href="#rfc.section.12.4" rel="Chapter" title="12.4 Detached Digital Signature File (.j1s)">
+<link href="#rfc.section.12.5" rel="Chapter" title="12.5 Encrypted File (.j1e)">
+<link href="#rfc.section.12.6" rel="Chapter" title="12.6 Revocation Information File (.j1r)">
+<link href="#rfc.section.12.7" rel="Chapter" title="12.7 Hash (optionally salted)">
+<link href="#rfc.section.12.8" rel="Chapter" title="12.8 AES-256-CBC">
+<link href="#rfc.section.12.9" rel="Chapter" title="12.9 Argon2">
+<link href="#rfc.section.12.10" rel="Chapter" title="12.10 ECDSA">
+<link href="#rfc.section.12.11" rel="Chapter" title="12.11 Encrypted Object">
+<link href="#rfc.section.12.12" rel="Chapter" title="12.12 Signed Object">
+<link href="#rfc.section.12.13" rel="Chapter" title="12.13 Key">
+<link href="#rfc.section.12.13.1" rel="Chapter" title="12.13.1 RSA">
+<link href="#rfc.section.12.13.2" rel="Chapter" title="12.13.2 ECDSA Public Key">
+<link href="#rfc.section.12.14" rel="Chapter" title="12.14 Entity (subject of issuer)">
+<link href="#rfc.section.12.15" rel="Chapter" title="12.15 Certificate">
+<link href="#rfc.section.12.16" rel="Chapter" title="12.16 Address">
+<link href="#rfc.section.12.17" rel="Chapter" title="12.17 Passport">
+<link href="#rfc.references" rel="Chapter" title="13 References">
+<link href="#rfc.references.1" rel="Chapter" title="13.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="13.2 Informative References">
 <link href="#rfc.authors" rel="Chapter">
 
 
@@ -483,7 +534,9 @@
 
   	<li>1.   <a href="#rfc.section.1">Introduction</a>
 </li>
-<ul><li>1.1.   <a href="#rfc.section.1.1">Terminology</a>
+<ul><li>1.1.   <a href="#rfc.section.1.1">Right of Implementation</a>
+</li>
+<li>1.2.   <a href="#rfc.section.1.2">Terminology</a>
 </li>
 </ul><li>2.   <a href="#rfc.section.2">Encoding</a>
 </li>
@@ -505,61 +558,157 @@
 </li>
 <li>3.2.   <a href="#rfc.section.3.2">Subject Attributes</a>
 </li>
-<ul><li>3.2.1.   <a href="#rfc.section.3.2.1">INT/name</a>
+<ul><li>3.2.1.   <a href="#rfc.section.3.2.1">INT/type</a>
 </li>
-<li>3.2.2.   <a href="#rfc.section.3.2.2">INT/parents</a>
+<li>3.2.2.   <a href="#rfc.section.3.2.2">INT/name</a>
 </li>
-<li>3.2.3.   <a href="#rfc.section.3.2.3">INT/emails</a>
+<li>3.2.3.   <a href="#rfc.section.3.2.3">INT/parents</a>
 </li>
-<li>3.2.4.   <a href="#rfc.section.3.2.4">INT/phones</a>
+<li>3.2.4.   <a href="#rfc.section.3.2.4">INT/emails</a>
 </li>
-<li>3.2.5.   <a href="#rfc.section.3.2.5">INT/addresses</a>
+<li>3.2.5.   <a href="#rfc.section.3.2.5">INT/phones</a>
 </li>
-<li>3.2.6.   <a href="#rfc.section.3.2.6">INT/pictures</a>
+<li>3.2.6.   <a href="#rfc.section.3.2.6">INT/addresses</a>
 </li>
-<li>3.2.7.   <a href="#rfc.section.3.2.7">INT/passports</a>
+<li>3.2.7.   <a href="#rfc.section.3.2.7">INT/pictures</a>
 </li>
-</ul><li>3.3.   <a href="#rfc.section.3.3">Certification Chain</a>
+<li>3.2.8.   <a href="#rfc.section.3.2.8">INT/passports</a>
 </li>
-<ul><li>3.3.1.   <a href="#rfc.section.3.3.1">Self-signed User Certificates</a>
+</ul></ul><li>4.   <a href="#rfc.section.4">Certification Chain</a>
 </li>
-<li>3.3.2.   <a href="#rfc.section.3.3.2">Revocation</a>
+<ul><li>4.1.   <a href="#rfc.section.4.1">Public Key Infrastructure</a>
 </li>
-</ul></ul><li>4.   <a href="#rfc.section.4">Proof of attrbiute</a>
+<li>4.2.   <a href="#rfc.section.4.2">Nameless Certificates</a>
 </li>
-<ul><li>4.1.   <a href="#rfc.section.4.1">Standard attributes</a>
+<li>4.3.   <a href="#rfc.section.4.3">Revocation</a>
 </li>
-<ul><li>4.1.1.   <a href="#rfc.section.4.1.1">INT/job</a>
-</li>
-</ul></ul><li>5.   <a href="#rfc.section.5">Signatures</a>
+</ul><li>5.   <a href="#rfc.section.5">Proof of attribute</a>
 </li>
 <ul><li>5.1.   <a href="#rfc.section.5.1">Standard attributes</a>
 </li>
-<ul><li>5.1.1.   <a href="#rfc.section.5.1.1">INT/reason</a>
+<ul><li>5.1.1.   <a href="#rfc.section.5.1.1">INT/job</a>
 </li>
-<li>5.1.2.   <a href="#rfc.section.5.1.2">INT/location</a>
+</ul></ul><li>6.   <a href="#rfc.section.6">Signatures</a>
 </li>
-<li>5.1.3.   <a href="#rfc.section.5.1.3">INT/date</a>
+<ul><li>6.1.   <a href="#rfc.section.6.1">Standard attributes</a>
 </li>
-<li>5.1.4.   <a href="#rfc.section.5.1.4">INT/file</a>
+<ul><li>6.1.1.   <a href="#rfc.section.6.1.1">INT/reason</a>
 </li>
-<li>5.1.5.   <a href="#rfc.section.5.1.5">INT/counter</a>
+<li>6.1.2.   <a href="#rfc.section.6.1.2">INT/location</a>
 </li>
-</ul><li>5.2.   <a href="#rfc.section.5.2">Signature Resquest</a>
+<li>6.1.3.   <a href="#rfc.section.6.1.3">INT/date</a>
 </li>
-</ul><li>6.   <a href="#rfc.section.6">Security and Usability Considerations</a>
+<li>6.1.4.   <a href="#rfc.section.6.1.4">INT/file</a>
 </li>
-<ul><li>6.1.   <a href="#rfc.section.6.1">Dynamic Content</a>
+<li>6.1.5.   <a href="#rfc.section.6.1.5">INT/counter</a>
 </li>
-<li>6.2.   <a href="#rfc.section.6.2">Accidental changes</a>
+</ul><li>6.2.   <a href="#rfc.section.6.2">Signature Request</a>
 </li>
-<li>6.3.   <a href="#rfc.section.6.3">Archive files</a>
+</ul><li>7.   <a href="#rfc.section.7">Internet APIs</a>
 </li>
-</ul><li>7.   <a href="#rfc.references">References</a>
+<ul><li>7.1.   <a href="#rfc.section.7.1">Online RESTful</a>
 </li>
-<ul><li>7.1.   <a href="#rfc.references.1">Normative References</a>
+<ul><li>7.1.1.   <a href="#rfc.section.7.1.1">Sign certificate</a>
 </li>
-<li>7.2.   <a href="#rfc.references.2">Informative References</a>
+<li>7.1.2.   <a href="#rfc.section.7.1.2">Certificate revocation status</a>
+</li>
+<li>7.1.3.   <a href="#rfc.section.7.1.3">Timestamp servers</a>
+</li>
+</ul><li>7.2.   <a href="#rfc.section.7.2">Browser interaction</a>
+</li>
+</ul><li>8.   <a href="#rfc.section.8">Smartcards</a>
+</li>
+<li>9.   <a href="#rfc.section.9">Security and Usability Considerations</a>
+</li>
+<ul><li>9.1.   <a href="#rfc.section.9.1">Mixing digital and paper signatures</a>
+</li>
+<li>9.2.   <a href="#rfc.section.9.2">Dynamic Content</a>
+</li>
+<li>9.3.   <a href="#rfc.section.9.3">Accidental changes</a>
+</li>
+<li>9.4.   <a href="#rfc.section.9.4">Archive files</a>
+</li>
+<li>9.5.   <a href="#rfc.section.9.5">User misinterpretation and excessive trust on the machine</a>
+</li>
+<li>9.6.   <a href="#rfc.section.9.6">Certificate and password sharing</a>
+</li>
+<li>9.7.   <a href="#rfc.section.9.7">Cloud usage</a>
+</li>
+<li>9.8.   <a href="#rfc.section.9.8">Side channel attacks</a>
+</li>
+<li>9.9.   <a href="#rfc.section.9.9">Document replacement</a>
+</li>
+</ul><li>10.   <a href="#rfc.section.10">Language Specific Rules</a>
+</li>
+<ul><li>10.1.   <a href="#rfc.section.10.1">Portuguese</a>
+</li>
+<ul><li>10.1.1.   <a href="#rfc.section.10.1.1">Unicode Support</a>
+</li>
+<li>10.1.2.   <a href="#rfc.section.10.1.2">Standard Translations</a>
+</li>
+</ul></ul><li>11.   <a href="#rfc.section.11">Country Specific Rules</a>
+</li>
+<ul><li>11.1.   <a href="#rfc.section.11.1">Brazil</a>
+</li>
+<li>11.2.   <a href="#rfc.section.11.2">Subject Attributes</a>
+</li>
+<ul><li>11.2.1.   <a href="#rfc.section.11.2.1">BR/CPF</a>
+</li>
+<li>11.2.2.   <a href="#rfc.section.11.2.2">BR/CNPJ</a>
+</li>
+<li>11.2.3.   <a href="#rfc.section.11.2.3">BR/RNE</a>
+</li>
+<li>11.2.4.   <a href="#rfc.section.11.2.4">BR/RG</a>
+</li>
+<li>11.2.5.   <a href="#rfc.section.11.2.5">BR/T&#237;tulo de Eleitor</a>
+</li>
+<li>11.2.6.   <a href="#rfc.section.11.2.6">BR/NIT</a>
+</li>
+</ul></ul><li>12.   <a href="#rfc.section.12">JSON Schemas</a>
+</li>
+<ul><li>12.1.   <a href="#rfc.section.12.1">Certificate File (.j1c)</a>
+</li>
+<li>12.2.   <a href="#rfc.section.12.2">Private Keys File (.j1k)</a>
+</li>
+<li>12.3.   <a href="#rfc.section.12.3">Proof of Attribute File (.j1a)</a>
+</li>
+<li>12.4.   <a href="#rfc.section.12.4">Detached Digital Signature File (.j1s)</a>
+</li>
+<li>12.5.   <a href="#rfc.section.12.5">Encrypted File (.j1e)</a>
+</li>
+<li>12.6.   <a href="#rfc.section.12.6">Revocation Information File (.j1r)</a>
+</li>
+<li>12.7.   <a href="#rfc.section.12.7">Hash (optionally salted)</a>
+</li>
+<li>12.8.   <a href="#rfc.section.12.8">AES-256-CBC</a>
+</li>
+<li>12.9.   <a href="#rfc.section.12.9">Argon2</a>
+</li>
+<li>12.10.   <a href="#rfc.section.12.10">ECDSA</a>
+</li>
+<li>12.11.   <a href="#rfc.section.12.11">Encrypted Object</a>
+</li>
+<li>12.12.   <a href="#rfc.section.12.12">Signed Object</a>
+</li>
+<li>12.13.   <a href="#rfc.section.12.13">Key</a>
+</li>
+<ul><li>12.13.1.   <a href="#rfc.section.12.13.1">RSA</a>
+</li>
+<li>12.13.2.   <a href="#rfc.section.12.13.2">ECDSA Public Key</a>
+</li>
+</ul><li>12.14.   <a href="#rfc.section.12.14">Entity (subject of issuer)</a>
+</li>
+<li>12.15.   <a href="#rfc.section.12.15">Certificate</a>
+</li>
+<li>12.16.   <a href="#rfc.section.12.16">Address</a>
+</li>
+<li>12.17.   <a href="#rfc.section.12.17">Passport</a>
+</li>
+</ul><li>13.   <a href="#rfc.references">References</a>
+</li>
+<ul><li>13.1.   <a href="#rfc.references.1">Normative References</a>
+</li>
+<li>13.2.   <a href="#rfc.references.2">Informative References</a>
 </li>
 </ul><li><a href="#rfc.authors">Author's Address</a>
 </li>
@@ -597,25 +746,29 @@
 <p> </p>
 <p id="rfc.section.1.p.11">This document aims to provide a digital signature standard that address points one through three. Hopefully, this standard may fulfil the fourth point in the near future.</p>
 <h1 id="rfc.section.1.1">
-<a href="#rfc.section.1.1">1.1.</a> <a href="#terminology" id="terminology">Terminology</a>
+<a href="#rfc.section.1.1">1.1.</a> <a href="#right-of-implementation" id="right-of-implementation">Right of Implementation</a>
 </h1>
-<p id="rfc.section.1.1.p.1">The keywords MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, MAY, and OPTIONAL, when they appear in this document, are to be interpreted as described in <a href="#RFC2119" class="xref">[RFC2119]</a>.</p>
-<p id="rfc.section.1.1.p.2">All apps MUST use the standard translations present in this document when they present in the Language specific rules section.</p>
+<p id="rfc.section.1.1.p.1">Any person, group or organization can freely implement this standard so long as the implementation is complete.</p>
+<h1 id="rfc.section.1.2">
+<a href="#rfc.section.1.2">1.2.</a> <a href="#terminology" id="terminology">Terminology</a>
+</h1>
+<p id="rfc.section.1.2.p.1">The keywords MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, MAY, and OPTIONAL, when they appear in this document, are to be interpreted as described in <a href="#RFC2119" class="xref">[RFC2119]</a>.</p>
+<p id="rfc.section.1.2.p.2">All apps MUST use the standard translations present in this document when they present in the Language specific rules section.</p>
 <p><strong>User</strong>: A human being using a JUDSYS app. Unless otherwise specified, users MUST ALWAYS be considered as non-tech-savvy people.</p>
 <p><strong>Signing app</strong>: A computer program that digitally signs documents according to this standard.</p>
 <p><strong>Verifier app</strong>: A computer program that verifies a digital signature according to this standard.</p>
-<p id="rfc.section.1.1.p.6">(<strong>App</strong>) <strong>JUDSYS app</strong>: A computer program that is either a singing app or a verifier app or both.</p>
+<p id="rfc.section.1.2.p.6">(<strong>App</strong>) <strong>JUDSYS app</strong>: A computer program that is either a singing app or a verifier app or both.</p>
 <p><strong>Subject qualifiers</strong>: Certain values that qualify the subject. Ex: email, full name, government issued identification numbers, et cetera.</p>
 <p><strong>Natrual person</strong>: A human beign.</p>
 <p><strong>Legal person</strong>: A group of people who the Law considers to be its own person.</p>
 <p><strong>Digital signature</strong>:</p>
-<p id="rfc.section.1.1.p.11">(<strong>PKI</strong>) <strong>Public Key Infrastructure</strong>:</p>
-<p id="rfc.section.1.1.p.12">(<strong>KP</strong>) <strong>Key Pair</strong>:</p>
+<p id="rfc.section.1.2.p.11">(<strong>PKI</strong>) <strong>Public Key Infrastructure</strong>:</p>
+<p id="rfc.section.1.2.p.12">(<strong>KP</strong>) <strong>Key Pair</strong>:</p>
 <p><strong>Certificate</strong>: A short signed message that states a key pair is in the control of a specific subject.</p>
-<p id="rfc.section.1.1.p.14">(<strong>CA</strong>) <strong>Certificate Authority</strong>: A certificate that is allowed to sign other certificates. This is, a CA is an entity (usually a company or government body) that ensures that the subject on a certificate is really the person it names.</p>
-<p id="rfc.section.1.1.p.15">(<strong>PA</strong>) <strong>Proof of attribute</strong>: A short signed message in which the issuer certifies that a certain attribute is true. Examples: job titles and permissions delegated by the issuer to the subject.</p>
-<p id="rfc.section.1.1.p.16">(<strong>TA</strong>) <strong>Timestamping Authority</strong></p>
-<p id="rfc.section.1.1.p.17">This is very similar to the concept of attribute certificates. The names was changed to avoid using the "certificate" in two different contexts that may confuse users.</p>
+<p id="rfc.section.1.2.p.14">(<strong>CA</strong>) <strong>Certificate Authority</strong>: A certificate that is allowed to sign other certificates. This is, a CA is an entity (usually a company or government body) that ensures that the subject on a certificate is really the person it names.</p>
+<p id="rfc.section.1.2.p.15">(<strong>PA</strong>) <strong>Proof of attribute</strong>: A short signed message in which the issuer certifies that a certain attribute is true. Examples: job titles and permissions delegated by the issuer to the subject.</p>
+<p id="rfc.section.1.2.p.16">(<strong>TA</strong>) <strong>Timestamping Authority</strong></p>
+<p id="rfc.section.1.2.p.17">This is very similar to the concept of attribute certificates. The names was changed to avoid using the "certificate" in two different contexts that may confuse users.</p>
 <p><strong>ICAO</strong>: International Civil Aviation Organization.</p>
 <p><strong>JSON</strong>: Javascript Object Notation.</p>
 <h1 id="rfc.section.2">
@@ -675,7 +828,7 @@
 <h1 id="rfc.section.2.2">
 <a href="#rfc.section.2.2">2.2.</a> <a href="#strings" id="strings">Strings</a>
 </h1>
-<p id="rfc.section.2.2.p.1">All apps MUST have proper Unicode support and fonts to display any characters that may be necessary for the country of intended use. This is, an app for France MUST have fonts with accented characters, but MAY NOT have any CJK nor Cyrillic support. An app for Russia MUST have Cyrillic and Latin support, but MAY NOT have CJK or Mongolian support.</p>
+<p id="rfc.section.2.2.p.1">All apps MUST have proper Unicode support and fonts to display any characters that may be necessary for the country of intended use. This is, an app for France MUST have fonts with accented characters, but SHOULD NOT have any CJK nor Cyrillic support. An app for Russia MUST have Cyrillic and Latin support, but SHOULD NOT have CJK or Mongolian support.</p>
 <p id="rfc.section.2.2.p.2">It is RECOMMENDED to store string in NFC (Normal Form Composition).</p>
 <p id="rfc.section.2.2.p.3">It is RECOMMENDED that all apps support as much Unicode characters and scripts as possible. It is also RECOMMENDED that all apps include the necessary fonts.</p>
 <p id="rfc.section.2.2.p.4">Emoji usage is discouraged.</p>
@@ -757,21 +910,25 @@
 
 <ol>
 <li>If the CA fails to verify that a phone number really belongs to the subject, it MUST never be included.</li>
-<li>If the subject of the certificate to be issued forgets to bring their US/SSN, this attribute <strong>MUST not</strong> be included in the certificate.</li>
+<li>If the subject of the certificate to be issued forgets to bring their US/SSN, this attribute MUST NOT be included in the certificate.</li>
 </ol>
 
 <p> </p>
 <p id="rfc.section.3.2.p.4">If a CA MAY refuse to issue a certificate if essential properties could not verified. Examples: INT/name, US/SSN, BR/RG, BR/CPF.</p>
 <h1 id="rfc.section.3.2.1">
-<a href="#rfc.section.3.2.1">3.2.1.</a> <a href="#int-name" id="int-name">INT/name</a>
+<a href="#rfc.section.3.2.1">3.2.1.</a> <a href="#int-type" id="int-type">INT/type</a>
 </h1>
-<p id="rfc.section.3.2.1.p.1">Each name is a one line Unicode string.</p>
-<p id="rfc.section.3.2.1.p.2">All name entries each MUST be at most 5 KiB long.</p>
-<p id="rfc.section.3.2.1.p.3">All apps MUST support such long names. They MAY, however, show only the beginning of the name by default and have a simple way to show the full name. Example: a tooltip or a button close to the name.</p>
-<p id="rfc.section.3.2.1.p.4">There MUST be at least one name in the <samp>INT/name</samp> attribute.</p>
-<p id="rfc.section.3.2.1.p.5">Any prefixes, suffixes, infixes, honorifics and similar things attached to the name MUST be verified. Example: a person may never use the prefix "Dr." if they have no valid doctorates degree.</p>
-<p id="rfc.section.3.2.1.p.6">Generic prefixes like "Mr." or "Ms." and job titles MUST NOT be included in any of the names.</p>
-<p id="rfc.section.3.2.1.p.7">For legal persons, it is recommended to follow the convention: <samp>(&lt;Acronym&gt;) &lt;Full Legal Name&gt; &lt;Any special endings&gt;</samp> Examples:</p>
+<p id="rfc.section.3.2.1.p.1">An enum describing the type of the subject. Possible values are: <samp>natural person</samp>, <samp>legal person</samp>, <samp>authority</samp> (certificate authority and time-stamping authorities) and <samp>other</samp> (ex: software).</p>
+<h1 id="rfc.section.3.2.2">
+<a href="#rfc.section.3.2.2">3.2.2.</a> <a href="#int-name" id="int-name">INT/name</a>
+</h1>
+<p id="rfc.section.3.2.2.p.1">Each name is a one line Unicode string.</p>
+<p id="rfc.section.3.2.2.p.2">All name entries each MUST be at most 5 KiB long.</p>
+<p id="rfc.section.3.2.2.p.3">All apps MUST support such long names. They MAY, however, show only the beginning of the name by default and have a simple way to show the full name. Example: a tooltip or a button close to the name.</p>
+<p id="rfc.section.3.2.2.p.4">There MUST be at least one name in the <samp>INT/name</samp> attribute.</p>
+<p id="rfc.section.3.2.2.p.5">Any prefixes, suffixes, infixes, honorifics and similar things attached to the name MUST be verified. Example: a person may never use the prefix "Dr." if they have no valid doctorates degree.</p>
+<p id="rfc.section.3.2.2.p.6">Generic prefixes like "Mr." or "Ms." and job titles MUST NOT be included in any of the names.</p>
+<p id="rfc.section.3.2.2.p.7">For legal persons, it is recommended to follow the convention: <samp>(&lt;Acronym&gt;) &lt;Full Legal Name&gt; &lt;Any special endings&gt;</samp> Examples:</p>
 <p></p>
 
 <ol>
@@ -781,7 +938,7 @@
 </ol>
 
 <p> </p>
-<p id="rfc.section.3.2.1.p.9">For natural persons, it is recommended to follow the convention: <samp>(&lt;Nick Name&gt;) &lt;First Name&gt; &lt;Full Middle Name&gt; &lt;Last Name&gt;</samp> Examples:</p>
+<p id="rfc.section.3.2.2.p.9">For natural persons, it is recommended to follow the convention: <samp>(&lt;Nick Name&gt;) &lt;First Name&gt; &lt;Full Middle Name&gt; &lt;Last Name&gt;</samp> Examples:</p>
 <p></p>
 
 <ol>
@@ -791,17 +948,17 @@
 </ol>
 
 <p> </p>
-<h1 id="rfc.section.3.2.2">
-<a href="#rfc.section.3.2.2">3.2.2.</a> <a href="#int-parents" id="int-parents">INT/parents</a>
-</h1>
 <h1 id="rfc.section.3.2.3">
-<a href="#rfc.section.3.2.3">3.2.3.</a> <a href="#int-emails" id="int-emails">INT/emails</a>
+<a href="#rfc.section.3.2.3">3.2.3.</a> <a href="#int-parents" id="int-parents">INT/parents</a>
 </h1>
-<p id="rfc.section.3.2.3.p.1">An array of the subject's email addresses.</p>
-<p id="rfc.section.3.2.3.p.2">The fist entry is considered the main one.</p>
-<p id="rfc.section.3.2.3.p.3">The subject MAY have no email address.</p>
-<p id="rfc.section.3.2.3.p.4">It is RECOMENDED to have at least one ASCII email address.</p>
-<p id="rfc.section.3.2.3.p.5">Examples:</p>
+<h1 id="rfc.section.3.2.4">
+<a href="#rfc.section.3.2.4">3.2.4.</a> <a href="#int-emails" id="int-emails">INT/emails</a>
+</h1>
+<p id="rfc.section.3.2.4.p.1">An array of the subject's email addresses.</p>
+<p id="rfc.section.3.2.4.p.2">The fist entry is considered the main one.</p>
+<p id="rfc.section.3.2.4.p.3">The subject MAY have no email address.</p>
+<p id="rfc.section.3.2.4.p.4">It is RECOMENDED to have at least one ASCII email address.</p>
+<p id="rfc.section.3.2.4.p.5">Examples:</p>
 <pre>// Okay:
 []
 ["someone@example.com"]
@@ -812,98 +969,81 @@
 ["jos&#233;@constru&#231;&#245;es-ltda.br"]
 ["jose@construcoes-ltda.br", "jos&#233;@constru&#231;&#245;es-ltda.br"]
 </pre>
-<h1 id="rfc.section.3.2.4">
-<a href="#rfc.section.3.2.4">3.2.4.</a> <a href="#int-phones" id="int-phones">INT/phones</a>
+<h1 id="rfc.section.3.2.5">
+<a href="#rfc.section.3.2.5">3.2.5.</a> <a href="#int-phones" id="int-phones">INT/phones</a>
 </h1>
-<p id="rfc.section.3.2.4.p.1">For SPAM/robo-calling prevention the subject MUST have the right to refuse the inclusion of the <samp>INT/phone</samp> attribute.</p>
-<p id="rfc.section.3.2.4.p.2">The phone numbers MUST be encoded as a string array. Each element of that array represents one phone number and MUST include the country and area codes.</p>
-<p id="rfc.section.3.2.4.p.3">The country code part MUST begin with a <samp>+</samp> (plus sign) and have a space to separate it from the rest of the number. This is mainly to aid humans, by separating the international part from the local one.</p>
-<p id="rfc.section.3.2.4.p.4">The rest of the number SHOULD follow the traditions and conventions of the country in question and MAY include punctuation.</p>
-<p id="rfc.section.3.2.4.p.5">Examples:</p>
+<p id="rfc.section.3.2.5.p.1">For SPAM/robo-calling prevention the subject MUST have the right to refuse the inclusion of the <samp>INT/phone</samp> attribute.</p>
+<p id="rfc.section.3.2.5.p.2">The phone numbers MUST be encoded as a string array. Each element of that array represents one phone number and MUST include the country and area codes.</p>
+<p id="rfc.section.3.2.5.p.3">The country code part MUST begin with a <samp>+</samp> (plus sign) and have a space to separate it from the rest of the number. This is mainly to aid humans, by separating the international part from the local one.</p>
+<p id="rfc.section.3.2.5.p.4">The rest of the number SHOULD follow the traditions and conventions of the country in question and MAY include punctuation.</p>
+<p id="rfc.section.3.2.5.p.5">Examples:</p>
 <pre>// Okay:
 []
 ["+55 (11) 0 0000-0000", "+55 0800 000"]
 // Wrong:
 ["+55(11) 0 0000-0000", "+550800000", "55 0800 000"]
 </pre>
-<p id="rfc.section.3.2.4.p.6">Note: This attribute is intended to be used by some legal persons and by pretty much no natural persons.</p>
-<h1 id="rfc.section.3.2.5">
-<a href="#rfc.section.3.2.5">3.2.5.</a> <a href="#int-addresses" id="int-addresses">INT/addresses</a>
-</h1>
-<p id="rfc.section.3.2.5.p.1">For security reasons the subject MUST have the right to refuse the inclusion of <samp>INT/address</samp> attribute.</p>
+<p id="rfc.section.3.2.5.p.6">Note: This attribute is intended to be used by some legal persons and by pretty much no natural persons.</p>
 <h1 id="rfc.section.3.2.6">
-<a href="#rfc.section.3.2.6">3.2.6.</a> <a href="#int-pictures" id="int-pictures">INT/pictures</a>
+<a href="#rfc.section.3.2.6">3.2.6.</a> <a href="#int-addresses" id="int-addresses">INT/addresses</a>
 </h1>
-<p id="rfc.section.3.2.6.p.1">For privacy reasons the subject SHOULD have the right to refuse the inclusion of <samp>INT/picture</samp> attribute. The CA, however, CAN require this attribute but its is encouraged not to require it.</p>
-<p id="rfc.section.3.2.6.p.2">The picture MUST always be static: no animated GIFs or similar.</p>
-<p id="rfc.section.3.2.6.p.3">For natural persons the image MUST be picture of the subject. The specific are left to the CA, but it SHOULD follow the traditions and conventions of the CA's country.</p>
-<p id="rfc.section.3.2.6.p.4">One suggestion for CAs is to follow the ICAO guidlines on photos for passports.</p>
-<p id="rfc.section.3.2.6.p.5">For legal persons the image MUST be a logo or other symbol that represents the subject. It MUST NOT be a picture of the owners or of the place where the subject is. Again, specific are left to the CA.</p>
-<p id="rfc.section.3.2.6.p.6">Support for this property in apps is OPTIONAL but RECOMENDED to those that have a GUI.</p>
-<p id="rfc.section.3.2.6.p.7">Those that decide to implement this property MUST be able do decode JPEG and PNG.</p>
-<p id="rfc.section.3.2.6.p.8">The picture MUST be data URL encoded using base64 and MUST NOT exceed 1 MiB. The size restriction applies to the image itself, not to the string that encodes it.</p>
-<p id="rfc.section.3.2.6.p.9">Example: (Tux, the Linux mascot)</p>
-<pre>["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gAiUmVzaXplZCB3aXRoIGV6Z2lm
- LmNvbSBHSUYgbWFrZXL/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQa
- FRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4e
- Hh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAmACADASIAAhEBAxEB/8QAGQAAAwEB
- AQAAAAAAAAAAAAAABgcIAAUE/8QALRAAAQMDAgQFAwUAAAAAAAAAAQIDBAUGEQAHEiExQQgTFCJxFVGB
- MlJhcrH/xAAXAQEBAQEAAAAAAAAAAAAAAAADAgQF/8QAJhEAAgICAQMCBwAAAAAAAAAAAQIDBAARMQUh
- QRNxEhQigaHR8P/aAAwDAQACEQMRAD8AsvUleN/cDcWk1yNb1lyajTqbGhtyajLhZStS3XFIbQVjmB7e
- g6lXPtqtdIDcOnRbm3bqkyNR/rkWkw40GTggoRJKnFlscsFQSWyRk4ynvrNbnavC0ioXI8Dk4kSB3Ck6
- 98C/CbuduEncRG2u4Sp77kmnqlRXZ6wt9C0ZJHEOZSUhXI5IKfkarPUYXbHVs34gLGvKsQU06hSWnI3C
- 0StDJdW55xUScgguhZ65GemNWWy4260h1paVtrSFJUk5CgehB+2kgkMsauVKk+DyPfWS6/CxG94Gb4Xi
- 1Ym19auFTwbktx1NQh3XJWOFsAdzxHPwDrw7AWc7ZO2NLpk6U/JqcsmdUHXFlSlyHfevJ6nGQM98Z0P7
- xRYF8Nrt2tQEKhwZfmtKS4oLDqUlKVgggAjiJAORrsbN3nWLglVS3bho70eo0QoHr22iIs5pYPAtB6JX
- ge5HY9P45dPrtO7akqxH6k58cHR17HnNM1KWGNZGHY5w/F5Y0C7dnKxMkrd9RRmVVGN7iQC2CVDGeWUc
- Q+caFvANe0y4ttqhbdRkuSXrfkpbjuOElXpnEkoSf6lKwPsMDtpj7+TfUWbLtGLLYaqFdhyGG0KUCrgK
- CFK4evCOIZP40u/B9ZI22g1KJWJTDlSqzjZU42CEAI4glHPv7lHOBn8aSbrVOCyKsr6c60D53v8AWSlS
- V4/VUbGNavWIuXKel02ruR3nlqcLb7QdQVHmeYwQPydB7G1941SpuTX7/n2021llLVCXzewf1OFxOOXY
- BJIz11tbRJ0ajBdWzHGA533G/P4xDbmeEozbHbOKrYOZQLoXetPvWq1+rqbLL/157jy2f2rQnII5YGMd
- emmzaFqtU2O1KqCm5dQ5KKwD5bZ+yAf9PP41tbSN02rLe+ZdAXAGif7X35yRYlWD0w2hvP/Z"]
-</pre>
+<p id="rfc.section.3.2.6.p.1">For security reasons the subject MUST have the right to refuse the inclusion of <samp>INT/address</samp> attribute.</p>
 <h1 id="rfc.section.3.2.7">
-<a href="#rfc.section.3.2.7">3.2.7.</a> <a href="#int-passports" id="int-passports">INT/passports</a>
+<a href="#rfc.section.3.2.7">3.2.7.</a> <a href="#int-pictures" id="int-pictures">INT/pictures</a>
 </h1>
-<p id="rfc.section.3.2.7.p.1">Each passport (see <a href="#ICAO-9303" class="xref">[ICAO-9303]</a>) is encoded as a dictionary with the following keys:</p>
+<p id="rfc.section.3.2.7.p.1">For privacy reasons the subject SHOULD have the right to refuse the inclusion of <samp>INT/picture</samp> attribute. The CA, however, CAN require this attribute but its is encouraged not to require it.</p>
+<p id="rfc.section.3.2.7.p.2">The picture MUST always be static: no animated GIFs or similar.</p>
+<p id="rfc.section.3.2.7.p.3">For natural persons the image MUST be picture of the subject. The specific are left to the CA, but it SHOULD follow the traditions and conventions of the CA's country.</p>
+<p id="rfc.section.3.2.7.p.4">One suggestion for CAs is to follow the ICAO guidlines on photos for passports.</p>
+<p id="rfc.section.3.2.7.p.5">For legal persons the image MUST be a logo or other symbol that represents the subject. It MUST NOT be a picture of the owners or of the place where the subject is. Again, specific are left to the CA.</p>
+<p id="rfc.section.3.2.7.p.6">Support for this property in apps is OPTIONAL but RECOMENDED to those that have a GUI.</p>
+<p id="rfc.section.3.2.7.p.7">Those that decide to implement this property MUST be able do decode JPEG and PNG.</p>
+<p id="rfc.section.3.2.7.p.8">The picture MUST be data URL encoded using base64 and MUST NOT exceed 1 MiB. The size restriction applies to the image itself, not to the string that encodes it.</p>
+<p id="rfc.section.3.2.7.p.9">Example: (Tux, the Linux mascot)</p>
+<pre>["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gAiUmVzaXplZCB3aXRoIGV6Z2lmLmNvbSBHSUYgbWFrZXL/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAmACADASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAABgcIAAUE/8QALRAAAQMDAgQFAwUAAAAAAAAAAQIDBAUGEQAHEiExQQgTFCJxFVGBMlJhcrH/xAAXAQEBAQEAAAAAAAAAAAAAAAADAgQF/8QAJhEAAgICAQMCBwAAAAAAAAAAAQIDBAARMQUhQRNxEhQigaHR8P/aAAwDAQACEQMRAD8AsvUleN/cDcWk1yNb1lyajTqbGhtyajLhZStS3XFIbQVjmB7eg6lXPtqtdIDcOnRbm3bqkyNR/rkWkw40GTggoRJKnFlscsFQSWyRk4ynvrNbnavC0ioXI8Dk4kSB3Ck698C/CbuduEncRG2u4Sp77kmnqlRXZ6wt9C0ZJHEOZSUhXI5IKfkarPUYXbHVs34gLGvKsQU06hSWnI3C0StDJdW55xUScgguhZ65GemNWWy4260h1paVtrSFJUk5CgehB+2kgkMsauVKk+DyPfWS6/CxG94Gb4Xi1Ym19auFTwbktx1NQh3XJWOFsAdzxHPwDrw7AWc7ZO2NLpk6U/JqcsmdUHXFlSlyHfevJ6nGQM98Z0P7xRYF8Nrt2tQEKhwZfmtKS4oLDqUlKVgggAjiJAORrsbN3nWLglVS3bho70eo0QoHr22iIs5pYPAtB6JXge5HY9P45dPrtO7akqxH6k58cHR17HnNM1KWGNZGHY5w/F5Y0C7dnKxMkrd9RRmVVGN7iQC2CVDGeWUcQ+caFvANe0y4ttqhbdRkuSXrfkpbjuOElXpnEkoSf6lKwPsMDtpj7+TfUWbLtGLLYaqFdhyGG0KUCrgKCFK4evCOIZP40u/B9ZI22g1KJWJTDlSqzjZU42CEAI4glHPv7lHOBn8aSbrVOCyKsr6c60D53v8AWSlSV4/VUbGNavWIuXKel02ruR3nlqcLb7QdQVHmeYwQPydB7G1941SpuTX7/n2021llLVCXzewf1OFxOOXYBJIz11tbRJ0ajBdWzHGA533G/P4xDbmeEozbHbOKrYOZQLoXetPvWq1+rqbLL/157jy2f2rQnII5YGMdemmzaFqtU2O1KqCm5dQ5KKwD5bZ+yAf9PP41tbSN02rLe+ZdAXAGif7X35yRYlWD0w2hvP/Z"]
+</pre>
+<h1 id="rfc.section.3.2.8">
+<a href="#rfc.section.3.2.8">3.2.8.</a> <a href="#int-passports" id="int-passports">INT/passports</a>
+</h1>
+<p id="rfc.section.3.2.8.p.1">Each passport (see <a href="#ICAO-9303" class="xref">[ICAO-9303]</a>) is encoded as a dictionary with the following keys:</p>
 <p></p>
 
 <ol>
 <li>
-<samp>type</samp> (REQUIRED): Indicates the type of document, for passports this is a <samp>P</samp>.</li>
+<samp>type</samp>: Indicates the type of document, for passports this is a <samp>P</samp>.</li>
 <li>
-<samp>number</samp> (REQUIRED): A string, which MAY contain letters, the identifies this passport.</li>
+<samp>number</samp>: A string, which MAY contain letters, the identifies this passport.</li>
 <li>
-<samp>country</samp> (REQUIRED): The country that issued the passort.</li>
+<samp>country</samp>: The country that issued the passport.</li>
 <li>
-<samp>surname</samp> (OPTIONAL): The subject's last name.</li>
+<samp>surname</samp>: The subject's last name.</li>
 <li>
-<samp>given_name</samp> (OPTIONAL): The subject's first name.</li>
+<samp>given_name</samp>: The subject's first name.</li>
 <li>
-<samp>nationality</samp> (OPTIONAL): The subject's nationality.</li>
+<samp>nationality</samp>: The subject's nationality.</li>
 <li>
-<samp>date_of_birth</samp> (REQUIRED): The subject's date of birth.</li>
+<samp>date_of_birth</samp>: The subject's date of birth.</li>
 <li>
-<samp>place_of_birth</samp> (OPTIONAL): The subject's place of birth.</li>
+<samp>place_of_birth</samp>: The subject's place of birth.</li>
 <li>
-<samp>personal_number</samp> (OPTIONAL): An id number identifying the subject.</li>
+<samp>personal_number</samp>: An id number identifying the subject.</li>
 <li>
-<samp>sex</samp> (OPTIONAL): The sex or gender of the subject. Note that <samp>X</samp> and other characters may be used instead of the traditional <samp>F</samp> and <samp>M</samp>.</li>
+<samp>sex</samp>: The sex or gender of the subject. Note that <samp>X</samp> and other characters may be used instead of the traditional <samp>F</samp> and <samp>M</samp>.</li>
 <li>
-<samp>date_of_issue</samp> (REQUIRED): The date in which the passport was issued.</li>
+<samp>date_of_issue</samp>: The date in which the passport was issued.</li>
 <li>
-<samp>date_of_expiry</samp> (OPTIONAL): The date in which the passport will expire.</li>
+<samp>date_of_expiry</samp>: The date in which the passport will expire.</li>
 <li>
-<samp>MRZ</samp> (OPTIONAL): the contents on the MRZ (machine redable zone).</li>
+<samp>MRZ</samp>: the contents on the MRZ (machine readable zone).</li>
 </ol>
 
 <p> </p>
-<p id="rfc.section.3.2.7.p.3">The <samp>given_name</samp> and <samp>surname</samp> are OPTIONAL beacuse some people may have no first or last name. However, at least one of them MUST be included.</p>
-<p id="rfc.section.3.2.7.p.4">Except of dates, it is RECOMMENDED that all fields match the way they are presented on the VIZ (Visual Inpection Zone), rather than the MRZ.</p>
+<p id="rfc.section.3.2.8.p.3">Only <samp>type</samp>, <samp>country</samp> and <samp>number</samp> <strong>MUST BE</strong> present.</p>
+<p id="rfc.section.3.2.8.p.4">The <samp>given_name</samp> and <samp>surname</samp> are OPTIONAL because some people may have no first or last name. However, at least one of them MUST be included.</p>
+<p id="rfc.section.3.2.8.p.5">Except of dates, it is RECOMMENDED that all fields match the way they are presented on the VIZ (Visual Inspection Zone), rather than the MRZ.</p>
 <pre>{
     "type": "P",
-    "country": "UTO", /* This may not match ISO 3166-1, read ICAO Doc 9303
-                         (pages 22 to 29) for details.*/
+    "country": "UTO", // This **MAY NOT** match ISO 3166-1, read ICAO Doc 9303 (pages 22 to 29) for details.
     "number": "L898902C3",
     "surname": "ERIKSSON",
     "given_name": "ANNA MARIA",
@@ -915,37 +1055,40 @@
                    such as "X" may de used. */
     "date_of_issue": "2007-04-16",
     "date_of_expiry": "2012-04-15",
-    "MRZ": "P&lt;UTOERIKSSON&lt;&lt;ANNA&lt;MARIA&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\nL898902C36UTO7408122F
-    1204159ZE184226B&lt;&lt;&lt;&lt;&lt;10"
+    "MRZ": "P&lt;UTOERIKSSON&lt;&lt;ANNA&lt;MARIA&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;\nL898902C36UTO7408122F1204159ZE184226B&lt;&lt;&lt;&lt;&lt;10"
 }
 </pre>
-<h1 id="rfc.section.3.3">
-<a href="#rfc.section.3.3">3.3.</a> <a href="#certification-chain" id="certification-chain">Certification Chain</a>
-</h1>
-<p id="rfc.section.3.3.p.1">&#128073; Open Question: Should software recieve certificates? Ex: Should a bank have a specific certificate only for its web server that is used not for SSL but for singing that it approved clients requests (loans for instance) and singing bank statements?</p>
-<h1 id="rfc.section.3.3.1">
-<a href="#rfc.section.3.3.1">3.3.1.</a> <a href="#self-signed-user-certificates" id="self-signed-user-certificates">Self-signed User Certificates</a>
-</h1>
-<p id="rfc.section.3.3.1.p.1">&#128073; Open Question: It is feature a good idea?</p>
-<p id="rfc.section.3.3.1.p.2">All self-signed user certificates (SSUC) MUST have, on both <samp>subject</samp> and <samp>issuer</samp>, the <samp>INT/name</samp> attribute with a single element <samp>Self Signed User Certificate</samp>. There MUST NOT be any other names.</p>
-<p id="rfc.section.3.3.1.p.3">The choice to prohibit names is intentional, as it ensures that no app will be able to display an unverified name, thus forcing the user to keep an "address book" to associate each person to their certificate.</p>
-<h1 id="rfc.section.3.3.2">
-<a href="#rfc.section.3.3.2">3.3.2.</a> <a href="#revocation" id="revocation">Revocation</a>
-</h1>
 <h1 id="rfc.section.4">
-<a href="#rfc.section.4">4.</a> <a href="#proof-of-attrbiute" id="proof-of-attrbiute">Proof of attrbiute</a>
+<a href="#rfc.section.4">4.</a> <a href="#certification-chain" id="certification-chain">Certification Chain</a>
 </h1>
+<p id="rfc.section.4.p.1">&#128073; Open Question: Should software receive certificates? Ex: Should a bank have a specific certificate only for its web server that is used not for SSL but for singing that it approved clients requests (loans for instance) and singing bank statements?</p>
 <h1 id="rfc.section.4.1">
-<a href="#rfc.section.4.1">4.1.</a> <a href="#standard-attributes" id="standard-attributes">Standard attributes</a>
+<a href="#rfc.section.4.1">4.1.</a> <a href="#public-key-infrastructure" id="public-key-infrastructure">Public Key Infrastructure</a>
 </h1>
-<h1 id="rfc.section.4.1.1">
-<a href="#rfc.section.4.1.1">4.1.1.</a> <a href="#int-job" id="int-job">INT/job</a>
+<h1 id="rfc.section.4.2">
+<a href="#rfc.section.4.2">4.2.</a> <a href="#nameless-certificates" id="nameless-certificates">Nameless Certificates</a>
 </h1>
-<p id="rfc.section.4.1.1.p.1">This MUST NOT be an array.</p>
-<p id="rfc.section.4.1.1.p.2">A simple trimmed one line string containing the subject's job title.</p>
-<p id="rfc.section.4.1.1.p.3">The job title MUST NOT include the name of the organization.</p>
-<p id="rfc.section.4.1.1.p.4">All apps MUST show the issuer's name and the job title of the attributes certificate together.</p>
-<p id="rfc.section.4.1.1.p.5">Valid examples:</p>
+<p id="rfc.section.4.2.p.1">&#128073; Open Question: It is feature a good idea?</p>
+<p id="rfc.section.4.2.p.2">Nameless certificates are self signed certificates meant for the end user. They are intended to serve as a way for people to start using and testing JUDSYS-1 without the need to pay the CAs.</p>
+<p id="rfc.section.4.2.p.3">All nameless certificates MUST have, on both <samp>subject</samp> and <samp>issuer</samp>, the <samp>INT/name</samp> attribute with a single element <samp>Nameless Certificate</samp>. There MUST NOT be any other names.</p>
+<p id="rfc.section.4.2.p.4">The choice to prohibit names is intentional, as it ensures that no app will be able to display an unverified name, thus forcing the user to keep an "address book" to associate each person to their certificate.</p>
+<h1 id="rfc.section.4.3">
+<a href="#rfc.section.4.3">4.3.</a> <a href="#revocation" id="revocation">Revocation</a>
+</h1>
+<h1 id="rfc.section.5">
+<a href="#rfc.section.5">5.</a> <a href="#proof-of-attribute" id="proof-of-attribute">Proof of attribute</a>
+</h1>
+<h1 id="rfc.section.5.1">
+<a href="#rfc.section.5.1">5.1.</a> <a href="#standard-attributes" id="standard-attributes">Standard attributes</a>
+</h1>
+<h1 id="rfc.section.5.1.1">
+<a href="#rfc.section.5.1.1">5.1.1.</a> <a href="#int-job" id="int-job">INT/job</a>
+</h1>
+<p id="rfc.section.5.1.1.p.1">This MUST NOT be an array.</p>
+<p id="rfc.section.5.1.1.p.2">A simple trimmed one line string containing the subject's job title.</p>
+<p id="rfc.section.5.1.1.p.3">The job title MUST NOT include the name of the organization.</p>
+<p id="rfc.section.5.1.1.p.4">All apps MUST show the issuer's name and the job title of the attributes certificate together.</p>
+<p id="rfc.section.5.1.1.p.5">Valid examples:</p>
 <p></p>
 
 <ol>
@@ -961,7 +1104,7 @@
 </ol>
 
 <p> </p>
-<p id="rfc.section.4.1.1.p.7">Wrong examples (organization MUST NOT be in the job title):</p>
+<p id="rfc.section.5.1.1.p.7">Wrong examples (organization MUST NOT be in the job title):</p>
 <p></p>
 
 <ol>
@@ -973,18 +1116,18 @@
 </ol>
 
 <p> </p>
-<h1 id="rfc.section.5">
-<a href="#rfc.section.5">5.</a> <a href="#signatures" id="signatures">Signatures</a>
+<h1 id="rfc.section.6">
+<a href="#rfc.section.6">6.</a> <a href="#signatures" id="signatures">Signatures</a>
 </h1>
-<h1 id="rfc.section.5.1">
-<a href="#rfc.section.5.1">5.1.</a> <a href="#standard-attributes-1" id="standard-attributes-1">Standard attributes</a>
+<h1 id="rfc.section.6.1">
+<a href="#rfc.section.6.1">6.1.</a> <a href="#standard-attributes-1" id="standard-attributes-1">Standard attributes</a>
 </h1>
-<p id="rfc.section.5.1.p.1">All signature attributes MUST NOT be arrays.</p>
-<p id="rfc.section.5.1.p.2">The <samp>INT/date</samp> and <samp>INT/reason</samp> attributes are MANDATORY. All others are OPTIONAL, but each country MAY require certain attributes.</p>
-<h1 id="rfc.section.5.1.1">
-<a href="#rfc.section.5.1.1">5.1.1.</a> <a href="#int-reason" id="int-reason">INT/reason</a>
+<p id="rfc.section.6.1.p.1">All signature attributes MUST NOT be arrays.</p>
+<p id="rfc.section.6.1.p.2">The <samp>INT/date</samp> and <samp>INT/reason</samp> attributes are MANDATORY. All others are OPTIONAL, but each country MAY require certain attributes.</p>
+<h1 id="rfc.section.6.1.1">
+<a href="#rfc.section.6.1.1">6.1.1.</a> <a href="#int-reason" id="int-reason">INT/reason</a>
 </h1>
-<p id="rfc.section.5.1.1.p.1">A dictionary that indicates why the signer is signing this document. Possible keys:</p>
+<p id="rfc.section.6.1.1.p.1">A dictionary that indicates why the signer is signing this document. Possible keys:</p>
 <p></p>
 
 <ol>
@@ -1009,16 +1152,16 @@
 </ol>
 
 <p> </p>
-<p id="rfc.section.5.1.1.p.3">All undefined values MUST be interpreted as false.</p>
-<p id="rfc.section.5.1.1.p.4">Apps MUST NOT add their own keys.</p>
-<p id="rfc.section.5.1.1.p.5">Both the <strong>approved</strong> and <strong>rejected</strong> keys MAY be true at the same time. When this happens, it means that the signer approved a part of the document and rejected another. The user MUST be informed when this happens.</p>
-<h1 id="rfc.section.5.1.2">
-<a href="#rfc.section.5.1.2">5.1.2.</a> <a href="#int-location" id="int-location">INT/location</a>
+<p id="rfc.section.6.1.1.p.3">All undefined values MUST be interpreted as false.</p>
+<p id="rfc.section.6.1.1.p.4">Apps MUST NOT add their own keys.</p>
+<p id="rfc.section.6.1.1.p.5">Both the <strong>approved</strong> and <strong>rejected</strong> keys MAY be true at the same time. When this happens, it means that the signer approved a part of the document and rejected another. The user MUST be informed when this happens.</p>
+<h1 id="rfc.section.6.1.2">
+<a href="#rfc.section.6.1.2">6.1.2.</a> <a href="#int-location" id="int-location">INT/location</a>
 </h1>
-<p id="rfc.section.5.1.2.p.1">A dictionary with the following keys:</p>
+<p id="rfc.section.6.1.2.p.1">A dictionary with the following keys:</p>
 <p></p>
 
-<ul>
+<ol>
 <li>
 <samp>country</samp>: A string with the country code.</li>
 <li>
@@ -1039,54 +1182,76 @@
 <samp>complement</samp>: A string with the complement for the address.</li>
 <li>
 <samp>text</samp>: A multi line string describing the place according to the rule sin the country. This is mainly intended for countries with different postal conventions.</li>
-</ul>
+</ol>
 
 <p> </p>
-<p id="rfc.section.5.1.2.p.3">Except for <strong>country</strong> which is MANDATORY, all other keys are OPTIONAL.</p>
-<p><strong>lat</strong> and <strong>lon</strong> are mainly intended to automatically show markers on maps for the end user.</p>
-<h1 id="rfc.section.5.1.3">
-<a href="#rfc.section.5.1.3">5.1.3.</a> <a href="#int-date" id="int-date">INT/date</a>
+<p id="rfc.section.6.1.2.p.3">The <samp>country</samp> key MUST be present. All others are MAY be empty.</p>
+<p><samp>lat</samp> and <samp>lon</samp> are mainly intended to automatically show markers on maps for the end user.</p>
+<h1 id="rfc.section.6.1.3">
+<a href="#rfc.section.6.1.3">6.1.3.</a> <a href="#int-date" id="int-date">INT/date</a>
 </h1>
-<p id="rfc.section.5.1.3.p.1">A string with the time in which the signer claims to have signed the document.</p>
-<p id="rfc.section.5.1.3.p.2">All apps MUST warn the user that this value is just a claim which may be false.</p>
-<h1 id="rfc.section.5.1.4">
-<a href="#rfc.section.5.1.4">5.1.4.</a> <a href="#int-file" id="int-file">INT/file</a>
+<p id="rfc.section.6.1.3.p.1">A string with the time in which the signer claims to have signed the document.</p>
+<p id="rfc.section.6.1.3.p.2">All apps MUST warn the user that this value is just a claim which may be false.</p>
+<h1 id="rfc.section.6.1.4">
+<a href="#rfc.section.6.1.4">6.1.4.</a> <a href="#int-file" id="int-file">INT/file</a>
 </h1>
-<p id="rfc.section.5.1.4.p.1">An object containing information about the file being signed.</p>
+<p id="rfc.section.6.1.4.p.1">An object containing information about the file being signed.</p>
 <pre>{
     "filename": "contract.txt",
     "size": 9007199254740991, // in bytes, 8 PiB in this case
     "hash": "SHA-3-512=A69F73CCA23A9AC5C8B567DC185A756E97C982164FE25859E0D1DCC1475C80A615B2123AF1F5F94C11E3E9402C3AC558F500199D95B6D3E301758586281DCD26"
 }
 </pre>
-<p id="rfc.section.5.1.4.p.2">A signature verification MUST NOT fail because the file was renamed.</p>
-<h1 id="rfc.section.5.1.5">
-<a href="#rfc.section.5.1.5">5.1.5.</a> <a href="#int-counter" id="int-counter">INT/counter</a>
+<p id="rfc.section.6.1.4.p.2">A signature verification MUST NOT fail because the file was renamed.</p>
+<h1 id="rfc.section.6.1.5">
+<a href="#rfc.section.6.1.5">6.1.5.</a> <a href="#int-counter" id="int-counter">INT/counter</a>
 </h1>
-<p id="rfc.section.5.1.5.p.1">An array of base64 string encoding the previous signatures.</p>
-<pre>["ewogICAgImZpbGVuYW1lIjogImNvbnRyYWN0LnR4dCIsCiAgICAiaGFzaCI6ICJTSEEtMy01MTI9QTY5RjczQ0NBMjNBOUFDNUM4QjU2N0RDMTg1QTc1NkU5N0M5ODIxNjRGRTI1ODU5RTBEMURDQzE0NzVDODBBNjE1QjIxMjNBRjFGNUY5NEMxMUUzRTk0MDJDM0FDNTU4RjUwMDE5OUQ5NUI2RDNFMzAxNzU4NTg2MjgxRENEMjYiCn0K"]
-</pre>
-<p id="rfc.section.5.1.5.p.2">A signature verification MUST NOT fail because the file was renamed.</p>
-<h1 id="rfc.section.5.2">
-<a href="#rfc.section.5.2">5.2.</a> <a href="#signature-resquest" id="signature-resquest">Signature Resquest</a>
+<p id="rfc.section.6.1.5.p.1">An array of base64 string encoding the previous signatures.</p>
+<p id="rfc.section.6.1.5.p.2">A signature verification MUST NOT fail because the file was renamed.</p>
+<h1 id="rfc.section.6.2">
+<a href="#rfc.section.6.2">6.2.</a> <a href="#signature-request" id="signature-request">Signature Request</a>
 </h1>
-<h1 id="rfc.section.6">
-<a href="#rfc.section.6">6.</a> <a href="#security-and-usability-considerations" id="security-and-usability-considerations">Security and Usability Considerations</a>
+<h1 id="rfc.section.7">
+<a href="#rfc.section.7">7.</a> <a href="#internet-apis" id="internet-apis">Internet APIs</a>
 </h1>
-<p id="rfc.section.6.p.1">&#9999;&#65039;</p>
-<h1 id="rfc.section.6.1">
-<a href="#rfc.section.6.1">6.1.</a> <a href="#dynamic-content" id="dynamic-content">Dynamic Content</a>
+<h1 id="rfc.section.7.1">
+<a href="#rfc.section.7.1">7.1.</a> <a href="#online-restful" id="online-restful">Online RESTful</a>
 </h1>
-<p id="rfc.section.6.1.p.1">All signing apps MUST warn the user when the document they are trying to sign seems to have dynamic content.</p>
-<p id="rfc.section.6.1.p.2">All signing apps MUST also not show the warning to the user if they have checked and failed to find signs of dynamic content on the file being signed.</p>
-<p id="rfc.section.6.1.p.3">If a signing app cannot verify the file for dynamic content and it is not on the white list, it MUST warn the user about the possibility of dynamic content.</p>
-<p id="rfc.section.6.1.p.4">For PDF, the verification MUST check for, and fail to find all of the following:</p>
+<h1 id="rfc.section.7.1.1">
+<a href="#rfc.section.7.1.1">7.1.1.</a> <a href="#sign-certificate" id="sign-certificate">Sign certificate</a>
+</h1>
+<h1 id="rfc.section.7.1.2">
+<a href="#rfc.section.7.1.2">7.1.2.</a> <a href="#certificate-revocation-status" id="certificate-revocation-status">Certificate revocation status</a>
+</h1>
+<h1 id="rfc.section.7.1.3">
+<a href="#rfc.section.7.1.3">7.1.3.</a> <a href="#timestamp-servers" id="timestamp-servers">Timestamp servers</a>
+</h1>
+<h1 id="rfc.section.7.2">
+<a href="#rfc.section.7.2">7.2.</a> <a href="#browser-interaction" id="browser-interaction">Browser interaction</a>
+</h1>
+<h1 id="rfc.section.8">
+<a href="#rfc.section.8">8.</a> <a href="#smartcards" id="smartcards">Smartcards</a>
+</h1>
+<h1 id="rfc.section.9">
+<a href="#rfc.section.9">9.</a> <a href="#security-and-usability-considerations" id="security-and-usability-considerations">Security and Usability Considerations</a>
+</h1>
+<p id="rfc.section.9.p.1">&#9999;&#65039;</p>
+<h1 id="rfc.section.9.1">
+<a href="#rfc.section.9.1">9.1.</a> <a href="#mixing-digital-and-paper-signatures" id="mixing-digital-and-paper-signatures">Mixing digital and paper signatures</a>
+</h1>
+<h1 id="rfc.section.9.2">
+<a href="#rfc.section.9.2">9.2.</a> <a href="#dynamic-content" id="dynamic-content">Dynamic Content</a>
+</h1>
+<p id="rfc.section.9.2.p.1">All signing apps MUST warn the user when the document they are trying to sign seems to have dynamic content.</p>
+<p id="rfc.section.9.2.p.2">All signing apps MUST also not show the warning to the user if they have checked and failed to find signs of dynamic content on the file being signed.</p>
+<p id="rfc.section.9.2.p.3">If a signing app cannot verify the file for dynamic content and it is not on the white list, it MUST warn the user about the possibility of dynamic content.</p>
+<p id="rfc.section.9.2.p.4">For PDF, the verification MUST check for, and fail to find all of the following:</p>
 <p></p>
 
-<ol><li>Any signs of Javascript.</li></ol>
+<ol><li>Any signs of JavaScript.</li></ol>
 
 <p> </p>
-<p id="rfc.section.6.1.p.6">For HTML, the verification MUST check for, and fail to find all of the following:</p>
+<p id="rfc.section.9.2.p.6">For HTML, the verification MUST check for, and fail to find all of the following:</p>
 <p></p>
 
 <ol>
@@ -1096,7 +1261,7 @@
 </ol>
 
 <p> </p>
-<p id="rfc.section.6.1.p.8">For Office Open XML (MOX), Open Document Format for Office Applications (ODF) and older Microsoft Office files, the verification MUST check for, and fail to find all of the following:</p>
+<p id="rfc.section.9.2.p.8">For Office Open XML (MOX), Open Document Format for Office Applications (ODF) and older Microsoft Office files, the verification MUST check for, and fail to find all of the following:</p>
 <p></p>
 
 <ol>
@@ -1105,7 +1270,7 @@
 </ol>
 
 <p> </p>
-<p id="rfc.section.6.1.p.10">All signing apps CAN assume that the following file formats have no dynamic content:</p>
+<p id="rfc.section.9.2.p.10">All signing apps CAN assume that the following file formats have no dynamic content:</p>
 <p></p>
 
 <ol>
@@ -1117,19 +1282,728 @@
 </ol>
 
 <p> </p>
-<p id="rfc.section.6.1.p.12">All signing apps MUST check extension in a case insensitive manner.</p>
-<h1 id="rfc.section.6.2">
-<a href="#rfc.section.6.2">6.2.</a> <a href="#accidental-changes" id="accidental-changes">Accidental changes</a>
+<p id="rfc.section.9.2.p.12">All signing apps MUST check extension in a case insensitive manner.</p>
+<h1 id="rfc.section.9.3">
+<a href="#rfc.section.9.3">9.3.</a> <a href="#accidental-changes" id="accidental-changes">Accidental changes</a>
 </h1>
-<p id="rfc.section.6.2.p.1">&#128073; Decide how to handle the case of a user who opened a word file, accidentally added a new line and saved it. The best option seems to be mandatory PAR2 support.</p>
-<h1 id="rfc.section.6.3">
-<a href="#rfc.section.6.3">6.3.</a> <a href="#archive-files" id="archive-files">Archive files</a>
+<p id="rfc.section.9.3.p.1">&#128073; Decide how to handle the case of a user who opened a word file, accidentally added a new line and saved it. The best option seems to be mandatory PAR2 support.</p>
+<h1 id="rfc.section.9.4">
+<a href="#rfc.section.9.4">9.4.</a> <a href="#archive-files" id="archive-files">Archive files</a>
 </h1>
-<p id="rfc.section.6.3.p.1">&#128073; Decide how to handle the case of a user trying to sign a <samp>.zip</samp> or <samp>.rar</samp> file. Should they be warned about the fact the signature will only apply to all those files together instead of separately?</p>
+<p id="rfc.section.9.4.p.1">&#128073; Decide how to handle the case of a user trying to sign a <samp>.zip</samp> or <samp>.rar</samp> file. Should they be warned about the fact the signature will only apply to all those files together instead of separately?</p>
+<h1 id="rfc.section.9.5">
+<a href="#rfc.section.9.5">9.5.</a> <a href="#user-misinterpretation-and-excessive-trust-on-the-machine" id="user-misinterpretation-and-excessive-trust-on-the-machine">User misinterpretation and excessive trust on the machine</a>
+</h1>
+<h1 id="rfc.section.9.6">
+<a href="#rfc.section.9.6">9.6.</a> <a href="#certificate-and-password-sharing" id="certificate-and-password-sharing">Certificate and password sharing</a>
+</h1>
+<h1 id="rfc.section.9.7">
+<a href="#rfc.section.9.7">9.7.</a> <a href="#cloud-usage" id="cloud-usage">Cloud usage</a>
+</h1>
+<h1 id="rfc.section.9.8">
+<a href="#rfc.section.9.8">9.8.</a> <a href="#side-channel-attacks" id="side-channel-attacks">Side channel attacks</a>
+</h1>
+<h1 id="rfc.section.9.9">
+<a href="#rfc.section.9.9">9.9.</a> <a href="#document-replacement" id="document-replacement">Document replacement</a>
+</h1>
+<h1 id="rfc.section.10">
+<a href="#rfc.section.10">10.</a> <a href="#language-specific-rules" id="language-specific-rules">Language Specific Rules</a>
+</h1>
+<h1 id="rfc.section.10.1">
+<a href="#rfc.section.10.1">10.1.</a> <a href="#portuguese" id="portuguese">Portuguese</a>
+</h1>
+<h1 id="rfc.section.10.1.1">
+<a href="#rfc.section.10.1.1">10.1.1.</a> <a href="#unicode-support" id="unicode-support">Unicode Support</a>
+</h1>
+<p id="rfc.section.10.1.1.p.1">All apps aimed to support Portuguese MUST support the following Unicode blocks:</p>
+<p></p>
+
+<ol>
+<li>Basic Latin (U+0000..U+007F).</li>
+<li>Latin-1 Supplement (U+00A0..U+00FF). This range excludes the need for supporting C1 Controls.</li>
+</ol>
+
+<p> </p>
+<h1 id="rfc.section.10.1.2">
+<a href="#rfc.section.10.1.2">10.1.2.</a> <a href="#standard-translations" id="standard-translations">Standard Translations</a>
+</h1>
+<table cellpadding="3" cellspacing="0" class="tt full center">
+<thead><tr>
+<th class="left">English</th>
+<th class="left">Portuguese</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="left">(PA) Proof of certificate</td>
+<td class="left">(CA) Comprovante de Atributo</td>
+</tr>
+<tr>
+<td class="left">Certificate</td>
+<td class="left">Certificado</td>
+</tr>
+<tr>
+<td class="left">(CA) Certificate Authority</td>
+<td class="left">(AC) Autoridade Certificadora</td>
+</tr>
+<tr>
+<td class="left">(PKI) Public Key Infrastructure</td>
+<td class="left">(ICP) Infraestrutura de Chaves P&#250;blicas</td>
+</tr>
+<tr>
+<td class="left">(TA) Timestamping Authority</td>
+<td class="left">(ACT) Autoridade de Carimbo de Tempo</td>
+</tr>
+<tr>
+<td class="left">Subject</td>
+<td class="left">Titular</td>
+</tr>
+<tr>
+<td class="left">Issuer</td>
+<td class="left">Emissor</td>
+</tr>
+</tbody>
+</table>
+<h1 id="rfc.section.11">
+<a href="#rfc.section.11">11.</a> <a href="#country-specific-rules" id="country-specific-rules">Country Specific Rules</a>
+</h1>
+<h1 id="rfc.section.11.1">
+<a href="#rfc.section.11.1">11.1.</a> <a href="#brazil" id="brazil">Brazil</a>
+</h1>
+<p id="rfc.section.11.1.p.1">All certificates issued for natural persons MUST have the following attributes:</p>
+<p></p>
+
+<ol>
+<li><samp>BR/CPF</samp></li>
+<li>
+<samp>BR/RG</samp> or <samp>BR/RNE</samp> or <samp>INT/passport</samp>: The certificate MAY have any combination of them so long as there is at least one.</li>
+</ol>
+
+<p> </p>
+<p id="rfc.section.11.1.p.3">For legal persons, the <samp>INT/name</samp> attribute MUST be the full "raz&#227;o social".</p>
+<p id="rfc.section.11.1.p.4">Even if official documents show a name in all caps, all names MUST have propper capitalization. Ex: "Pedro de Al&#226;ntara", not "PEDRO DE ALC&#194;NTARA" nor "Pedro De Alc&#226;ntara".</p>
+<p id="rfc.section.11.1.p.5">All certificates issued for legal persons MUST have the following attributes:</p>
+<p></p>
+
+<ol><li><samp>BR/CNPJ</samp></li></ol>
+
+<p> </p>
+<p id="rfc.section.11.1.p.7">For legal persons, they SHOULD also have, when possible:</p>
+<p></p>
+
+<ol>
+<li>
+<samp>BR/IE</samp> (inscri&#231;&#227;o estadual)</li>
+<li>
+<samp>BR/IM</samp> (inscri&#231;&#227;o municipal)</li>
+<li>
+<samp>BR/NIRE</samp> (junta comercial)</li>
+</ol>
+
+<p> </p>
+<h1 id="rfc.section.11.2">
+<a href="#rfc.section.11.2">11.2.</a> <a href="#subject-attributes-1" id="subject-attributes-1">Subject Attributes</a>
+</h1>
+<h1 id="rfc.section.11.2.1">
+<a href="#rfc.section.11.2.1">11.2.1.</a> <a href="#br-cpf" id="br-cpf">BR/CPF</a>
+</h1>
+<p id="rfc.section.11.2.1.p.1">CPF (<em>Cadastro de Pessoas F&#237;sicas</em>) number. This MUST be encoded as a trimmed string with the format: <samp>999.999.999/99</samp>.</p>
+<p><samp>BR/CPF</samp> MUST NOT be encoded as an array.</p>
+<p id="rfc.section.11.2.1.p.3">Example: <samp>001.456.789/00</samp></p>
+<p id="rfc.section.11.2.1.p.4">All apps MUST NOT reject a BR/CPF entry because the verification digits (the last two) are incorrect.</p>
+<h1 id="rfc.section.11.2.2">
+<a href="#rfc.section.11.2.2">11.2.2.</a> <a href="#br-cnpj" id="br-cnpj">BR/CNPJ</a>
+</h1>
+<p id="rfc.section.11.2.2.p.1">CNPJ (<em>Cadastro Nacional de Pessoas Jur&#237;dicas</em>) number. This MUST be encoded as a trimmed string with the format: <samp>99.999.999/9999-99</samp>.</p>
+<p><samp>BR/CNPJ</samp> MUST NOT be encoded as an array.</p>
+<p id="rfc.section.11.2.2.p.3">Example: <samp>01.012.123/0001-99</samp></p>
+<p id="rfc.section.11.2.2.p.4">All apps MUST NOT reject a <samp>BR/CNPJ</samp> entry because the verification digits (the last two) are incorrect.</p>
+<h1 id="rfc.section.11.2.3">
+<a href="#rfc.section.11.2.3">11.2.3.</a> <a href="#br-rne" id="br-rne">BR/RNE</a>
+</h1>
+<p id="rfc.section.11.2.3.p.1">RNE (<em>Registro Nacional de Estrangeiros</em>) MUST be encoded as a string with all punctuation.</p>
+<p id="rfc.section.11.2.3.p.2">Example: &#9999;&#65039;</p>
+<h1 id="rfc.section.11.2.4">
+<a href="#rfc.section.11.2.4">11.2.4.</a> <a href="#br-rg" id="br-rg">BR/RG</a>
+</h1>
+<p id="rfc.section.11.2.4.p.1">RG (<em>Registro Geral</em>) MUST be encoded as an array of dictionaries with the keys:</p>
+<p></p>
+
+<ol>
+<li>
+<samp>number</samp> for the RG number which MUST include punctuation.</li>
+<li>
+<samp>digit</samp> for the verification digit, i.e. the character after the hyphen. If the subject RG has no digit this string MUST be empty.</li>
+<li>
+<samp>state</samp> the two letter uppercase code for the federative unit that issued the document.</li>
+<li>
+<samp>issuer</samp> the institution that actually issued the RG.</li>
+<li>
+<samp>short_form</samp> a concise string expressing the main things about the RG. The following algorithm MUST be used:</li>
+</ol>
+
+<p> </p>
+<pre>IF digit IS present THEN
+    short_form = number + "-" + digit + " /" + state
+ELSE
+    short_form = number + " /" + state
+END IF
+</pre>
+<p id="rfc.section.11.2.4.p.3">Example of an RG:</p>
+<pre>{
+    // Number with punctuation
+    "number": "12.345.678",
+    // The character after the hyphen when present
+    "digit": "X",
+    // The issuing state (two letter upper case code)
+    "state": "DF",
+    // Issuing organization ("&#243;rg&#227;o emissor") with diacritics
+    "issuer": "Secretaria de Seguran&#231;a P&#250;blica",
+    // number + " " + state (if digit == "")
+    // number + "-" + digit + " " + state (if digit == "")
+    "short_form": "12.345.678-X DF"
+}
+</pre>
+<h1 id="rfc.section.11.2.5">
+<a href="#rfc.section.11.2.5">11.2.5.</a> <a href="#br-t%C3%ADtulo-de-eleitor" id="br-t&#237;tulo-de-eleitor">BR/T&#237;tulo de Eleitor</a>
+</h1>
+<h1 id="rfc.section.11.2.6">
+<a href="#rfc.section.11.2.6">11.2.6.</a> <a href="#br-nit" id="br-nit">BR/NIT</a>
+</h1>
+<h1 id="rfc.section.12">
+<a href="#rfc.section.12">12.</a> <a href="#json-schemas" id="json-schemas">JSON Schemas</a>
+</h1>
+<h1 id="rfc.section.12.1">
+<a href="#rfc.section.12.1">12.1.</a> <a href="#certificate-file-j1c" id="certificate-file-j1c">Certificate File (.j1c)</a>
+</h1>
+<pre>{
+  "$id": "https://judsys.github.io/schema/j1c.json",
+  "title": "JUDSYS-1 .j1c file",
+  "type": "object",
+  "required": ["what", "certificates"],
+  "additionalProperties": true,
+  "properties": {
+    "what": {
+      "const": "JUDSYS-1 Certificate File (.j1c)"
+    },
+    "certificates": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/signed-object.json"
+      }
+    }
+  }
+}
+</pre>
+<h1 id="rfc.section.12.2">
+<a href="#rfc.section.12.2">12.2.</a> <a href="#private-keys-file-j1k" id="private-keys-file-j1k">Private Keys File (.j1k)</a>
+</h1>
+<pre>{
+  "$id": "https://judsys.github.io/schema/j1c.json",
+  "title": "JUDSYS-1 .j1c file",
+  "type": "object",
+  "required": ["what", "certificates"],
+  "additionalProperties": false,
+  "properties": {
+    "what": {
+      "const": "JUDSYS-1 Private Keys File (.j1k)"
+    },
+    "certificates": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/signed-object.json"
+      }
+    },
+    "private-keys": {
+      "description": "An encrypted message containing an array of private keys for the first certificate present on the certificates array.",
+      "$ref": "https://judsys.github.io/schema/encrypted-object.json"
+    }
+  }
+}
+</pre>
+<h1 id="rfc.section.12.3">
+<a href="#rfc.section.12.3">12.3.</a> <a href="#proof-of-attribute-file-j1a" id="proof-of-attribute-file-j1a">Proof of Attribute File (.j1a)</a>
+</h1>
+<h1 id="rfc.section.12.4">
+<a href="#rfc.section.12.4">12.4.</a> <a href="#detached-digital-signature-file-j1s" id="detached-digital-signature-file-j1s">Detached Digital Signature File (.j1s)</a>
+</h1>
+<h1 id="rfc.section.12.5">
+<a href="#rfc.section.12.5">12.5.</a> <a href="#encrypted-file-j1e" id="encrypted-file-j1e">Encrypted File (.j1e)</a>
+</h1>
+<h1 id="rfc.section.12.6">
+<a href="#rfc.section.12.6">12.6.</a> <a href="#revocation-information-file-j1r" id="revocation-information-file-j1r">Revocation Information File (.j1r)</a>
+</h1>
+<h1 id="rfc.section.12.7">
+<a href="#rfc.section.12.7">12.7.</a> <a href="#hash-optionally-salted" id="hash-optionally-salted">Hash (optionally salted)</a>
+</h1>
+<pre>{
+  "$id": "https://judsys.github.io/schema/hash.json",
+  "title": "JUDSYS-1 salted hash",
+  "type": "object",
+  "required": ["algorithm", "value"],
+  "additionalProperties": true,
+  "properties": {
+    "algorithm": {
+      "enum": ["SHA-3-512"],
+      "description": "The hashing algorithm"
+    },
+    "value": {
+      "type": "string",
+      "description": "The hash of the salted password, hex encoded"
+    },
+    "salt": {
+      "type": "string",
+      "description": "The password salt, hex encoded"
+    }
+  }
+}
+</pre>
+<h1 id="rfc.section.12.8">
+<a href="#rfc.section.12.8">12.8.</a> <a href="#aes-256-cbc" id="aes-256-cbc">AES-256-CBC</a>
+</h1>
+<p id="rfc.section.12.8.p.1">Advanced Encryption Standard with 256 bit keys in CBC (Cipher Block Chaining) mode.</p>
+<pre>{
+  "$id": "https://judsys.github.io/schema/aes-256-cbc.json",
+  "title": "JUDSYS-1 Algorithm Identifier for AES-256-CBC",
+  "type": "object",
+  "required": ["name", "IV"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "const": "AES-256-CBC"
+    },
+    "IV": {
+      "type": "string",
+      "description": "A base64 encoding of the initialization vector"
+    }
+  }
+}
+</pre>
+<h1 id="rfc.section.12.9">
+<a href="#rfc.section.12.9">12.9.</a> <a href="#argon2" id="argon2">Argon2</a>
+</h1>
+<h1 id="rfc.section.12.10">
+<a href="#rfc.section.12.10">12.10.</a> <a href="#ecdsa" id="ecdsa">ECDSA</a>
+</h1>
+<h1 id="rfc.section.12.11">
+<a href="#rfc.section.12.11">12.11.</a> <a href="#encrypted-object" id="encrypted-object">Encrypted Object</a>
+</h1>
+<pre>{
+  "$id": "https://judsys.github.io/schema/encrypted-object.json",
+  "title": "JUDSYS-1 Signed Object",
+  "type": "object",
+  "required": ["what", "raw", "alg", "key_src"],
+  "additionalProperties": false,
+  "properties": {
+    "what": {
+      "const": "JUDSYS-1 Encrypted Object"
+    },
+    "raw": {
+      "type": "string",
+      "description": "A base64 encoding of the encrypted JSON object."
+    },
+    "algorithm": {
+      "description": "The encryption algorithm.",
+      "oneOf": [
+        { "$ref": "https://judsys.github.io/schema/aes-256-cbc.json" }
+      ]
+    },
+    "key_src": {
+      "enum": ["password", "key-file"]
+    },
+    "key_id": {
+      "type": "string",
+      "description": "The ID of the public key"
+    },
+    "key_password": {
+      "type": "object",
+      "properties": {
+        "derivation": {
+          "description": "The key derivation algorithm.",
+          "oneOf": [
+            { "$ref": "https://judsys.github.io/schema/argon2id.json" }
+          ]
+        },
+        "hash": {
+          "$ref": "https://judsys.github.io/schema/hash.json"
+        }
+      }
+    }
+  }
+}
+</pre>
+<h1 id="rfc.section.12.12">
+<a href="#rfc.section.12.12">12.12.</a> <a href="#signed-object" id="signed-object">Signed Object</a>
+</h1>
+<pre>{
+  "$id": "https://judsys.github.io/schema/signed-object.json",
+  "title": "JUDSYS-1 Signed Object",
+  "type": "object",
+  "required": ["what", "raw", "sig"],
+  "additionalProperties": true,
+  "properties": {
+    "what": {
+      "const": "JUDSYS-1 Signed Object"
+    },
+    "raw": {
+      "type": "string",
+      "description": "A base64 encoding of the JSON object."
+    },
+    "sig": {
+      "type": "string",
+      "description": "A base64 encoding of the signature."
+    }
+  }
+}
+</pre>
+<h1 id="rfc.section.12.13">
+<a href="#rfc.section.12.13">12.13.</a> <a href="#key" id="key">Key</a>
+</h1>
+<pre>{
+  "$id": "https://judsys.github.io/schema/key.json",
+  "title": "JUDSYS-1 key",
+  "type": "object",
+  "required": ["algorithm", "kind", "id", "usage"],
+  "additionalProperties": true,
+  "properties": {
+    "algorithm": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": ["public", "private"]  
+    },
+    "id": {
+      "type": "string",
+      "description": "A value that uniquely identifies that key (algorithm dependent)"  
+    },
+    "usage": {
+      "enum": ["identification", "signing", "encryption", "issue-certs", "revoke-certs"]
+    }
+  }
+}
+</pre>
+<h1 id="rfc.section.12.13.1">
+<a href="#rfc.section.12.13.1">12.13.1.</a> <a href="#rsa" id="rsa">RSA</a>
+</h1>
+<p id="rfc.section.12.13.1.p.1">All RSA private keys MUST have exactly two primes.</p>
+<p id="rfc.section.12.13.1.p.2">The key ID MUST be <samp>"RSA/" + sha-3-512(N + "|" + E)</samp> (all values are strings and all numbers are in base 10).</p>
+<h1 id="rfc.section.12.13.1.1">
+<a href="#rfc.section.12.13.1.1">12.13.1.1.</a> <a href="#rsa-public" id="rsa-public">RSA Public</a>
+</h1>
+<pre>{
+  "$id": "https://judsys.github.io/schema/key-rsa-public.json",
+  "title": "JUDSYS-1 key",
+  "type": "object",
+  "required": ["algorithm", "kind", "id", "N", "E"],
+  "additionalProperties": false,
+  "properties": {
+    "algorithm": {
+      "const": "RSA"
+    },
+    "kind": {
+      "const": "public"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^RSA:[0-9a-fA-F]{128}$"
+    },
+    "N": {
+      "type": "string",
+      "description": "RSA public modulus N, in base 10"
+    },
+    "E": {
+      "type": "string",
+      "description": "RSA public exponent E, in base 10"
+    }
+  }
+}
+</pre>
+<h1 id="rfc.section.12.13.1.2">
+<a href="#rfc.section.12.13.1.2">12.13.1.2.</a> <a href="#rsa-private" id="rsa-private">RSA Private</a>
+</h1>
+<pre>{
+  "$id": "https://judsys.github.io/schema/key-rsa-private.json",
+  "title": "JUDSYS-1 key",
+  "type": "object",
+  "required": ["algorithm", "kind", "id", "N", "E", "D", "P", "Q", "DQ", "DP", "QINV"],
+  "additionalProperties": false,
+  "properties": {
+    "algorithm": {
+      "const": "RSA"
+    },
+    "kind": {
+      "const": "private"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^RSA:[0-9a-fA-F]{128}$"
+    },
+    "N": {
+      "type": "string",
+      "description": "RSA public modulus N, in base 10"
+    },
+    "E": {
+      "type": "string",
+      "description": "RSA public exponent E, in base 10"
+    },
+    "D": {
+      "type": "string",
+      "description": "RSA private exponent D, in base 10"
+    },
+    "P": {
+      "type": "string",
+      "description": "RSA secret prime P, in base 10"
+    },
+    "Q": {
+      "type": "string",
+      "description": "RSA secret prime Q, in base 10"
+    },
+    "DP": {
+      "type": "string",
+      "description": "D mod (P-1), in base 10"
+    },
+    "DQ": {
+      "type": "string",
+      "description": "D mod (Q-1), in base 10"
+    },
+    "QINV": {
+      "type": "string",
+      "description": "Q^-1 mod P, in base 10"
+    }
+  }
+}
+</pre>
+<h1 id="rfc.section.12.13.2">
+<a href="#rfc.section.12.13.2">12.13.2.</a> <a href="#ecdsa-public-key" id="ecdsa-public-key">ECDSA Public Key</a>
+</h1>
+<h1 id="rfc.section.12.14">
+<a href="#rfc.section.12.14">12.14.</a> <a href="#entity-subject-of-issuer" id="entity-subject-of-issuer">Entity (subject of issuer)</a>
+</h1>
+<pre>{
+  "$id": "https://judsys.github.io/schema/entity.json",
+  "title": "JUDSYS-1 Entity",
+  "type": "object",
+  "required": ["id", "INT/names"],
+  "additionalProperties": true,
+  "properties": {
+    "INT/vulnerable": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "A list of entries explaining the reasons why this entity is vulnerable. Ex: iliterate, child, mentally ill, et cetera"
+    },
+    "INT/names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "INT/emails": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "idn-email"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "INT/phones": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^\+[0-9]{1,} .*$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "INT/addresses": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/address.json"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "INT/picture": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "contentMediaType": "image"
+    },
+    "INT/passport": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/passport.json"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  }
+}
+</pre>
+<h1 id="rfc.section.12.15">
+<a href="#rfc.section.12.15">12.15.</a> <a href="#certificate" id="certificate">Certificate</a>
+</h1>
+<pre>{
+  "$id": "https://judsys.github.io/schema/certificate.json",
+  "title": "JUDSYS-1 Certificate",
+  "type": "object",
+  "required": ["subject", "notBefore", "notAfter", "serial", "keys"],
+  "properties": {
+    "serial": { "type": "string" },
+    "subject": {
+      "$ref": "https://judsys.github.io/schema/entity.json"
+    },
+    "issuer": {
+      "$ref": "https://judsys.github.io/schema/entity.json"
+    },
+    "notBefore": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "notAfter": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "keys": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/key.json"
+      }
+    },
+    "legal-recognition": {
+      "type": "array",
+      "items": {
+        "enum": ["timestamp", "authentic-scan"]
+      }
+    }
+  }
+}
+</pre>
+<h1 id="rfc.section.12.16">
+<a href="#rfc.section.12.16">12.16.</a> <a href="#address" id="address">Address</a>
+</h1>
+<pre>{
+  "$id": "https://judsys.github.io/schema/int-address.json",
+  "title": "JUDSYS-1 Address",
+  "type": "object",
+  "required": ["country", "state", "city"],
+  "additionalProperties": false,
+  "properties": {
+    "country": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "string",
+      "description": "Text describing addresses that do not fit into the structured model AND/OR additional comments about how to get to the place AND/OR access codes"
+    },
+    "recipient": {
+      "type": "string"
+    },
+    "complement": {
+      "type": "string"
+    },
+    "numberOrBuildingName": {
+      "type": "string"
+    },
+    "street": {
+      "type": "string"
+    },
+    "neighbourhood": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string",
+      "description": "If the country does not have states or provinces, this value MUST be a single hyphen '-'"
+    },
+    "lat": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90,
+      "description": "The latitude of the address, preferably of the building entrance"
+    },
+    "lon": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180,
+      "description": "The longitude of the address, preferably of the building entrance"
+    }
+  }
+}
+</pre>
+<h1 id="rfc.section.12.17">
+<a href="#rfc.section.12.17">12.17.</a> <a href="#passport" id="passport">Passport</a>
+</h1>
+<pre>{
+  "$id": "https://judsys.github.io/schema/int-passport.json",
+  "title": "JUDSYS-1 Entity",
+  "type": "object",
+  "required": ["country", "number"],
+  "additionalProperties": true,
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Type of travel document, usually a 'P' indicating passport."
+    },
+    "country": {
+      "type": "string",
+      "description": "The country that ISSUED the passport."
+    },
+    "number": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string",
+      "description": "The surname as it appears on the VIZ (Visual Inspection Zone)"
+    },
+    "givenName": {
+      "type": "string",
+      "description": "The given name as it appears on the VIZ (Visual Inspection Zone)"
+    },
+    "nationality": {
+      "type": "string"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date"
+    },
+    "place_of_birth": {
+      "type": "string"
+    },
+    "personal_number": {
+      "type": "string"
+    },
+    "sex": {
+      "type": "string",
+      "description": "The sex of the passport holder. It may be 'X'."
+    },
+    "date_of_issue": {
+      "type": "string",
+      "format": "date"
+    },
+    "date_of_expiry": {
+      "type": "string",
+      "format": "date"
+    },
+    "MRZ": {
+      "type": "string"
+    }
+  }
+}
+</pre>
 <h1 id="rfc.references">
-<a href="#rfc.references">7.</a> References</h1>
+<a href="#rfc.references">13.</a> References</h1>
 <h1 id="rfc.references.1">
-<a href="#rfc.references.1">7.1.</a> Normative References</h1>
+<a href="#rfc.references.1">13.1.</a> Normative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
@@ -1143,7 +2017,7 @@
 </tr>
 </tbody></table>
 <h1 id="rfc.references.2">
-<a href="#rfc.references.2">7.2.</a> Informative References</h1>
+<a href="#rfc.references.2">13.2.</a> Informative References</h1>
 <table><tbody><tr>
 <td class="reference"><b id="ICAO-9303">[ICAO-9303]</b></td>
 <td class="top">
@@ -1166,7 +2040,7 @@
 		<span class="region"></span>
 		<span class="code"></span>
 	  </span>
-	  <span class="country-name vcardline"></span>
+	  <span class="country-name vcardline">Brazil</span>
 	</span>
 	<span class="vcardline">EMail: <a href="mailto:gabrieljvnq@gmail.com">gabrieljvnq@gmail.com</a></span>
 

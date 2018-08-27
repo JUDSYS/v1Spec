@@ -1,0 +1,27 @@
+{
+  "$id": "https://judsys.github.io/schema/key-rsa-public.json",
+  "title": "JUDSYS-1 key",
+  "type": "object",
+  "required": ["algorithm", "kind", "id", "N", "E"],
+  "additionalProperties": false,
+  "properties": {
+    "algorithm": {
+      "const": "RSA"
+    },
+    "kind": {
+      "const": "public"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^RSA:[0-9a-fA-F]{128}$"
+    },
+    "N": {
+      "type": "string",
+      "description": "RSA public modulus N, in base 10"
+    },
+    "E": {
+      "type": "string",
+      "description": "RSA public exponent E, in base 10"
+    }
+  }
+}

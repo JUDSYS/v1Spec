@@ -1,0 +1,51 @@
+{
+  "$id": "https://judsys.github.io/schema/key-rsa-private.json",
+  "title": "JUDSYS-1 key",
+  "type": "object",
+  "required": ["algorithm", "kind", "id", "N", "E", "D", "P", "Q", "DQ", "DP", "QINV"],
+  "additionalProperties": false,
+  "properties": {
+    "algorithm": {
+      "const": "RSA"
+    },
+    "kind": {
+      "const": "private"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^RSA:[0-9a-fA-F]{128}$"
+    },
+    "N": {
+      "type": "string",
+      "description": "RSA public modulus N, in base 10"
+    },
+    "E": {
+      "type": "string",
+      "description": "RSA public exponent E, in base 10"
+    },
+    "D": {
+      "type": "string",
+      "description": "RSA private exponent D, in base 10"
+    },
+    "P": {
+      "type": "string",
+      "description": "RSA secret prime P, in base 10"
+    },
+    "Q": {
+      "type": "string",
+      "description": "RSA secret prime Q, in base 10"
+    },
+    "DP": {
+      "type": "string",
+      "description": "D mod (P-1), in base 10"
+    },
+    "DQ": {
+      "type": "string",
+      "description": "D mod (Q-1), in base 10"
+    },
+    "QINV": {
+      "type": "string",
+      "description": "Q^-1 mod P, in base 10"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$id": "https://judsys.github.io/schema/signed-object.json",
+  "title": "JUDSYS-1 Signed Object",
+  "type": "object",
+  "required": ["what", "raw", "sig"],
+  "additionalProperties": true,
+  "properties": {
+    "what": {
+      "const": "JUDSYS-1 Signed Object"
+    },
+    "raw": {
+      "type": "string",
+      "description": "A base64 encoding of the JSON object."
+    },
+    "sig": {
+      "type": "string",
+      "description": "A base64 encoding of the signature."
+    }
+  }
+}

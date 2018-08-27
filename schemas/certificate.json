@@ -1,0 +1,35 @@
+{
+  "$id": "https://judsys.github.io/schema/certificate.json",
+  "title": "JUDSYS-1 Certificate",
+  "type": "object",
+  "required": ["subject", "notBefore", "notAfter", "serial", "keys"],
+  "properties": {
+    "serial": { "type": "string" },
+    "subject": {
+      "$ref": "https://judsys.github.io/schema/entity.json"
+    },
+    "issuer": {
+      "$ref": "https://judsys.github.io/schema/entity.json"
+    },
+    "notBefore": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "notAfter": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "keys": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/key.json"
+      }
+    },
+    "legal-recognition": {
+      "type": "array",
+      "items": {
+        "enum": ["timestamp", "authentic-scan"]
+      }
+    }
+  }
+}

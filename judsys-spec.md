@@ -21,6 +21,8 @@ surname="Queiroz"
 fullname="Gabriel Villela Noriega de Queiroz"
   [author.address]
   email = "gabrieljvnq@gmail.com"
+  [author.address.postal]
+  country = "Brazil"
 %%%
 
 .# Abstract
@@ -65,6 +67,10 @@ This situation is unacceptable. We need a digital signature standard that:
 4. Has mandatory acceptance by law.
 
 This document aims to provide a digital signature standard that address points one through three. Hopefully, this standard may fulfil the fourth point in the near future.
+
+## Right of Implementation
+
+Any person, group or organization can freely implement this standard so long as the implementation is complete.  
 
 ## Terminology
 
@@ -145,7 +151,7 @@ For JUDSYS-1 files, all apps **MUST** use only the file extensions show below:
 
 ## Strings
 
-All apps **MUST** have proper Unicode support and fonts to display any characters that may be necessary for the country of intended use. This is, an app for France **MUST** have fonts with accented characters, but MAY NOT have any CJK nor Cyrillic support. An app for Russia **MUST** have Cyrillic and Latin support, but MAY NOT have CJK or Mongolian support.
+All apps **MUST** have proper Unicode support and fonts to display any characters that may be necessary for the country of intended use. This is, an app for France **MUST** have fonts with accented characters, but **SHOULD NOT** have any CJK nor Cyrillic support. An app for Russia **MUST** have Cyrillic and Latin support, but **SHOULD NOT** have CJK or Mongolian support.
 
 It is **RECOMMENDED** to store string in NFC (Normal Form Composition).
 
@@ -209,9 +215,13 @@ Attributes in the singular are a single value and attributes in the plural are a
 The CA **MUST** verify the attributes it will use on certificates it issues. If any verification is not done or fails, the corresponding attributes **MUST NOT** be included in the issued certificate. Examples:
 
 1. If the CA fails to verify that a phone number really belongs to the subject, it **MUST** never be included.
-2. If the subject of the certificate to be issued forgets to bring their US/SSN, this attribute **MUST not** be included in the certificate.
+2. If the subject of the certificate to be issued forgets to bring their US/SSN, this attribute **MUST NOT** be included in the certificate.
 
 If a CA MAY refuse to issue a certificate if essential properties could not verified. Examples: INT/name, US/SSN, BR/RG, BR/CPF.
+
+### INT/type
+
+An enum describing the type of the subject. Possible values are: `natural person`, `legal person`, `authority` (certificate authority and time-stamping authorities) and `other` (ex: software).
 
 ### INT/name
 
@@ -311,53 +321,37 @@ The picture **MUST** be data URL encoded using base64 and **MUST NOT** exceed 1 
 Example: (Tux, the Linux mascot)
 
 ```
-["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gAiUmVzaXplZCB3aXRoIGV6Z2lm
- LmNvbSBHSUYgbWFrZXL/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQa
- FRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4e
- Hh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAmACADASIAAhEBAxEB/8QAGQAAAwEB
- AQAAAAAAAAAAAAAABgcIAAUE/8QALRAAAQMDAgQFAwUAAAAAAAAAAQIDBAUGEQAHEiExQQgTFCJxFVGB
- MlJhcrH/xAAXAQEBAQEAAAAAAAAAAAAAAAADAgQF/8QAJhEAAgICAQMCBwAAAAAAAAAAAQIDBAARMQUh
- QRNxEhQigaHR8P/aAAwDAQACEQMRAD8AsvUleN/cDcWk1yNb1lyajTqbGhtyajLhZStS3XFIbQVjmB7e
- g6lXPtqtdIDcOnRbm3bqkyNR/rkWkw40GTggoRJKnFlscsFQSWyRk4ynvrNbnavC0ioXI8Dk4kSB3Ck6
- 98C/CbuduEncRG2u4Sp77kmnqlRXZ6wt9C0ZJHEOZSUhXI5IKfkarPUYXbHVs34gLGvKsQU06hSWnI3C
- 0StDJdW55xUScgguhZ65GemNWWy4260h1paVtrSFJUk5CgehB+2kgkMsauVKk+DyPfWS6/CxG94Gb4Xi
- 1Ym19auFTwbktx1NQh3XJWOFsAdzxHPwDrw7AWc7ZO2NLpk6U/JqcsmdUHXFlSlyHfevJ6nGQM98Z0P7
- xRYF8Nrt2tQEKhwZfmtKS4oLDqUlKVgggAjiJAORrsbN3nWLglVS3bho70eo0QoHr22iIs5pYPAtB6JX
- ge5HY9P45dPrtO7akqxH6k58cHR17HnNM1KWGNZGHY5w/F5Y0C7dnKxMkrd9RRmVVGN7iQC2CVDGeWUc
- Q+caFvANe0y4ttqhbdRkuSXrfkpbjuOElXpnEkoSf6lKwPsMDtpj7+TfUWbLtGLLYaqFdhyGG0KUCrgK
- CFK4evCOIZP40u/B9ZI22g1KJWJTDlSqzjZU42CEAI4glHPv7lHOBn8aSbrVOCyKsr6c60D53v8AWSlS
- V4/VUbGNavWIuXKel02ruR3nlqcLb7QdQVHmeYwQPydB7G1941SpuTX7/n2021llLVCXzewf1OFxOOXY
- BJIz11tbRJ0ajBdWzHGA533G/P4xDbmeEozbHbOKrYOZQLoXetPvWq1+rqbLL/157jy2f2rQnII5YGMd
- emmzaFqtU2O1KqCm5dQ5KKwD5bZ+yAf9PP41tbSN02rLe+ZdAXAGif7X35yRYlWD0w2hvP/Z"]
+["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gAiUmVzaXplZCB3aXRoIGV6Z2lmLmNvbSBHSUYgbWFrZXL/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAmACADASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAABgcIAAUE/8QALRAAAQMDAgQFAwUAAAAAAAAAAQIDBAUGEQAHEiExQQgTFCJxFVGBMlJhcrH/xAAXAQEBAQEAAAAAAAAAAAAAAAADAgQF/8QAJhEAAgICAQMCBwAAAAAAAAAAAQIDBAARMQUhQRNxEhQigaHR8P/aAAwDAQACEQMRAD8AsvUleN/cDcWk1yNb1lyajTqbGhtyajLhZStS3XFIbQVjmB7eg6lXPtqtdIDcOnRbm3bqkyNR/rkWkw40GTggoRJKnFlscsFQSWyRk4ynvrNbnavC0ioXI8Dk4kSB3Ck698C/CbuduEncRG2u4Sp77kmnqlRXZ6wt9C0ZJHEOZSUhXI5IKfkarPUYXbHVs34gLGvKsQU06hSWnI3C0StDJdW55xUScgguhZ65GemNWWy4260h1paVtrSFJUk5CgehB+2kgkMsauVKk+DyPfWS6/CxG94Gb4Xi1Ym19auFTwbktx1NQh3XJWOFsAdzxHPwDrw7AWc7ZO2NLpk6U/JqcsmdUHXFlSlyHfevJ6nGQM98Z0P7xRYF8Nrt2tQEKhwZfmtKS4oLDqUlKVgggAjiJAORrsbN3nWLglVS3bho70eo0QoHr22iIs5pYPAtB6JXge5HY9P45dPrtO7akqxH6k58cHR17HnNM1KWGNZGHY5w/F5Y0C7dnKxMkrd9RRmVVGN7iQC2CVDGeWUcQ+caFvANe0y4ttqhbdRkuSXrfkpbjuOElXpnEkoSf6lKwPsMDtpj7+TfUWbLtGLLYaqFdhyGG0KUCrgKCFK4evCOIZP40u/B9ZI22g1KJWJTDlSqzjZU42CEAI4glHPv7lHOBn8aSbrVOCyKsr6c60D53v8AWSlSV4/VUbGNavWIuXKel02ruR3nlqcLb7QdQVHmeYwQPydB7G1941SpuTX7/n2021llLVCXzewf1OFxOOXYBJIz11tbRJ0ajBdWzHGA533G/P4xDbmeEozbHbOKrYOZQLoXetPvWq1+rqbLL/157jy2f2rQnII5YGMdemmzaFqtU2O1KqCm5dQ5KKwD5bZ+yAf9PP41tbSN02rLe+ZdAXAGif7X35yRYlWD0w2hvP/Z"]
 ```
 
 ### INT/passports
 
 Each passport (see [@ICAO-9303]) is encoded as a dictionary with the following keys:
 
-1. `type` (**REQUIRED**): Indicates the type of document, for passports this is a `P`.
-2. `number` (**REQUIRED**): A string, which MAY contain letters, the identifies this passport.
-3. `country` (**REQUIRED**): The country that issued the passort.
-4. `surname` (**OPTIONAL**): The subject's last name.
-5. `given_name` (**OPTIONAL**): The subject's first name.
-6. `nationality` (**OPTIONAL**): The subject's nationality.
-7. `date_of_birth` (**REQUIRED**): The subject's date of birth.
-8. `place_of_birth` (**OPTIONAL**): The subject's place of birth.
-9. `personal_number` (**OPTIONAL**): An id number identifying the subject.
-10. `sex` (**OPTIONAL**): The sex or gender of the subject. Note that `X` and other characters may be used instead of the traditional `F` and `M`. 
-11. `date_of_issue` (**REQUIRED**): The date in which the passport was issued.
-12. `date_of_expiry` (**OPTIONAL**): The date in which the passport will expire.
-13. `MRZ` (**OPTIONAL**): the contents on the MRZ (machine redable zone).
+1. `type`: Indicates the type of document, for passports this is a `P`.
+2. `number`: A string, which MAY contain letters, the identifies this passport.
+3. `country`: The country that issued the passport.
+4. `surname`: The subject's last name.
+5. `given_name`: The subject's first name.
+6. `nationality`: The subject's nationality.
+7. `date_of_birth`: The subject's date of birth.
+8. `place_of_birth`: The subject's place of birth.
+9. `personal_number`: An id number identifying the subject.
+10. `sex`: The sex or gender of the subject. Note that `X` and other characters may be used instead of the traditional `F` and `M`. 
+11. `date_of_issue`: The date in which the passport was issued.
+12. `date_of_expiry`: The date in which the passport will expire.
+13. `MRZ`: the contents on the MRZ (machine readable zone).
 
-The `given_name` and `surname` are **OPTIONAL** beacuse some people may have no first or last name. However, at least one of them **MUST** be included.
+Only `type`, `country` and `number` **MUST BE** present.
 
-Except of dates, it is **RECOMMENDED** that all fields match the way they are presented on the VIZ (Visual Inpection Zone), rather than the MRZ.
+The `given_name` and `surname` are **OPTIONAL** because some people may have no first or last name. However, at least one of them **MUST** be included.
+
+Except of dates, it is **RECOMMENDED** that all fields match the way they are presented on the VIZ (Visual Inspection Zone), rather than the MRZ.
 
 ```js
 {
     "type": "P",
-    "country": "UTO", /* This may not match ISO 3166-1, read ICAO Doc 9303
-                         (pages 22 to 29) for details.*/
+    "country": "UTO", // This **MAY NOT** match ISO 3166-1, read ICAO Doc 9303 (pages 22 to 29) for details.
     "number": "L898902C3",
     "surname": "ERIKSSON",
     "given_name": "ANNA MARIA",
@@ -369,27 +363,30 @@ Except of dates, it is **RECOMMENDED** that all fields match the way they are pr
                    such as "X" may de used. */
     "date_of_issue": "2007-04-16",
     "date_of_expiry": "2012-04-15",
-    "MRZ": "P<UTOERIKSSON<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<\nL898902C36UTO7408122F
-    1204159ZE184226B<<<<<10"
+    "MRZ": "P<UTOERIKSSON<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<\nL898902C36UTO7408122F1204159ZE184226B<<<<<10"
 }
 ```
 
-## Certification Chain
+# Certification Chain
 
-👉 Open Question: Should software recieve certificates? Ex: Should a bank have a specific certificate only for its web server that is used not for SSL but for singing that it approved clients requests (loans for instance) and singing bank statements?  
+👉 Open Question: Should software receive certificates? Ex: Should a bank have a specific certificate only for its web server that is used not for SSL but for singing that it approved clients requests (loans for instance) and singing bank statements?  
 
-### Self-signed User Certificates
+## Public Key Infrastructure
+
+## Nameless Certificates
 
 👉 Open Question: It is feature a good idea?
 
-All self-signed user certificates (SSUC) **MUST** have, on both `subject` and `issuer`, the `INT/name` attribute with a single element `Self Signed User Certificate`. There **MUST NOT** be any other names.
+Nameless certificates are self signed certificates meant for the end user. They are intended to serve as a way for people to start using and testing JUDSYS-1 without the need to pay the CAs.
+
+All nameless certificates **MUST** have, on both `subject` and `issuer`, the `INT/name` attribute with a single element `Nameless Certificate`. There **MUST NOT** be any other names.
 
 The choice to prohibit names is intentional, as it ensures that no app will be able to display an unverified name, thus forcing the user to keep an "address book" to associate each person to their certificate. 
 
 
-### Revocation
+## Revocation
 
-# Proof of attrbiute
+# Proof of attribute
 
 ## Standard attributes
 
@@ -455,20 +452,21 @@ Both the **approved** and **rejected** keys MAY be true at the same time. When t
 
 A dictionary with the following keys:
 
-* `country`: A string with the country code.
-* `zip`: A string with the place's ZIP code equivalent according to the the country.
-* `lat`: A float in the interval [-90, +90] representing the latitude of the place.
-* `lon`: A float in the interval [-180, +180] representing the longitude of the place.
-* `state`: A string indicating the state or province of the place, preferably as a code. Examples: "DC" of District of Columbia, USA. "AP" for Amapá, Brazil.
-* `city`: The city or municipality of the place.
-* `street`: The street name.
-* `number`: A string (never a number) with the street number or name of the building.
-* `complement`: A string with the complement for the address.
-* `text`: A multi line string describing the place according to the rule sin the country. This is mainly intended for countries with different postal conventions.
+1. `country`: A string with the country code.
+1. `zip`: A string with the place's ZIP code equivalent according to the the country.
+1. `lat`: A float in the interval [-90, +90] representing the latitude of the place.
+1. `lon`: A float in the interval [-180, +180] representing the longitude of the place.
+1. `state`: A string indicating the state or province of the place, preferably as a code. Examples: "DC" of District of Columbia, USA. "AP" for Amapá, Brazil.
+1. `city`: The city or municipality of the place.
+1. `street`: The street name.
+1. `number`: A string (never a number) with the street number or name of the building.
+1. `complement`: A string with the complement for the address.
+1. `text`: A multi line string describing the place according to the rule sin the country. This is mainly intended for countries with different postal conventions.
 
-Except for **country** which is MANDATORY, all other keys are OPTIONAL.
 
-**lat** and **lon** are mainly intended to automatically show markers on maps for the end user.
+The `country` key **MUST** be present. All others are **MAY** be empty.
+
+`lat` and `lon` are mainly intended to automatically show markers on maps for the end user.
 
 ### INT/date
 
@@ -494,17 +492,29 @@ A signature verification **MUST NOT** fail because the file was renamed.
 
 An array of base64 string encoding the previous signatures.
 
-```js
-["ewogICAgImZpbGVuYW1lIjogImNvbnRyYWN0LnR4dCIsCiAgICAiaGFzaCI6ICJTSEEtMy01MTI9QTY5RjczQ0NBMjNBOUFDNUM4QjU2N0RDMTg1QTc1NkU5N0M5ODIxNjRGRTI1ODU5RTBEMURDQzE0NzVDODBBNjE1QjIxMjNBRjFGNUY5NEMxMUUzRTk0MDJDM0FDNTU4RjUwMDE5OUQ5NUI2RDNFMzAxNzU4NTg2MjgxRENEMjYiCn0K"]
-```
-
 A signature verification **MUST NOT** fail because the file was renamed.
 
-## Signature Resquest
+## Signature Request
+
+# Internet APIs
+
+## Online RESTful
+
+### Sign certificate
+
+### Certificate revocation status
+
+### Timestamp servers
+
+## Browser interaction
+
+# Smartcards
 
 # Security and Usability Considerations
 
 ✏️
+
+## Mixing digital and paper signatures
 
 ## Dynamic Content
 
@@ -516,7 +526,7 @@ If a signing app cannot verify the file for dynamic content and it is not on the
 
 For PDF, the verification **MUST** check for, and fail to find all of the following:
 
-  1. Any signs of Javascript.
+  1. Any signs of JavaScript.
 
 For HTML, the verification **MUST** check for, and fail to find all of the following:
 
@@ -548,10 +558,132 @@ All signing apps **MUST** check extension in a case insensitive manner.
 
 👉 Decide how to handle the case of a user trying to sign a `.zip` or `.rar` file. Should they be warned about the fact the signature will only apply to all those files together instead of separately? 
 
+## User misinterpretation and excessive trust on the machine
+
+## Certificate and password sharing
+
+## Cloud usage
+
+## Side channel attacks
+
+## Document replacement
+
+# Language Specific Rules
+
+## Portuguese
+
+### Unicode Support
+
+All apps aimed to support Portuguese MUST support the following Unicode blocks:
+
+1. Basic Latin (U+0000..U+007F).
+2. Latin-1 Supplement (U+00A0..U+00FF). This range excludes the need for supporting C1 Controls.
+
+### Standard Translations
+
+| English               | Portuguese              |
+|-----------------------|-------------------------|
+| (PA) Proof of certificate | (CA) Comprovante de Atributo |
+| Certificate | Certificado |
+| (CA) Certificate Authority | (AC) Autoridade Certificadora |
+| (PKI) Public Key Infrastructure | (ICP) Infraestrutura de Chaves Públicas |
+| (TA) Timestamping Authority | (ACT) Autoridade de Carimbo de Tempo |
+| Subject | Titular |
+| Issuer | Emissor |
+
+# Country Specific Rules
+
+## Brazil
+
+All certificates issued for natural persons MUST have the following attributes: 
+
+  1. `BR/CPF`
+  2. `BR/RG` or `BR/RNE` or `INT/passport`: The certificate MAY have any combination of them so long as there is at least one.
+
+For legal persons, the `INT/name` attribute MUST be the full "razão social".
+
+Even if official documents show a name in all caps, all names MUST have propper capitalization. Ex: "Pedro de Alântara", not "PEDRO DE ALCÂNTARA" nor "Pedro De Alcântara".
+
+All certificates issued for legal persons MUST have the following attributes: 
+
+  1. `BR/CNPJ`
+
+For legal persons, they SHOULD also have, when possible:
+
+  1. `BR/IE` (inscrição estadual)
+  2. `BR/IM` (inscrição municipal)
+  3. `BR/NIRE` (junta comercial)
+
+## Subject Attributes
+
+### BR/CPF
+
+CPF (*Cadastro de Pessoas Físicas*) number. This MUST be encoded as a trimmed string with the format: `999.999.999/99`.
+
+`BR/CPF` MUST NOT be encoded as an array.
+
+Example: `001.456.789/00`
+
+All apps MUST NOT reject a BR/CPF entry because the verification digits (the last two) are incorrect. 
+
+### BR/CNPJ
+
+CNPJ (*Cadastro Nacional de Pessoas Jurídicas*) number. This MUST be encoded as a trimmed string with the format: `99.999.999/9999-99`.
+
+`BR/CNPJ` MUST NOT be encoded as an array.
+
+Example: `01.012.123/0001-99`
+
+All apps MUST NOT reject a `BR/CNPJ` entry because the verification digits (the last two) are incorrect. 
+
+### BR/RNE
+
+RNE (*Registro Nacional de Estrangeiros*) MUST be encoded as a string with all punctuation.
+
+Example: ✏️
+
+### BR/RG
+
+RG (*Registro Geral*) MUST be encoded as an array of dictionaries with the keys:
+
+1. `number` for the RG number which MUST include punctuation.
+2. `digit` for the verification digit, i.e. the character after the hyphen. If the subject RG has no digit this string MUST be empty.
+3. `state` the two letter uppercase code for the federative unit that issued the document.
+4. `issuer` the institution that actually issued the RG.
+6. `short_form` a concise string expressing the main things about the RG. The following algorithm MUST be used:
+
+```pseudo
+IF digit IS present THEN
+    short_form = number + "-" + digit + " /" + state
+ELSE
+    short_form = number + " /" + state
+END IF
+```
+
+Example of an RG:
+
+```js
+{
+    // Number with punctuation
+    "number": "12.345.678",
+    // The character after the hyphen when present
+    "digit": "X",
+    // The issuing state (two letter upper case code)
+    "state": "DF",
+    // Issuing organization ("órgão emissor") with diacritics
+    "issuer": "Secretaria de Segurança Pública",
+    // number + " " + state (if digit == "")
+    // number + "-" + digit + " " + state (if digit == "")
+    "short_form": "12.345.678-X DF"
+}
+```
+
+### BR/Título de Eleitor
+
+### BR/NIT
 
 
-
-
+{{json-schemas.md}}
 
 {backmatter}
 
@@ -562,5 +694,15 @@ All signing apps **MUST** check extension in a case insensitive manner.
       <organization>International Civil Aviation Organization</organization>
   </author>
   <date year='2015'/>
+ </front>
+ </reference>
+
+<reference anchor='BR-MP2002' target='http://www.planalto.gov.br/ccivil_03/MPV/Antigas_2001/2200-2.htm'>
+ <front>
+ <title>Medida Provisória № 2.200-2</title>
+  <author>
+      <organization>Federative Republic of Brazil</organization>
+  </author>
+  <date day='24' month='08' year='2001'/>
  </front>
  </reference>
