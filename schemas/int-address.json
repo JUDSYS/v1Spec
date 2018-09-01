@@ -2,7 +2,7 @@
   "$id": "https://judsys.github.io/schema/int-address.json",
   "title": "JUDSYS-1 Address",
   "type": "object",
-  "required": ["country", "state", "city"],
+  "required": ["country"],
   "additionalProperties": false,
   "properties": {
     "country": {

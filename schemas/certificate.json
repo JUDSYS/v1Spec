@@ -9,7 +9,8 @@
       "$ref": "https://judsys.github.io/schema/entity.json"
     },
     "issuer": {
-      "$ref": "https://judsys.github.io/schema/entity.json"
+      "type": "string",
+      "description": "The key ID of the issue-certs key of the issuer."
     },
     "notBefore": {
       "type": "string",
@@ -28,7 +29,7 @@
     "legal-recognition": {
       "type": "array",
       "items": {
-        "enum": ["timestamp", "authentic-scan"]
+        "enum": ["timestamp", "matches-original"]
       }
     }
   }

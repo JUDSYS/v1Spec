@@ -10,7 +10,7 @@
     },
     "IV": {
       "type": "string",
-      "description": "A base64 encoding of the initialization vector"
+      "description": "A hex encoding of the initialization vector"
     }
   }
 }
