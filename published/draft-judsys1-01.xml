@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- name="GENERATOR" content="github.com/mmarkdown/mmark markdown processor for Go" -->
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" submissionType="independent" category="exp" xml:lang="en" consensus="no" docName="draft-judsys1-00">
+<rfc ipr="trust200902" submissionType="independent" category="exp" xml:lang="en" consensus="no" docName="draft-judsys1-01">
 <?rfc toc="yes"?><?rfc symrefs="yes"?><?rfc sortrefs="yes"?><?rfc compact="yes"?><?rfc subcompact="no"?><?rfc comments="no"?>
 <front>
 <title abbrev="JUDSYS1">JSON Unified Digital Signatures System Standard 1</title><author initials="G." surname="Queiroz" fullname="Gabriel Villela Noriega de Queiroz"><organization></organization><address><postal><street></street>
@@ -1257,6 +1257,15 @@ END IF
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3339.xml"?>
 </references>
 <references title="Informative References">
+<reference anchor='ITI-FAQ-21' target='http://www.iti.gov.br/perguntas-frequentes/41-perguntas-frequentes/567-questoes-juridicas#r21'>
+ <front>
+ <title>Perguntas Frequentes - Questões Jurídicas - Questão 21</title>
+  <author>
+      <organization>ITI - Instituto Nacional de Tecnologia da Informação</organization>
+  </author>
+  <date day='5' month='02' year='2018'/>
+ </front>
+ </reference>
 <reference anchor='ICAO-9303' target='https://www.icao.int/publications/Documents/9303_p3_cons_en.pdf'>
  <front>
  <title>Machine Readable Travel Documents, Seventh Edition</title>
@@ -1276,15 +1285,6 @@ END IF
   </address>
   </author>
   <date year='2015'/>
- </front>
- </reference>
-<reference anchor='ITI-FAQ-21' target='http://www.iti.gov.br/perguntas-frequentes/41-perguntas-frequentes/567-questoes-juridicas#r21'>
- <front>
- <title>Perguntas Frequentes - Questões Jurídicas - Questão 21</title>
-  <author>
-      <organization>ITI - Instituto Nacional de Tecnologia da Informação</organization>
-  </author>
-  <date day='5' month='02' year='2018'/>
  </front>
  </reference>
 </references>
