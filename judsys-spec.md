@@ -68,19 +68,21 @@ document, are to be interpreted as described in [@!RFC2119].
 
 All apps **MUST** use the standard translations present in this document when they present in the Language specific rules section.
 
-**User**: A human being using a JUDSYS app. Unless otherwise specified, users **MUST** ALWAYS be considered as non-tech-savvy people.
+**User**: A human being using a JUDSYS app. Unless otherwise specified, users **MUST** always be considered as non-tech-savvy people.
 
 **Signing app**: A computer program that digitally signs documents according to this standard.
 
 **Verifier app**: A computer program that verifies a digital signature according to this standard.
 
-(**App**) **JUDSYS app**: A computer program that is either a singing app or a verifier app or both.
+(**App**) **JUDSYS app** or **implementation**: A computer program that is either a singing app or a verifier app or both.
 
-**Subject qualifiers**: Certain values that qualify the subject. Ex: email, full name, government issued identification numbers, et cetera.
+**Subject attributes**: Certain values that qualify the subject. Ex: email, full name, government issued identification numbers, et cetera.
 
-**Natrual person**: A human beign.
+**Natural person**: A human begin.
 
 **Legal person**: A group of people who the Law considers to be its own person. 
+
+**Software person**: A piece of software that acts in the name of a natural or legal person.
 
 **Digital signature**:
 
@@ -94,13 +96,13 @@ All apps **MUST** use the standard translations present in this document when th
 
 (**PA**) **Proof of attribute**: A short signed message in which the issuer certifies that a certain attribute is true. Examples: job titles and permissions delegated by the issuer to the subject.
 
-(**TA**) **Timestamping Authority**
+(**TA**) **Time-stamping Authority**
 
 This is very similar to the concept of attribute certificates. The names was changed to avoid using the "certificate" in two different contexts that may confuse users.
 
 **ICAO**: International Civil Aviation Organization.
 
-**JSON**: Javascript Object Notation.
+**JSON**: JavaScript Object Notation.
 
 # Encoding
 
@@ -139,7 +141,7 @@ For JUDSYS-1 files, all apps **MUST** use only the file extensions show below:
 
 ## Strings
 
-All apps **MUST** have proper Unicode support and fonts to display any characters that may be necessary for the country of intended use. This is, an app for France **MUST** have fonts with accented characters, but **SHOULD NOT** have any CJK nor Cyrillic support. An app for Russia **MUST** have Cyrillic and Latin support, but **SHOULD NOT** have CJK or Mongolian support.
+All apps **MUST** have proper Unicode support and fonts to display any characters that may be necessary for the country of intended use. This is, an app for France **MUST** have fonts with accented characters, but **MAY** have no CJK nor Cyrillic support. An app for Russia **MUST** have Cyrillic and Latin support, but **MAY** have no CJK or Mongolian support.
 
 It is **RECOMMENDED** to store string in NFC (Normal Form Composition).
 
@@ -169,7 +171,7 @@ Special cases are:
   1. `MERCOSU` for the Southern Common Market, Mercosur in Spanish and Mercosul in Portuguese.
   1. `UNASU` for the Union of South American Nations, UNSAUR in Spanish and UNASUL in Portuguese.
   1. `NAFTA` for the North American Free Trade Agreement.
-  1. `HOAX` for URSAL - União das Repúblicas Socialistas da America Latina.
+  1. `HOAX` for URSAL - União das Repúblicas Socialistas da America Latina. (just a joke, non-normative)
 
 ## Certificate chains
 
@@ -187,14 +189,16 @@ All keys are encoded as a dictionaries, which **MUST** have the following keys:
 
 1. `algorithm`
 2. `id`: A hash of the key that uniquely identifies it.
-3. `usage`: A dictionary that indicates what the key may be used for. Possible keys:
-   1. `signing`: The key MAY be used to sign digital documents, issue and revoke attribute certificates.
-   2. `identification`: They key MAY be used to identify the subject.
-   3. `encryption`: The key MAY be used for everyone to encrypt messages to the subject.
-   4. `certification`: The key MAY be used to issue digital certificates.
-   5. `revocation`: They key MAY be used to issue certificate revocations.
+3. `usage`: An enum that indicates what the key may be used for. Possible values:
+   1. `signing`: The key is used only to sign digital documents, issue and revoke attribute certificates.
+   2. `identification`: They key is used only to identify the subject. Ex: login.
+   3. `encryption`: The key is used only for any person to encrypt messages to the subject.
+   4. `certification`: The key is used only to issue digital certificates.
+   5. `revocation`: They key is used only to issue certificate revocations.
 
-Each key **MUST NOT** be used in any algorithms other than the one prescribed on the key `algorithm`.
+Each key **MUST NOT** be used in any algorithms other than the one prescribed on the key `usage`.
+
+Key material **MUST NOT** be reused.
 
 ## Subject Attributes
 
@@ -205,13 +209,13 @@ The CA **MUST** verify the attributes it will use on certificates it issues. If 
 1. If the CA fails to verify that a phone number really belongs to the subject, it **MUST** never be included.
 2. If the subject of the certificate to be issued forgets to bring their US/SSN, this attribute **MUST NOT** be included in the certificate.
 
-If a CA MAY refuse to issue a certificate if essential properties could not verified. Examples: INT/name, US/SSN, BR/RG, BR/CPF.
+A CA MAY refuse to issue a certificate if essential properties could not verified. Examples: INT/name, US/SSN, BR/RG, BR/CPF.
 
 ### INT/type
 
-An enum describing the type of the subject. Possible values are: `natural person`, `legal person`, `authority` (certificate authority and time-stamping authorities) and `other` (ex: software).
+An enum describing the type of the subject. Possible values are: `natural person`, `legal person`, and `other` (ex: software).
 
-### INT/name
+### INT/names
 
 Each name is a one line Unicode string.
 
@@ -225,13 +229,13 @@ Any prefixes, suffixes, infixes, honorifics and similar things attached to the n
 
 Generic prefixes like "Mr." or "Ms." and job titles **MUST NOT** be included in any of the names.
 
-For legal persons, it is recommended to follow the convention: `(<Acronym>) <Full Legal Name> <Any special endings>` Examples:
+For legal persons, it is **RECOMMENDED** to follow the convention: `(<Acronym>) <Full Legal Name> <Any special endings>` Examples:
 
 1. (USP) Universidade São Paulo
 2. Monsters Inc.
 3. Empresa Qualquer Serviços e Comércio LTDA
 
-For natural persons, it is recommended to follow the convention: `(<Nick Name>) <First Name> <Full Middle Name> <Last Name>` Examples:
+For natural persons, it is **RECOMMENDED** to follow the convention: `(<Nick Name>) <First Name> <Full Middle Name> <Last Name>` Examples:
 
 1. Dennis MacAlister Ritchie
 2. (FHC) Fernando Henrique Cardoso
@@ -239,15 +243,28 @@ For natural persons, it is recommended to follow the convention: `(<Nick Name>) 
 
 ### INT/parents
 
+An array of entities. The order **MUST NOT** be assigned any meaning. The array **MAY** have any number of elements.
+
+The `INT/parents` attribute **MAY** lead to a recursive behaviour. This attribute **SHOULD NOT** exceed the grandparents generations.
+
+Example 1:
+```js
+[
+  {"id": "BR/CPF", "INT/names": ["João da Silva"], "BR/CPF": "123.456.789-00"},
+  {"id": "BR/CPF", "INT/names": ["Maria da Silva"], "BR/CPF": "987.654.321-00"},
+  {"id": "BR/CPF", "INT/names": ["Joaquim Freitas"], "BR/CPF": "987.654.321-00"}
+]
+```
+
 ### INT/emails
 
 An array of the subject's email addresses.
 
 The fist entry is considered the main one.
 
-The subject MAY have no email address.
+The subject **MAY** have no email address.
 
-It is RECOMENDED to have at least one ASCII email address.
+It is **RECOMENDED** to have at least one ASCII email address.
 
 Examples:
 ```js
@@ -270,7 +287,7 @@ The phone numbers **MUST** be encoded as a string array. Each element of that ar
 
 The country code part **MUST** begin with a `+` (plus sign) and have a space to separate it from the rest of the number. This is mainly to aid humans, by separating the international part from the local one.
 
-The rest of the number SHOULD follow the traditions and conventions of the country in question and MAY include punctuation.
+The rest of the number **SHOULD** follow the traditions and conventions of the country in question and MAY include punctuation.
 
 Examples:
 
@@ -393,12 +410,10 @@ All apps **MUST** show the issuer's name and the job title of the attributes cer
 Valid examples:
 
 1. Consul
-2. Preator
 3. Questor
 4. President
 5. CEO
 6. CEO, Cheif Executive Officer
-7. Justice
 8. Ministro
 9. Ministro da 1ª turma
 

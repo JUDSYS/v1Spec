@@ -3,9 +3,9 @@
 
 
 No Formal Workgroup                                           G. Queiroz
-Internet-Draft                                         September 1, 2018
+Internet-Draft                                         September 5, 2018
 Intended status: Experimental
-Expires: March 5, 2019
+Expires: March 9, 2019
 
 
            JSON Unified Digital Signatures System Standard 1
@@ -31,7 +31,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 5, 2019.
+   This Internet-Draft will expire on March 9, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Queiroz                   Expires March 5, 2019                 [Page 1]
+Queiroz                   Expires March 9, 2019                 [Page 1]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -74,31 +74,31 @@ Table of Contents
      3.1.  Keys  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
      3.2.  Subject Attributes  . . . . . . . . . . . . . . . . . . .   9
        3.2.1.  INT/type  . . . . . . . . . . . . . . . . . . . . . .   9
-       3.2.2.  INT/name  . . . . . . . . . . . . . . . . . . . . . .   9
+       3.2.2.  INT/names . . . . . . . . . . . . . . . . . . . . . .   9
        3.2.3.  INT/parents . . . . . . . . . . . . . . . . . . . . .  10
-       3.2.4.  INT/emails  . . . . . . . . . . . . . . . . . . . . .  10
+       3.2.4.  INT/emails  . . . . . . . . . . . . . . . . . . . . .  11
        3.2.5.  INT/phones  . . . . . . . . . . . . . . . . . . . . .  11
-       3.2.6.  INT/addresses . . . . . . . . . . . . . . . . . . . .  11
-       3.2.7.  INT/pictures  . . . . . . . . . . . . . . . . . . . .  11
+       3.2.6.  INT/addresses . . . . . . . . . . . . . . . . . . . .  12
+       3.2.7.  INT/pictures  . . . . . . . . . . . . . . . . . . . .  12
        3.2.8.  INT/passports . . . . . . . . . . . . . . . . . . . .  12
-   4.  Certification Chain . . . . . . . . . . . . . . . . . . . . .  13
+   4.  Certification Chain . . . . . . . . . . . . . . . . . . . . .  14
      4.1.  Public Key Infrastructure . . . . . . . . . . . . . . . .  14
      4.2.  Nameless Certificates . . . . . . . . . . . . . . . . . .  14
      4.3.  Revocation  . . . . . . . . . . . . . . . . . . . . . . .  14
-   5.  Proof of attribute  . . . . . . . . . . . . . . . . . . . . .  14
-     5.1.  Standard attributes . . . . . . . . . . . . . . . . . . .  14
-       5.1.1.  INT/job . . . . . . . . . . . . . . . . . . . . . . .  14
+   5.  Proof of attribute  . . . . . . . . . . . . . . . . . . . . .  15
+     5.1.  Standard attributes . . . . . . . . . . . . . . . . . . .  15
+       5.1.1.  INT/job . . . . . . . . . . . . . . . . . . . . . . .  15
    6.  Signatures  . . . . . . . . . . . . . . . . . . . . . . . . .  15
-     6.1.  Standard attributes . . . . . . . . . . . . . . . . . . .  15
-       6.1.1.  INT/reason  . . . . . . . . . . . . . . . . . . . . .  15
-       6.1.2.  INT/location  . . . . . . . . . . . . . . . . . . . .  16
+     6.1.  Standard attributes . . . . . . . . . . . . . . . . . . .  16
+       6.1.1.  INT/reason  . . . . . . . . . . . . . . . . . . . . .  16
+       6.1.2.  INT/location  . . . . . . . . . . . . . . . . . . . .  17
        6.1.3.  INT/date  . . . . . . . . . . . . . . . . . . . . . .  17
-       6.1.4.  INT/file  . . . . . . . . . . . . . . . . . . . . . .  17
-       6.1.5.  INT/counter . . . . . . . . . . . . . . . . . . . . .  17
-     6.2.  Signature Request . . . . . . . . . . . . . . . . . . . .  17
-   7.  Internet APIs . . . . . . . . . . . . . . . . . . . . . . . .  17
-     7.1.  Online RESTful  . . . . . . . . . . . . . . . . . . . . .  17
-       7.1.1.  Sign certificate  . . . . . . . . . . . . . . . . . .  17
+       6.1.4.  INT/file  . . . . . . . . . . . . . . . . . . . . . .  18
+       6.1.5.  INT/counter . . . . . . . . . . . . . . . . . . . . .  18
+     6.2.  Signature Request . . . . . . . . . . . . . . . . . . . .  18
+   7.  Internet APIs . . . . . . . . . . . . . . . . . . . . . . . .  18
+     7.1.  Online RESTful  . . . . . . . . . . . . . . . . . . . . .  18
+       7.1.1.  Sign certificate  . . . . . . . . . . . . . . . . . .  18
        7.1.2.  Certificate revocation status . . . . . . . . . . . .  18
        7.1.3.  Timestamp servers . . . . . . . . . . . . . . . . . .  18
      7.2.  Browser interaction . . . . . . . . . . . . . . . . . . .  18
@@ -109,55 +109,55 @@ Table of Contents
 
 
 
-Queiroz                   Expires March 5, 2019                 [Page 2]
+Queiroz                   Expires March 9, 2019                 [Page 2]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
 
-     9.3.  Accidental changes  . . . . . . . . . . . . . . . . . . .  19
-     9.4.  Archive files . . . . . . . . . . . . . . . . . . . . . .  19
-     9.5.  User misinterpretation and excessive trust on the machine  19
-     9.6.  Certificate and password sharing  . . . . . . . . . . . .  19
-     9.7.  Cloud usage . . . . . . . . . . . . . . . . . . . . . . .  19
-     9.8.  Side channel attacks  . . . . . . . . . . . . . . . . . .  19
-     9.9.  Document replacement  . . . . . . . . . . . . . . . . . .  19
-   10. Language Specific Rules . . . . . . . . . . . . . . . . . . .  19
+     9.3.  Accidental changes  . . . . . . . . . . . . . . . . . . .  20
+     9.4.  Archive files . . . . . . . . . . . . . . . . . . . . . .  20
+     9.5.  User misinterpretation and excessive trust on the machine  20
+     9.6.  Certificate and password sharing  . . . . . . . . . . . .  20
+     9.7.  Cloud usage . . . . . . . . . . . . . . . . . . . . . . .  20
+     9.8.  Side channel attacks  . . . . . . . . . . . . . . . . . .  20
+     9.9.  Document replacement  . . . . . . . . . . . . . . . . . .  20
+   10. Language Specific Rules . . . . . . . . . . . . . . . . . . .  20
      10.1.  Portuguese . . . . . . . . . . . . . . . . . . . . . . .  20
        10.1.1.  Unicode Support  . . . . . . . . . . . . . . . . . .  20
        10.1.2.  Standard Translations  . . . . . . . . . . . . . . .  20
-   11. Country Specific Rules  . . . . . . . . . . . . . . . . . . .  20
-     11.1.  Brazil . . . . . . . . . . . . . . . . . . . . . . . . .  20
-     11.2.  Subject Attributes . . . . . . . . . . . . . . . . . . .  21
-       11.2.1.  BR/CPF . . . . . . . . . . . . . . . . . . . . . . .  21
-       11.2.2.  BR/CNPJ  . . . . . . . . . . . . . . . . . . . . . .  21
-       11.2.3.  BR/RNE . . . . . . . . . . . . . . . . . . . . . . .  21
+   11. Country Specific Rules  . . . . . . . . . . . . . . . . . . .  21
+     11.1.  Brazil . . . . . . . . . . . . . . . . . . . . . . . . .  21
+     11.2.  Subject Attributes . . . . . . . . . . . . . . . . . . .  22
+       11.2.1.  BR/CPF . . . . . . . . . . . . . . . . . . . . . . .  22
+       11.2.2.  BR/CNPJ  . . . . . . . . . . . . . . . . . . . . . .  22
+       11.2.3.  BR/RNE . . . . . . . . . . . . . . . . . . . . . . .  22
        11.2.4.  BR/RG  . . . . . . . . . . . . . . . . . . . . . . .  22
-       11.2.5.  BR/Titulo de Eleitor . . . . . . . . . . . . . . . .  22
-       11.2.6.  BR/NIT . . . . . . . . . . . . . . . . . . . . . . .  22
+       11.2.5.  BR/Titulo de Eleitor . . . . . . . . . . . . . . . .  23
+       11.2.6.  BR/NIT . . . . . . . . . . . . . . . . . . . . . . .  23
    12. JSON Schemas  . . . . . . . . . . . . . . . . . . . . . . . .  23
      12.1.  Certificate File (.j1c)  . . . . . . . . . . . . . . . .  23
-     12.2.  Private Keys File (.j1k) . . . . . . . . . . . . . . . .  23
-     12.3.  Proof of Attribute File (.j1a) . . . . . . . . . . . . .  24
-     12.4.  Detached Digital Signature File (.j1s) . . . . . . . . .  24
-     12.5.  Encrypted File (.j1e)  . . . . . . . . . . . . . . . . .  24
-     12.6.  Revocation Information File (.j1r) . . . . . . . . . . .  24
-     12.7.  Hash (optionally salted) . . . . . . . . . . . . . . . .  24
-     12.8.  AES-256-CBC  . . . . . . . . . . . . . . . . . . . . . .  24
-     12.9.  Argon2 . . . . . . . . . . . . . . . . . . . . . . . . .  25
-     12.10. ECDSA  . . . . . . . . . . . . . . . . . . . . . . . . .  25
-     12.11. Encrypted Object . . . . . . . . . . . . . . . . . . . .  25
-     12.12. Signed Object  . . . . . . . . . . . . . . . . . . . . .  27
-     12.13. Key  . . . . . . . . . . . . . . . . . . . . . . . . . .  27
-       12.13.1.  RSA . . . . . . . . . . . . . . . . . . . . . . . .  28
-       12.13.2.  ECDSA Public Key  . . . . . . . . . . . . . . . . .  29
-     12.14. Entity (subject of issuer) . . . . . . . . . . . . . . .  30
-     12.15. Certificate  . . . . . . . . . . . . . . . . . . . . . .  31
-     12.16. Address  . . . . . . . . . . . . . . . . . . . . . . . .  32
-     12.17. Passport . . . . . . . . . . . . . . . . . . . . . . . .  34
-   13. References  . . . . . . . . . . . . . . . . . . . . . . . . .  35
-     13.1.  Normative References . . . . . . . . . . . . . . . . . .  35
-     13.2.  Informative References . . . . . . . . . . . . . . . . .  35
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  35
+     12.2.  Private Keys File (.j1k) . . . . . . . . . . . . . . . .  24
+     12.3.  Proof of Attribute File (.j1a) . . . . . . . . . . . . .  25
+     12.4.  Detached Digital Signature File (.j1s) . . . . . . . . .  25
+     12.5.  Encrypted File (.j1e)  . . . . . . . . . . . . . . . . .  25
+     12.6.  Revocation Information File (.j1r) . . . . . . . . . . .  25
+     12.7.  Hash (optionally salted) . . . . . . . . . . . . . . . .  25
+     12.8.  AES-256-CBC  . . . . . . . . . . . . . . . . . . . . . .  25
+     12.9.  Argon2 . . . . . . . . . . . . . . . . . . . . . . . . .  26
+     12.10. ECDSA  . . . . . . . . . . . . . . . . . . . . . . . . .  26
+     12.11. Encrypted Object . . . . . . . . . . . . . . . . . . . .  26
+     12.12. Signed Object  . . . . . . . . . . . . . . . . . . . . .  28
+     12.13. Key  . . . . . . . . . . . . . . . . . . . . . . . . . .  28
+       12.13.1.  RSA . . . . . . . . . . . . . . . . . . . . . . . .  29
+       12.13.2.  ECDSA Public Key  . . . . . . . . . . . . . . . . .  30
+     12.14. Entity (subject of issuer) . . . . . . . . . . . . . . .  31
+     12.15. Certificate  . . . . . . . . . . . . . . . . . . . . . .  32
+     12.16. Address  . . . . . . . . . . . . . . . . . . . . . . . .  33
+     12.17. Passport . . . . . . . . . . . . . . . . . . . . . . . .  35
+   13. References  . . . . . . . . . . . . . . . . . . . . . . . . .  36
+     13.1.  Normative References . . . . . . . . . . . . . . . . . .  36
+     13.2.  Informative References . . . . . . . . . . . . . . . . .  36
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  36
 
 
 
@@ -165,7 +165,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 5, 2019                 [Page 3]
+Queiroz                   Expires March 9, 2019                 [Page 3]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -221,7 +221,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 5, 2019                 [Page 4]
+Queiroz                   Expires March 9, 2019                 [Page 4]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -241,7 +241,7 @@ Internet-Draft                   JUDSYS1                  September 2018
    when they present in the Language specific rules section.
 
    *User*: A human being using a JUDSYS app.  Unless otherwise
-   specified, users MUST ALWAYS be considered as non-tech-savvy people.
+   specified, users MUST always be considered as non-tech-savvy people.
 
    *Signing app*: A computer program that digitally signs documents
    according to this standard.
@@ -249,17 +249,20 @@ Internet-Draft                   JUDSYS1                  September 2018
    *Verifier app*: A computer program that verifies a digital signature
    according to this standard.
 
-   (*App*) *JUDSYS app*: A computer program that is either a singing app
-   or a verifier app or both.
+   (*App*) *JUDSYS app* or *implementation*: A computer program that is
+   either a singing app or a verifier app or both.
 
-   *Subject qualifiers*: Certain values that qualify the subject.  Ex:
+   *Subject attributes*: Certain values that qualify the subject.  Ex:
    email, full name, government issued identification numbers, et
    cetera.
 
-   *Natrual person*: A human beign.
+   *Natural person*: A human begin.
 
    *Legal person*: A group of people who the Law considers to be its own
    person.
+
+   *Software person*: A piece of software that acts in the name of a
+   natural or legal person.
 
    *Digital signature*:
 
@@ -270,23 +273,25 @@ Internet-Draft                   JUDSYS1                  September 2018
    *Certificate*: A short signed message that states a key pair is in
    the control of a specific subject.
 
+
+
+
+
+Queiroz                   Expires March 9, 2019                 [Page 5]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
+
    (*CA*) *Certificate Authority*: A certificate that is allowed to sign
    other certificates.  This is, a CA is an entity (usually a company or
    government body) that ensures that the subject on a certificate is
    really the person it names.
 
-
-
-Queiroz                   Expires March 5, 2019                 [Page 5]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
-
    (*PA*) *Proof of attribute*: A short signed message in which the
    issuer certifies that a certain attribute is true.  Examples: job
    titles and permissions delegated by the issuer to the subject.
 
-   (*TA*) *Timestamping Authority*
+   (*TA*) *Time-stamping Authority*
 
    This is very similar to the concept of attribute certificates.  The
    names was changed to avoid using the "certificate" in two different
@@ -294,7 +299,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
    *ICAO*: International Civil Aviation Organization.
 
-   *JSON*: Javascript Object Notation.
+   *JSON*: JavaScript Object Notation.
 
 2.  Encoding
 
@@ -328,12 +333,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-
-
-
-
-
-Queiroz                   Expires March 5, 2019                 [Page 6]
+Queiroz                   Expires March 9, 2019                 [Page 6]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -354,9 +354,9 @@ Internet-Draft                   JUDSYS1                  September 2018
    All apps MUST have proper Unicode support and fonts to display any
    characters that may be necessary for the country of intended use.
    This is, an app for France MUST have fonts with accented characters,
-   but SHOULD NOT have any CJK nor Cyrillic support.  An app for Russia
-   MUST have Cyrillic and Latin support, but SHOULD NOT have CJK or
-   Mongolian support.
+   but MAY have no CJK nor Cyrillic support.  An app for Russia MUST
+   have Cyrillic and Latin support, but MAY have no CJK or Mongolian
+   support.
 
    It is RECOMMENDED to store string in NFC (Normal Form Composition).
 
@@ -389,7 +389,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 5, 2019                 [Page 7]
+Queiroz                   Expires March 9, 2019                 [Page 7]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -412,7 +412,7 @@ Internet-Draft                   JUDSYS1                  September 2018
    6.  "NAFTA" for the North American Free Trade Agreement.
 
    7.  "HOAX" for URSAL - Uniao das Republicas Socialistas da America
-       Latina.
+       Latina. (just a joke, non-normative)
 
 2.5.  Certificate chains
 
@@ -437,33 +437,35 @@ Internet-Draft                   JUDSYS1                  September 2018
 
    2.  "id": A hash of the key that uniquely identifies it.
 
-   3.  "usage": A dictionary that indicates what the key may be used
-       for.  Possible keys:
+   3.  "usage": An enum that indicates what the key may be used for.
+       Possible values:
 
-       1.  "signing": The key MAY be used to sign digital documents,
+       1.  "signing": The key is used only to sign digital documents,
            issue and revoke attribute certificates.
 
 
 
-Queiroz                   Expires March 5, 2019                 [Page 8]
+Queiroz                   Expires March 9, 2019                 [Page 8]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
 
-       2.  "identification": They key MAY be used to identify the
-           subject.
+       2.  "identification": They key is used only to identify the
+           subject.  Ex: login.
 
-       3.  "encryption": The key MAY be used for everyone to encrypt
+       3.  "encryption": The key is used only for any person to encrypt
            messages to the subject.
 
-       4.  "certification": The key MAY be used to issue digital
+       4.  "certification": The key is used only to issue digital
            certificates.
 
-       5.  "revocation": They key MAY be used to issue certificate
+       5.  "revocation": They key is used only to issue certificate
            revocations.
 
    Each key MUST NOT be used in any algorithms other than the one
-   prescribed on the key "algorithm".
+   prescribed on the key "usage".
+
+   Key material MUST NOT be reused.
 
 3.2.  Subject Attributes
 
@@ -481,16 +483,15 @@ Internet-Draft                   JUDSYS1                  September 2018
        their US/SSN, this attribute MUST NOT be included in the
        certificate.
 
-   If a CA MAY refuse to issue a certificate if essential properties
-   could not verified.  Examples: INT/name, US/SSN, BR/RG, BR/CPF.
+   A CA MAY refuse to issue a certificate if essential properties could
+   not verified.  Examples: INT/name, US/SSN, BR/RG, BR/CPF.
 
 3.2.1.  INT/type
 
    An enum describing the type of the subject.  Possible values are:
-   "natural person", "legal person", "authority" (certificate authority
-   and time-stamping authorities) and "other" (ex: software).
+   "natural person", "legal person", and "other" (ex: software).
 
-3.2.2.  INT/name
+3.2.2.  INT/names
 
    Each name is a one line Unicode string.
 
@@ -500,8 +501,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-
-Queiroz                   Expires March 5, 2019                 [Page 9]
+Queiroz                   Expires March 9, 2019                 [Page 9]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -519,7 +519,7 @@ Internet-Draft                   JUDSYS1                  September 2018
    Generic prefixes like "Mr." or "Ms." and job titles MUST NOT be
    included in any of the names.
 
-   For legal persons, it is recommended to follow the convention:
+   For legal persons, it is RECOMMENDED to follow the convention:
    "(<Acronym>) <Full Legal Name> <Any special endings>" Examples:
 
    1.  (USP) Universidade Sao Paulo
@@ -528,7 +528,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
    3.  Empresa Qualquer Servicos e Comercio LTDA
 
-   For natural persons, it is recommended to follow the convention:
+   For natural persons, it is RECOMMENDED to follow the convention:
    "(<Nick Name>) <First Name> <Full Middle Name> <Last Name>" Examples:
 
    1.  Dennis MacAlister Ritchie
@@ -541,6 +541,27 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 3.2.3.  INT/parents
 
+   An array of entities.  The order MUST NOT be assigned any meaning.
+   The array MAY have any number of elements.
+
+   The "INT/parents" attribute MAY lead to a recursive behaviour.  This
+   attribute SHOULD NOT exceed the grandparents generations.
+
+   Example 1:
+
+[
+  {"id": "BR/CPF", "INT/names": ["Joao da Silva"], "BR/CPF": "123.456.789-00"},
+  {"id": "BR/CPF", "INT/names": ["Maria da Silva"], "BR/CPF": "987.654.321-00"},
+  {"id": "BR/CPF", "INT/names": ["Joaquim Freitas"], "BR/CPF": "987.654.321-00"}
+]
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 10]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
+
 3.2.4.  INT/emails
 
    An array of the subject's email addresses.
@@ -549,18 +570,9 @@ Internet-Draft                   JUDSYS1                  September 2018
 
    The subject MAY have no email address.
 
-   It is RECOMENDED to have at least one ASCII email address.
+   It is *RECOMENDED* to have at least one ASCII email address.
 
    Examples:
-
-
-
-
-
-Queiroz                   Expires March 5, 2019                [Page 10]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
 
    // Okay:
    []
@@ -599,6 +611,13 @@ Internet-Draft                   JUDSYS1                  September 2018
    Note: This attribute is intended to be used by some legal persons and
    by pretty much no natural persons.
 
+
+
+Queiroz                   Expires March 9, 2019                [Page 11]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
+
 3.2.6.  INT/addresses
 
    For security reasons the subject MUST have the right to refuse the
@@ -609,14 +628,6 @@ Internet-Draft                   JUDSYS1                  September 2018
    For privacy reasons the subject SHOULD have the right to refuse the
    inclusion of "INT/picture" attribute.  The CA, however, CAN require
    this attribute but its is encouraged not to require it.
-
-
-
-
-Queiroz                   Expires March 5, 2019                [Page 11]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
 
    The picture MUST always be static: no animated GIFs or similar.
 
@@ -655,6 +666,14 @@ Internet-Draft                   JUDSYS1                  September 2018
    1.   "type": Indicates the type of document, for passports this is a
         "P".
 
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 12]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
+
    2.   "number": A string, which MAY contain letters, the identifies
         this passport.
 
@@ -665,14 +684,6 @@ Internet-Draft                   JUDSYS1                  September 2018
    5.   "given_name": The subject's first name.
 
    6.   "nationality": The subject's nationality.
-
-
-
-
-Queiroz                   Expires March 5, 2019                [Page 12]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
 
    7.   "date_of_birth": The subject's date of birth.
 
@@ -700,6 +711,25 @@ Internet-Draft                   JUDSYS1                  September 2018
    are presented on the VIZ (Visual Inspection Zone), rather than the
    MRZ.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 13]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
+
 {
     "type": "P",
     "country": "UTO", // This **MAY NOT** match ISO 3166-1, read ICAO Doc 9303 (pages 22 to 29) for details.
@@ -721,15 +751,6 @@ Internet-Draft                   JUDSYS1                  September 2018
 
    &#128073; Open Question: Should software receive certificates?  Ex:
    Should a bank have a specific certificate only for its web server
-
-
-
-
-Queiroz                   Expires March 5, 2019                [Page 13]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
-
    that is used not for SSL but for singing that it approved clients
    requests (loans for instance) and singing bank statements?
 
@@ -754,6 +775,17 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 4.3.  Revocation
 
+
+
+
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 14]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
+
 5.  Proof of attribute
 
 5.1.  Standard attributes
@@ -773,28 +805,17 @@ Internet-Draft                   JUDSYS1                  September 2018
 
    1.  Consul
 
-   2.  Preator
+   2.  Questor
 
-   3.  Questor
+   3.  President
 
-   4.  President
+   4.  CEO
 
+   5.  CEO, Cheif Executive Officer
 
+   6.  Ministro
 
-Queiroz                   Expires March 5, 2019                [Page 14]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
-
-   5.  CEO
-
-   6.  CEO, Cheif Executive Officer
-
-   7.  Justice
-
-   8.  Ministro
-
-   9.  Ministro da 1a turma
+   7.  Ministro da 1a turma
 
    Wrong examples (organization MUST NOT be in the job title):
 
@@ -809,6 +830,17 @@ Internet-Draft                   JUDSYS1                  September 2018
    5.  Ministro da 1a turma do Supremo Tribunal Federal
 
 6.  Signatures
+
+
+
+
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 15]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
 
 6.1.  Standard attributes
 
@@ -835,13 +867,6 @@ Internet-Draft                   JUDSYS1                  September 2018
        is expected to look regularly.  Example: A server placed an email
        on the recipient's account.
 
-
-
-Queiroz                   Expires March 5, 2019                [Page 15]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
-
    6.  "received": The signer received the document.  Example: a person
        counter-signs with this key to confirm they received an email.
 
@@ -863,6 +888,15 @@ Internet-Draft                   JUDSYS1                  September 2018
    When this happens, it means that the signer approved a part of the
    document and rejected another.  The user MUST be informed when this
    happens.
+
+
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 16]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
 
 6.1.2.  INT/location
 
@@ -890,14 +924,6 @@ Internet-Draft                   JUDSYS1                  September 2018
    8.   "number": A string (never a number) with the street number or
         name of the building.
 
-
-
-
-Queiroz                   Expires March 5, 2019                [Page 16]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
-
    9.   "complement": A string with the complement for the address.
 
    10.  "text": A multi line string describing the place according to
@@ -916,6 +942,17 @@ Internet-Draft                   JUDSYS1                  September 2018
 
    All apps MUST warn the user that this value is just a claim which may
    be false.
+
+
+
+
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 17]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
 
 6.1.4.  INT/file
 
@@ -943,17 +980,6 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 7.1.1.  Sign certificate
 
-
-
-
-
-
-
-Queiroz                   Expires March 5, 2019                [Page 17]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
-
 7.1.2.  Certificate revocation status
 
 7.1.3.  Timestamp servers
@@ -976,6 +1002,13 @@ Internet-Draft                   JUDSYS1                  September 2018
    All signing apps MUST also not show the warning to the user if they
    have checked and failed to find signs of dynamic content on the file
    being signed.
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 18]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
 
    If a signing app cannot verify the file for dynamic content and it is
    not on the white list, it MUST warn the user about the possibility of
@@ -1002,14 +1035,6 @@ Internet-Draft                   JUDSYS1                  September 2018
    Applications (ODF) and older Microsoft Office files, the verification
    MUST check for, and fail to find all of the following:
 
-
-
-
-Queiroz                   Expires March 5, 2019                [Page 18]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
-
    1.  OLE content.
 
    2.  (&#9999;&#65039; what else?)
@@ -1029,6 +1054,17 @@ Internet-Draft                   JUDSYS1                  September 2018
    5.  XML files (".xml").
 
    All signing apps MUST check extension in a case insensitive manner.
+
+
+
+
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 19]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
 
 9.3.  Accidental changes
 
@@ -1055,17 +1091,6 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 10.  Language Specific Rules
 
-
-
-
-
-
-
-Queiroz                   Expires March 5, 2019                [Page 19]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
-
 10.1.  Portuguese
 
 10.1.1.  Unicode Support
@@ -1079,6 +1104,23 @@ Internet-Draft                   JUDSYS1                  September 2018
        need for supporting C1 Controls.
 
 10.1.2.  Standard Translations
+
+
+
+
+
+
+
+
+
+
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 20]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
 
    +------------------------------+------------------------------------+
    | English                      | Portuguese                         |
@@ -1113,15 +1155,6 @@ Internet-Draft                   JUDSYS1                  September 2018
    have propper capitalization.  Ex: "Pedro de Alantara", not "PEDRO DE
    ALCANTARA" nor "Pedro De Alcantara".
 
-
-
-
-
-Queiroz                   Expires March 5, 2019                [Page 20]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
-
    All certificates issued for legal persons MUST have the following
    attributes:
 
@@ -1134,6 +1167,16 @@ Internet-Draft                   JUDSYS1                  September 2018
    2.  "BR/IM" (inscricao municipal)
 
    3.  "BR/NIRE" (junta comercial)
+
+
+
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 21]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
 
 11.2.  Subject Attributes
 
@@ -1168,16 +1211,6 @@ Internet-Draft                   JUDSYS1                  September 2018
 
    Example: &#9999;&#65039;
 
-
-
-
-
-
-Queiroz                   Expires March 5, 2019                [Page 21]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
-
 11.2.4.  BR/RG
 
    RG (_Registro Geral_) MUST be encoded as an array of dictionaries
@@ -1193,6 +1226,13 @@ Internet-Draft                   JUDSYS1                  September 2018
        that issued the document.
 
    4.  "issuer" the institution that actually issued the RG.
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 22]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
 
    5.  "short_form" a concise string expressing the main things about
        the RG.  The following algorithm MUST be used:
@@ -1223,20 +1263,32 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 11.2.6.  BR/NIT
 
-
-
-
-
-
-
-Queiroz                   Expires March 5, 2019                [Page 22]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
-
 12.  JSON Schemas
 
 12.1.  Certificate File (.j1c)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 23]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
 
    {
      "$id": "https://judsys.github.io/schema/j1c.json",
@@ -1285,7 +1337,11 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 5, 2019                [Page 23]
+
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 24]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1341,7 +1397,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 5, 2019                [Page 24]
+Queiroz                   Expires March 9, 2019                [Page 25]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1397,7 +1453,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 5, 2019                [Page 25]
+Queiroz                   Expires March 9, 2019                [Page 26]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1453,7 +1509,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 5, 2019                [Page 26]
+Queiroz                   Expires March 9, 2019                [Page 27]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1509,7 +1565,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 5, 2019                [Page 27]
+Queiroz                   Expires March 9, 2019                [Page 28]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1565,7 +1621,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 5, 2019                [Page 28]
+Queiroz                   Expires March 9, 2019                [Page 29]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1621,7 +1677,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 5, 2019                [Page 29]
+Queiroz                   Expires March 9, 2019                [Page 30]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1632,9 +1688,16 @@ Internet-Draft                   JUDSYS1                  September 2018
   "$id": "https://judsys.github.io/schema/entity.json",
   "title": "JUDSYS-1 Entity",
   "type": "object",
-  "required": ["id", "INT/names"],
+  "required": ["INT/type", "INT/names"],
   "additionalProperties": true,
   "properties": {
+    "id": {
+      "type": "string",
+      "description": "The name of the attribute that no other entity will share. Ex: US/SSN, BR/CPF, INT/passport:number"
+    },
+    "INT/type": {
+      "enum": ["natural person", "legal person", "other"]
+    },
     "INT/vulnerable": {
       "type": "array",
       "items": {
@@ -1665,8 +1728,16 @@ Internet-Draft                   JUDSYS1                  September 2018
       "type": "array",
       "items": {
         "type": "string",
-        "pattern": "^\+[0-9]{1,} .*$"
+        "pattern": "^[+][0-9]{1,} .*$"
       },
+
+
+
+Queiroz                   Expires March 9, 2019                [Page 31]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
+
       "minItems": 1,
       "uniqueItems": true
     },
@@ -1674,27 +1745,31 @@ Internet-Draft                   JUDSYS1                  September 2018
       "type": "array",
       "items": {
         "$ref": "https://judsys.github.io/schema/address.json"
-
-
-
-Queiroz                   Expires March 5, 2019                [Page 30]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
-
       },
       "minItems": 1,
       "uniqueItems": true
     },
-    "INT/picture": {
-      "type": "string",
-      "contentEncoding": "base64",
-      "contentMediaType": "image"
+    "INT/pictures": {
+      "type": "array",
+      "items": {
+        "contentEncoding": "base64",
+        "contentMediaType": "image"
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
-    "INT/passport": {
+    "INT/passports": {
       "type": "array",
       "items": {
         "$ref": "https://judsys.github.io/schema/passport.json"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "INT/parents": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/entity.json"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -1714,26 +1789,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Queiroz                   Expires March 5, 2019                [Page 31]
+Queiroz                   Expires March 9, 2019                [Page 32]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1764,7 +1820,9 @@ Internet-Draft                   JUDSYS1                  September 2018
        "type": "array",
        "items": {
          "$ref": "https://judsys.github.io/schema/key.json"
-       }
+       },
+       "minItems": 1,
+       "uniqueItems": true
      },
      "legal-recognition": {
        "type": "array",
@@ -1784,16 +1842,16 @@ Internet-Draft                   JUDSYS1                  September 2018
   "required": ["country"],
   "additionalProperties": false,
   "properties": {
-    "country": {
-      "type": "string"
 
 
 
-Queiroz                   Expires March 5, 2019                [Page 32]
+Queiroz                   Expires March 9, 2019                [Page 33]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
 
+    "country": {
+      "type": "string"
     },
     "zip": {
       "type": "string"
@@ -1843,9 +1901,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-
-
-Queiroz                   Expires March 5, 2019                [Page 33]
+Queiroz                   Expires March 9, 2019                [Page 34]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1901,7 +1957,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 5, 2019                [Page 34]
+Queiroz                   Expires March 9, 2019                [Page 35]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1957,7 +2013,7 @@ Author's Address
 
 
 
-Queiroz                   Expires March 5, 2019                [Page 35]
+Queiroz                   Expires March 9, 2019                [Page 36]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -2013,4 +2069,4 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 5, 2019                [Page 36]
+Queiroz                   Expires March 9, 2019                [Page 37]

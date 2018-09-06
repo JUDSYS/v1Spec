@@ -2,9 +2,16 @@
   "$id": "https://judsys.github.io/schema/entity.json",
   "title": "JUDSYS-1 Entity",
   "type": "object",
-  "required": ["id", "INT/names"],
+  "required": ["INT/type", "INT/names"],
   "additionalProperties": true,
   "properties": {
+    "id": {
+      "type": "string",
+      "description": "The name of the attribute that no other entity will share. Ex: US/SSN, BR/CPF, INT/passport:number"
+    },
+    "INT/type": {
+      "enum": ["natural person", "legal person", "other"]
+    },
     "INT/vulnerable": {
       "type": "array",
       "items": {
@@ -35,7 +42,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "pattern": "^\+[0-9]{1,} .*$"
+        "pattern": "^[+][0-9]{1,} .*$"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -48,15 +55,27 @@
       "minItems": 1,
       "uniqueItems": true
     },
-    "INT/picture": {
-      "type": "string",
-      "contentEncoding": "base64",
-      "contentMediaType": "image"
+    "INT/pictures": {
+      "type": "array",
+      "items": {
+        "contentEncoding": "base64",
+        "contentMediaType": "image"
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
-    "INT/passport": {
+    "INT/passports": {
       "type": "array",
       "items": {
         "$ref": "https://judsys.github.io/schema/passport.json"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "INT/parents": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/entity.json"
       },
       "minItems": 1,
       "uniqueItems": true

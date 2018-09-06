@@ -24,7 +24,9 @@
       "type": "array",
       "items": {
         "$ref": "https://judsys.github.io/schema/key.json"
-      }
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
     "legal-recognition": {
       "type": "array",
