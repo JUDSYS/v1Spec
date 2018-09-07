@@ -159,14 +159,14 @@ Times **MUST NOT** include fractions of a second.
 
 ## Country codes
 
-All countries or similar **MUST** be represented by the upper case two letter codes defined on ISO 3166-1. If a country or similar does not have such code, it **MUST** be full English name with spaces and proper capitalization. Ex: `Principality of Sealand` not `principality of sealand` nor `PrincipalityOf_Sealand`.
+All countries or similar **MUST** be represented by the upper case three letter codes defined on ISO 3166-1 alpha-3. If a country or similar does not have such code, it **MUST** be full English name with spaces and proper capitalization. Ex: `Principality of Sealand` not `principality of sealand` nor `PrincipalityOf_Sealand`.
 
-International organizations **MUST** use their upper case English acronym if it has more than two letters. Ex: `ICAO` and `ICJ`. Otherwise the full English name with spaces and capitalization **MUST** be used. Ex: `League of Nations`.
+International organizations **MUST** use their upper case English acronym and their full English name separated by a hyphen with spaces on both sides. Ex: `ICAO - International Civil Aviation Organization` and `ICJ - International Court of Justice`.
 
 Special cases are:
 
-  1. `UN` for the United Nations (already on the ISO 3166-1).
-  1. `EU` for the European Union (already on the ISO 3166-1).
+  1. `UN` for the United Nations (already on the ISO 3166-1 alpha-2).
+  1. `EU` for the European Union (already on the ISO 3166-1 alpha-2).
   1. `INT` for international things such as passports, names and date of birth.
   1. `MERCOSU` for the Southern Common Market, Mercosur in Spanish and Mercosul in Portuguese.
   1. `UNASU` for the Union of South American Nations, UNSAUR in Spanish and UNASUL in Portuguese.
@@ -177,7 +177,7 @@ Special cases are:
 
 All JUDSYS-1 files **MUST** include all the necessary certificates, attribute certificates and revocation files for verifying the file in question.
 
-An exception is made to the root CAs which **MUST NOT** be included in any JUDSYS-1 file, as they **MUST** be a part of the apps themselves, preferably in the app's source code.
+An exception is made to the root CAs which **MUST NOT** be included in any JUDSYS-1 file, as they **MUST** be a part of the apps themselves, preferably in the implementation source code.
 
 # Certificates
 
@@ -247,7 +247,24 @@ An array of entities. The order **MUST NOT** be assigned any meaning. The array 
 
 The `INT/parents` attribute **MAY** lead to a recursive behaviour. This attribute **SHOULD NOT** exceed the grandparents generations.
 
-Example 1:
+Example:
+```js
+[
+  {"id": "BR/CPF", "INT/names": ["João da Silva"], "BR/CPF": "123.456.789-00"},
+  {"id": "BR/CPF", "INT/names": ["Maria da Silva"], "BR/CPF": "987.654.321-00"},
+  {"id": "BR/CPF", "INT/names": ["Joaquim Freitas"], "BR/CPF": "987.654.321-00"}
+]
+```
+
+### INT/guardians
+
+Pretty much the same as the `INT/parents` attribute.
+
+It it is present, the entities `INT/parents` **MUST NOT** be considered as legal guardians.
+
+It is absent, the entities `INT/parents` **MAY** be assumed to be legal guardians.
+
+Example:
 ```js
 [
   {"id": "BR/CPF", "INT/names": ["João da Silva"], "BR/CPF": "123.456.789-00"},
@@ -264,7 +281,7 @@ The fist entry is considered the main one.
 
 The subject **MAY** have no email address.
 
-It is **RECOMENDED** to have at least one ASCII email address.
+It is **RECOMMENDED** to have at least one ASCII email address.
 
 Examples:
 ```js
@@ -307,7 +324,7 @@ For security reasons the subject **MUST** have the right to refuse the inclusion
 
 ### INT/pictures
 
-For privacy reasons the subject SHOULD have the right to refuse the inclusion of `INT/picture` attribute. The CA, however, CAN require this attribute but its is encouraged not to require it.
+For privacy reasons the subject SHOULD have the right to refuse the inclusion of `INT/pictures` attribute. The CA, however, CAN require this attribute but its is encouraged not to require it.
 
 The picture **MUST** always be static: no animated GIFs or similar.
 
@@ -317,7 +334,7 @@ One suggestion for CAs is to follow the ICAO guidlines on photos for passports (
 
 For legal persons the image **MUST** be a logo or other symbol that represents the subject. It **MUST NOT** be a picture of the owners or of the place where the subject is. Again, specific are left to the CA.
 
-Support for this property in apps is **OPTIONAL** but **RECOMENDED** to those that have a GUI.
+Support for this property in apps is **OPTIONAL** but **RECOMMENDED** to those that have a GUI.
 
 Those that decide to implement this property **MUST** be able do decode both JPEG and PNG.
 
@@ -509,11 +526,11 @@ A signature verification **MUST NOT** fail because the file was renamed.
 
 ### Certificate revocation status
 
-### Timestamp servers
+### Time-stamps Authorities
 
 ## Browser interaction
 
-# Smartcards
+# Smart-cards
 
 # Security and Usability Considerations
 

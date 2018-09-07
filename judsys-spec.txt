@@ -3,9 +3,9 @@
 
 
 No Formal Workgroup                                           G. Queiroz
-Internet-Draft                                         September 5, 2018
+Internet-Draft                                         September 6, 2018
 Intended status: Experimental
-Expires: March 9, 2019
+Expires: March 10, 2019
 
 
            JSON Unified Digital Signatures System Standard 1
@@ -31,7 +31,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 9, 2019.
+   This Internet-Draft will expire on March 10, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Queiroz                   Expires March 9, 2019                 [Page 1]
+Queiroz                  Expires March 10, 2019                 [Page 1]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -76,19 +76,20 @@ Table of Contents
        3.2.1.  INT/type  . . . . . . . . . . . . . . . . . . . . . .   9
        3.2.2.  INT/names . . . . . . . . . . . . . . . . . . . . . .   9
        3.2.3.  INT/parents . . . . . . . . . . . . . . . . . . . . .  10
-       3.2.4.  INT/emails  . . . . . . . . . . . . . . . . . . . . .  11
-       3.2.5.  INT/phones  . . . . . . . . . . . . . . . . . . . . .  11
-       3.2.6.  INT/addresses . . . . . . . . . . . . . . . . . . . .  12
-       3.2.7.  INT/pictures  . . . . . . . . . . . . . . . . . . . .  12
-       3.2.8.  INT/passports . . . . . . . . . . . . . . . . . . . .  12
+       3.2.4.  INT/guardians . . . . . . . . . . . . . . . . . . . .  11
+       3.2.5.  INT/emails  . . . . . . . . . . . . . . . . . . . . .  11
+       3.2.6.  INT/phones  . . . . . . . . . . . . . . . . . . . . .  11
+       3.2.7.  INT/addresses . . . . . . . . . . . . . . . . . . . .  12
+       3.2.8.  INT/pictures  . . . . . . . . . . . . . . . . . . . .  12
+       3.2.9.  INT/passports . . . . . . . . . . . . . . . . . . . .  13
    4.  Certification Chain . . . . . . . . . . . . . . . . . . . . .  14
      4.1.  Public Key Infrastructure . . . . . . . . . . . . . . . .  14
      4.2.  Nameless Certificates . . . . . . . . . . . . . . . . . .  14
-     4.3.  Revocation  . . . . . . . . . . . . . . . . . . . . . . .  14
+     4.3.  Revocation  . . . . . . . . . . . . . . . . . . . . . . .  15
    5.  Proof of attribute  . . . . . . . . . . . . . . . . . . . . .  15
      5.1.  Standard attributes . . . . . . . . . . . . . . . . . . .  15
        5.1.1.  INT/job . . . . . . . . . . . . . . . . . . . . . . .  15
-   6.  Signatures  . . . . . . . . . . . . . . . . . . . . . . . . .  15
+   6.  Signatures  . . . . . . . . . . . . . . . . . . . . . . . . .  16
      6.1.  Standard attributes . . . . . . . . . . . . . . . . . . .  16
        6.1.1.  INT/reason  . . . . . . . . . . . . . . . . . . . . .  16
        6.1.2.  INT/location  . . . . . . . . . . . . . . . . . . . .  17
@@ -100,20 +101,20 @@ Table of Contents
      7.1.  Online RESTful  . . . . . . . . . . . . . . . . . . . . .  18
        7.1.1.  Sign certificate  . . . . . . . . . . . . . . . . . .  18
        7.1.2.  Certificate revocation status . . . . . . . . . . . .  18
-       7.1.3.  Timestamp servers . . . . . . . . . . . . . . . . . .  18
+       7.1.3.  Time-stamps Authorities . . . . . . . . . . . . . . .  18
      7.2.  Browser interaction . . . . . . . . . . . . . . . . . . .  18
-   8.  Smartcards  . . . . . . . . . . . . . . . . . . . . . . . . .  18
+   8.  Smart-cards . . . . . . . . . . . . . . . . . . . . . . . . .  18
    9.  Security and Usability Considerations . . . . . . . . . . . .  18
      9.1.  Mixing digital and paper signatures . . . . . . . . . . .  18
-     9.2.  Dynamic Content . . . . . . . . . . . . . . . . . . . . .  18
 
 
 
-Queiroz                   Expires March 9, 2019                 [Page 2]
+Queiroz                  Expires March 10, 2019                 [Page 2]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
 
+     9.2.  Dynamic Content . . . . . . . . . . . . . . . . . . . . .  18
      9.3.  Accidental changes  . . . . . . . . . . . . . . . . . . .  20
      9.4.  Archive files . . . . . . . . . . . . . . . . . . . . . .  20
      9.5.  User misinterpretation and excessive trust on the machine  20
@@ -164,8 +165,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-
-Queiroz                   Expires March 9, 2019                 [Page 3]
+Queiroz                  Expires March 10, 2019                 [Page 3]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -221,7 +221,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                 [Page 4]
+Queiroz                  Expires March 10, 2019                 [Page 4]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -277,7 +277,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                 [Page 5]
+Queiroz                  Expires March 10, 2019                 [Page 5]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -333,7 +333,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                 [Page 6]
+Queiroz                  Expires March 10, 2019                 [Page 6]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -376,29 +376,29 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 2.4.  Country codes
 
-   All countries or similar MUST be represented by the upper case two
-   letter codes defined on ISO 3166-1.  If a country or similar does not
-   have such code, it MUST be full English name with spaces and proper
-   capitalization.  Ex: "Principality of Sealand" not "principality of
-   sealand" nor "PrincipalityOf_Sealand".
+   All countries or similar MUST be represented by the upper case three
+   letter codes defined on ISO 3166-1 alpha-3.  If a country or similar
+   does not have such code, it MUST be full English name with spaces and
+   proper capitalization.  Ex: "Principality of Sealand" not
+   "principality of sealand" nor "PrincipalityOf_Sealand".
 
    International organizations MUST use their upper case English acronym
-   if it has more than two letters.  Ex: "ICAO" and "ICJ".  Otherwise
-   the full English name with spaces and capitalization MUST be used.
-   Ex: "League of Nations".
+   and their full English name separated by a hyphen with spaces on both
+   sides.  Ex: "ICAO - International Civil Aviation Organization" and
+   "ICJ - International Court of Justice".
 
 
 
-Queiroz                   Expires March 9, 2019                 [Page 7]
+Queiroz                  Expires March 10, 2019                 [Page 7]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
 
    Special cases are:
 
-   1.  "UN" for the United Nations (already on the ISO 3166-1).
+   1.  "UN" for the United Nations (already on the ISO 3166-1 alpha-2).
 
-   2.  "EU" for the European Union (already on the ISO 3166-1).
+   2.  "EU" for the European Union (already on the ISO 3166-1 alpha-2).
 
    3.  "INT" for international things such as passports, names and date
        of birth.
@@ -422,7 +422,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
    An exception is made to the root CAs which MUST NOT be included in
    any JUDSYS-1 file, as they MUST be a part of the apps themselves,
-   preferably in the app's source code.
+   preferably in the implementation source code.
 
 3.  Certificates
 
@@ -445,7 +445,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                 [Page 8]
+Queiroz                  Expires March 10, 2019                 [Page 8]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -501,7 +501,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                 [Page 9]
+Queiroz                  Expires March 10, 2019                 [Page 9]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -547,7 +547,7 @@ Internet-Draft                   JUDSYS1                  September 2018
    The "INT/parents" attribute MAY lead to a recursive behaviour.  This
    attribute SHOULD NOT exceed the grandparents generations.
 
-   Example 1:
+   Example:
 
 [
   {"id": "BR/CPF", "INT/names": ["Joao da Silva"], "BR/CPF": "123.456.789-00"},
@@ -557,12 +557,30 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 10]
+Queiroz                  Expires March 10, 2019                [Page 10]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
 
-3.2.4.  INT/emails
+3.2.4.  INT/guardians
+
+   Pretty much the same as the "INT/parents" attribute.
+
+   It it is present, the entities "INT/parents" MUST NOT be considered
+   as legal guardians.
+
+   It is absent, the entities "INT/parents" MAY be assumed to be legal
+   guardians.
+
+   Example:
+
+[
+  {"id": "BR/CPF", "INT/names": ["Joao da Silva"], "BR/CPF": "123.456.789-00"},
+  {"id": "BR/CPF", "INT/names": ["Maria da Silva"], "BR/CPF": "987.654.321-00"},
+  {"id": "BR/CPF", "INT/names": ["Joaquim Freitas"], "BR/CPF": "987.654.321-00"}
+]
+
+3.2.5.  INT/emails
 
    An array of the subject's email addresses.
 
@@ -570,7 +588,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
    The subject MAY have no email address.
 
-   It is *RECOMENDED* to have at least one ASCII email address.
+   It is RECOMMENDED to have at least one ASCII email address.
 
    Examples:
 
@@ -584,7 +602,7 @@ Internet-Draft                   JUDSYS1                  September 2018
    ["jose@construcoes-ltda.br"]
    ["jose@construcoes-ltda.br", "jose@construcoes-ltda.br"]
 
-3.2.5.  INT/phones
+3.2.6.  INT/phones
 
    For SPAM/robo-calling prevention the subject MUST have the right to
    refuse the inclusion of the "INT/phone" attribute.
@@ -592,6 +610,13 @@ Internet-Draft                   JUDSYS1                  September 2018
    The phone numbers MUST be encoded as a string array.  Each element of
    that array represents one phone number and MUST include the country
    and area codes.
+
+
+
+Queiroz                  Expires March 10, 2019                [Page 11]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
 
    The country code part MUST begin with a "+" (plus sign) and have a
    space to separate it from the rest of the number.  This is mainly to
@@ -611,22 +636,15 @@ Internet-Draft                   JUDSYS1                  September 2018
    Note: This attribute is intended to be used by some legal persons and
    by pretty much no natural persons.
 
-
-
-Queiroz                   Expires March 9, 2019                [Page 11]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
-
-3.2.6.  INT/addresses
+3.2.7.  INT/addresses
 
    For security reasons the subject MUST have the right to refuse the
    inclusion of "INT/address" attribute.
 
-3.2.7.  INT/pictures
+3.2.8.  INT/pictures
 
    For privacy reasons the subject SHOULD have the right to refuse the
-   inclusion of "INT/picture" attribute.  The CA, however, CAN require
+   inclusion of "INT/pictures" attribute.  The CA, however, CAN require
    this attribute but its is encouraged not to require it.
 
    The picture MUST always be static: no animated GIFs or similar.
@@ -642,11 +660,19 @@ Internet-Draft                   JUDSYS1                  September 2018
    represents the subject.  It MUST NOT be a picture of the owners or of
    the place where the subject is.  Again, specific are left to the CA.
 
-   Support for this property in apps is OPTIONAL but *RECOMENDED* to
+   Support for this property in apps is OPTIONAL but RECOMMENDED to
    those that have a GUI.
 
    Those that decide to implement this property MUST be able do decode
    both JPEG and PNG.
+
+
+
+
+Queiroz                  Expires March 10, 2019                [Page 12]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
 
    The picture MUST be data URL encoded using base64 and MUST NOT exceed
    1 MiB.  The size restriction applies to the image itself, not to the
@@ -659,20 +685,12 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 ["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gAiUmVzaXplZCB3aXRoIGV6Z2lmLmNvbSBHSUYgbWFrZXL/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAmACADASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAABgcIAAUE/8QALRAAAQMDAgQFAwUAAAAAAAAAAQIDBAUGEQAHEiExQQgTFCJxFVGBMlJhcrH/xAAXAQEBAQEAAAAAAAAAAAAAAAADAgQF/8QAJhEAAgICAQMCBwAAAAAAAAAAAQIDBAARMQUhQRNxEhQigaHR8P/aAAwDAQACEQMRAD8AsvUleN/cDcWk1yNb1lyajTqbGhtyajLhZStS3XFIbQVjmB7eg6lXPtqtdIDcOnRbm3bqkyNR/rkWkw40GTggoRJKnFlscsFQSWyRk4ynvrNbnavC0ioXI8Dk4kSB3Ck698C/CbuduEncRG2u4Sp77kmnqlRXZ6wt9C0ZJHEOZSUhXI5IKfkarPUYXbHVs34gLGvKsQU06hSWnI3C0StDJdW55xUScgguhZ65GemNWWy4260h1paVtrSFJUk5CgehB+2kgkMsauVKk+DyPfWS6/CxG94Gb4Xi1Ym19auFTwbktx1NQh3XJWOFsAdzxHPwDrw7AWc7ZO2NLpk6U/JqcsmdUHXFlSlyHfevJ6nGQM98Z0P7xRYF8Nrt2tQEKhwZfmtKS4oLDqUlKVgggAjiJAORrsbN3nWLglVS3bho70eo0QoHr22iIs5pYPAtB6JXge5HY9P45dPrtO7akqxH6k58cHR17HnNM1KWGNZGHY5w/F5Y0C7dnKxMkrd9RRmVVGN7iQC2CVDGeWUcQ+caFvANe0y4ttqhbdRkuSXrfkpbjuOElXpnEkoSf6lKwPsMDtpj7+TfUWbLtGLLYaqFdhyGG0KUCrgKCFK4evCOIZP40u/B9ZI22g1KJWJTDlSqzjZU42CEAI4glHPv7lHOBn8aSbrVOCyKsr6c60D53v8AWSlSV4/VUbGNavWIuXKel02ruR3nlqcLb7QdQVHmeYwQPydB7G1941SpuTX7/n2021llLVCXzewf1OFxOOXYBJIz11tbRJ0ajBdWzHGA533G/P4xDbmeEozbHbOKrYOZQLoXetPvWq1+rqbLL/157jy2f2rQnII5YGMdemmzaFqtU2O1KqCm5dQ5KKwD5bZ+yAf9PP41tbSN02rLe+ZdAXAGif7X35yRYlWD0w2hvP/Z"]
 
-3.2.8.  INT/passports
+3.2.9.  INT/passports
 
    Each passport is encoded as a dictionary with the following keys:
 
    1.   "type": Indicates the type of document, for passports this is a
         "P".
-
-
-
-
-Queiroz                   Expires March 9, 2019                [Page 12]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
 
    2.   "number": A string, which MAY contain letters, the identifies
         this passport.
@@ -703,6 +721,15 @@ Internet-Draft                   JUDSYS1                  September 2018
 
    Only "type", "country" and "number" MUST be present.
 
+
+
+
+
+Queiroz                  Expires March 10, 2019                [Page 13]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
+
    The "given_name" and "surname" are OPTIONAL because some people may
    have no first or last name.  However, at least one of them MUST be
    included.
@@ -710,25 +737,6 @@ Internet-Draft                   JUDSYS1                  September 2018
    Except of dates, it is RECOMMENDED that all fields match the way they
    are presented on the VIZ (Visual Inspection Zone), rather than the
    MRZ.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Queiroz                   Expires March 9, 2019                [Page 13]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
 
 {
     "type": "P",
@@ -770,21 +778,18 @@ Internet-Draft                   JUDSYS1                  September 2018
 
    The choice to prohibit names is intentional, as it ensures that no
    app will be able to display an unverified name, thus forcing the user
+
+
+
+Queiroz                  Expires March 10, 2019                [Page 14]
+
+Internet-Draft                   JUDSYS1                  September 2018
+
+
    to keep an "address book" to associate each person to their
    certificate.
 
 4.3.  Revocation
-
-
-
-
-
-
-
-Queiroz                   Expires March 9, 2019                [Page 14]
-
-Internet-Draft                   JUDSYS1                  September 2018
-
 
 5.  Proof of attribute
 
@@ -829,18 +834,15 @@ Internet-Draft                   JUDSYS1                  September 2018
 
    5.  Ministro da 1a turma do Supremo Tribunal Federal
 
-6.  Signatures
 
 
 
-
-
-
-
-Queiroz                   Expires March 9, 2019                [Page 15]
+Queiroz                  Expires March 10, 2019                [Page 15]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
+
+6.  Signatures
 
 6.1.  Standard attributes
 
@@ -891,9 +893,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-
-
-Queiroz                   Expires March 9, 2019                [Page 16]
+Queiroz                  Expires March 10, 2019                [Page 16]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -949,7 +949,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 17]
+Queiroz                  Expires March 10, 2019                [Page 17]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -982,11 +982,11 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 7.1.2.  Certificate revocation status
 
-7.1.3.  Timestamp servers
+7.1.3.  Time-stamps Authorities
 
 7.2.  Browser interaction
 
-8.  Smartcards
+8.  Smart-cards
 
 9.  Security and Usability Considerations
 
@@ -1005,7 +1005,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 18]
+Queiroz                  Expires March 10, 2019                [Page 18]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1061,7 +1061,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 19]
+Queiroz                  Expires March 10, 2019                [Page 19]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1117,7 +1117,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 20]
+Queiroz                  Expires March 10, 2019                [Page 20]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1173,7 +1173,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 21]
+Queiroz                  Expires March 10, 2019                [Page 21]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1229,7 +1229,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 22]
+Queiroz                  Expires March 10, 2019                [Page 22]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1285,7 +1285,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 23]
+Queiroz                  Expires March 10, 2019                [Page 23]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1341,7 +1341,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 24]
+Queiroz                  Expires March 10, 2019                [Page 24]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1397,7 +1397,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 25]
+Queiroz                  Expires March 10, 2019                [Page 25]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1453,7 +1453,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 26]
+Queiroz                  Expires March 10, 2019                [Page 26]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1509,7 +1509,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 27]
+Queiroz                  Expires March 10, 2019                [Page 27]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1565,7 +1565,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 28]
+Queiroz                  Expires March 10, 2019                [Page 28]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1621,7 +1621,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 29]
+Queiroz                  Expires March 10, 2019                [Page 29]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1677,7 +1677,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 30]
+Queiroz                  Expires March 10, 2019                [Page 30]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1733,7 +1733,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 31]
+Queiroz                  Expires March 10, 2019                [Page 31]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1789,7 +1789,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 32]
+Queiroz                  Expires March 10, 2019                [Page 32]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1845,7 +1845,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 33]
+Queiroz                  Expires March 10, 2019                [Page 33]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1901,7 +1901,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 34]
+Queiroz                  Expires March 10, 2019                [Page 34]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -1957,7 +1957,7 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 35]
+Queiroz                  Expires March 10, 2019                [Page 35]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -2013,7 +2013,7 @@ Author's Address
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 36]
+Queiroz                  Expires March 10, 2019                [Page 36]
 
 Internet-Draft                   JUDSYS1                  September 2018
 
@@ -2069,4 +2069,4 @@ Internet-Draft                   JUDSYS1                  September 2018
 
 
 
-Queiroz                   Expires March 9, 2019                [Page 37]
+Queiroz                  Expires March 10, 2019                [Page 37]

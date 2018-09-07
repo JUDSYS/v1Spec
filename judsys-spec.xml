@@ -13,7 +13,7 @@
 <email>gabrieljvnq@gmail.com</email>
 <uri></uri>
 </address></author>
-<date year="2018" month="9" day="5"></date>
+<date year="2018" month="9" day="6"></date>
 <area>Internet</area><workgroup>No Formal Workgroup</workgroup><keyword>cryptography</keyword>
 <keyword>digital signature</keyword>
 <keyword>protocol</keyword>
@@ -134,13 +134,13 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 </section>
 
 <section anchor="country-codes" title="Country codes">
-<t>All countries or similar MUST be represented by the upper case two letter codes defined on ISO 3166-1. If a country or similar does not have such code, it MUST be full English name with spaces and proper capitalization. Ex: <spanx style="verb">Principality of Sealand</spanx> not <spanx style="verb">principality of sealand</spanx> nor <spanx style="verb">PrincipalityOf_Sealand</spanx>.</t>
-<t>International organizations MUST use their upper case English acronym if it has more than two letters. Ex: <spanx style="verb">ICAO</spanx> and <spanx style="verb">ICJ</spanx>. Otherwise the full English name with spaces and capitalization MUST be used. Ex: <spanx style="verb">League of Nations</spanx>.</t>
+<t>All countries or similar MUST be represented by the upper case three letter codes defined on ISO 3166-1 alpha-3. If a country or similar does not have such code, it MUST be full English name with spaces and proper capitalization. Ex: <spanx style="verb">Principality of Sealand</spanx> not <spanx style="verb">principality of sealand</spanx> nor <spanx style="verb">PrincipalityOf_Sealand</spanx>.</t>
+<t>International organizations MUST use their upper case English acronym and their full English name separated by a hyphen with spaces on both sides. Ex: <spanx style="verb">ICAO - International Civil Aviation Organization</spanx> and <spanx style="verb">ICJ - International Court of Justice</spanx>.</t>
 <t>Special cases are:</t>
 <t>
 <list style="numbers">
-<t><spanx style="verb">UN</spanx> for the United Nations (already on the ISO 3166-1).</t>
-<t><spanx style="verb">EU</spanx> for the European Union (already on the ISO 3166-1).</t>
+<t><spanx style="verb">UN</spanx> for the United Nations (already on the ISO 3166-1 alpha-2).</t>
+<t><spanx style="verb">EU</spanx> for the European Union (already on the ISO 3166-1 alpha-2).</t>
 <t><spanx style="verb">INT</spanx> for international things such as passports, names and date of birth.</t>
 <t><spanx style="verb">MERCOSU</spanx> for the Southern Common Market, Mercosur in Spanish and Mercosul in Portuguese.</t>
 <t><spanx style="verb">UNASU</spanx> for the Union of South American Nations, UNSAUR in Spanish and UNASUL in Portuguese.</t>
@@ -152,7 +152,7 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 
 <section anchor="certificate-chains" title="Certificate chains">
 <t>All JUDSYS-1 files MUST include all the necessary certificates, attribute certificates and revocation files for verifying the file in question.</t>
-<t>An exception is made to the root CAs which MUST NOT be included in any JUDSYS-1 file, as they MUST be a part of the apps themselves, preferably in the app's source code.</t>
+<t>An exception is made to the root CAs which MUST NOT be included in any JUDSYS-1 file, as they MUST be a part of the apps themselves, preferably in the implementation source code.</t>
 </section>
 </section>
 
@@ -222,7 +222,21 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 <section anchor="int-parents" title="INT/parents">
 <t>An array of entities. The order MUST NOT be assigned any meaning. The array MAY have any number of elements.</t>
 <t>The <spanx style="verb">INT/parents</spanx> attribute MAY lead to a recursive behaviour. This attribute SHOULD NOT exceed the grandparents generations.</t>
-<t>Example 1:</t>
+<t>Example:</t>
+
+<figure><artwork type="js">[
+  {&quot;id&quot;: &quot;BR/CPF&quot;, &quot;INT/names&quot;: [&quot;João da Silva&quot;], &quot;BR/CPF&quot;: &quot;123.456.789-00&quot;},
+  {&quot;id&quot;: &quot;BR/CPF&quot;, &quot;INT/names&quot;: [&quot;Maria da Silva&quot;], &quot;BR/CPF&quot;: &quot;987.654.321-00&quot;},
+  {&quot;id&quot;: &quot;BR/CPF&quot;, &quot;INT/names&quot;: [&quot;Joaquim Freitas&quot;], &quot;BR/CPF&quot;: &quot;987.654.321-00&quot;}
+]
+</artwork></figure>
+</section>
+
+<section anchor="int-guardians" title="INT/guardians">
+<t>Pretty much the same as the <spanx style="verb">INT/parents</spanx> attribute.</t>
+<t>It it is present, the entities <spanx style="verb">INT/parents</spanx> MUST NOT be considered as legal guardians.</t>
+<t>It is absent, the entities <spanx style="verb">INT/parents</spanx> MAY be assumed to be legal guardians.</t>
+<t>Example:</t>
 
 <figure><artwork type="js">[
   {&quot;id&quot;: &quot;BR/CPF&quot;, &quot;INT/names&quot;: [&quot;João da Silva&quot;], &quot;BR/CPF&quot;: &quot;123.456.789-00&quot;},
@@ -236,7 +250,7 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 <t>An array of the subject's email addresses.</t>
 <t>The fist entry is considered the main one.</t>
 <t>The subject MAY have no email address.</t>
-<t>It is <spanx style="strong">RECOMENDED</spanx> to have at least one ASCII email address.</t>
+<t>It is RECOMMENDED to have at least one ASCII email address.</t>
 <t>Examples:</t>
 
 <figure><artwork type="js">// Okay:
@@ -272,12 +286,12 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 </section>
 
 <section anchor="int-pictures" title="INT/pictures">
-<t>For privacy reasons the subject SHOULD have the right to refuse the inclusion of <spanx style="verb">INT/picture</spanx> attribute. The CA, however, CAN require this attribute but its is encouraged not to require it.</t>
+<t>For privacy reasons the subject SHOULD have the right to refuse the inclusion of <spanx style="verb">INT/pictures</spanx> attribute. The CA, however, CAN require this attribute but its is encouraged not to require it.</t>
 <t>The picture MUST always be static: no animated GIFs or similar.</t>
 <t>For natural persons the image MUST be picture of the subject. The specific are left to the CA, but it SHOULD follow the traditions and conventions of the CA's country.</t>
 <t>One suggestion for CAs is to follow the ICAO guidlines on photos for passports (see <xref target="ICAO-9303"></xref>).</t>
 <t>For legal persons the image MUST be a logo or other symbol that represents the subject. It MUST NOT be a picture of the owners or of the place where the subject is. Again, specific are left to the CA.</t>
-<t>Support for this property in apps is OPTIONAL but <spanx style="strong">RECOMENDED</spanx> to those that have a GUI.</t>
+<t>Support for this property in apps is OPTIONAL but RECOMMENDED to those that have a GUI.</t>
 <t>Those that decide to implement this property MUST be able do decode both JPEG and PNG.</t>
 <t>The picture MUST be data URL encoded using base64 and MUST NOT exceed 1 MiB. The size restriction applies to the image itself, not to the string that encodes it.</t>
 <t>The picture MUST NOT be rotated using metadata (see <xref target="JPEG-HOFF"></xref>) regardless of the file type (JPGE or PNG or other).</t>
@@ -466,7 +480,7 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 <section anchor="certificate-revocation-status" title="Certificate revocation status">
 </section>
 
-<section anchor="timestamp-servers" title="Timestamp servers">
+<section anchor="time-stamps-authorities" title="Time-stamps Authorities">
 </section>
 </section>
 
@@ -474,7 +488,7 @@ document, are to be interpreted as described in <xref target="RFC2119"></xref>.<
 </section>
 </section>
 
-<section anchor="smartcards" title="Smartcards">
+<section anchor="smart-cards" title="Smart-cards">
 </section>
 
 <section anchor="security-and-usability-considerations" title="Security and Usability Considerations">
@@ -1257,6 +1271,15 @@ END IF
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3339.xml"?>
 </references>
 <references title="Informative References">
+<reference anchor='ITI-FAQ-21' target='http://www.iti.gov.br/perguntas-frequentes/41-perguntas-frequentes/567-questoes-juridicas#r21'>
+ <front>
+ <title>Perguntas Frequentes - Questões Jurídicas - Questão 21</title>
+  <author>
+      <organization>ITI - Instituto Nacional de Tecnologia da Informação</organization>
+  </author>
+  <date day='5' month='02' year='2018'/>
+ </front>
+ </reference>
 <reference anchor='ICAO-9303' target='https://www.icao.int/publications/Documents/9303_p3_cons_en.pdf'>
  <front>
  <title>Machine Readable Travel Documents, Seventh Edition</title>
@@ -1276,15 +1299,6 @@ END IF
   </address>
   </author>
   <date year='2015'/>
- </front>
- </reference>
-<reference anchor='ITI-FAQ-21' target='http://www.iti.gov.br/perguntas-frequentes/41-perguntas-frequentes/567-questoes-juridicas#r21'>
- <front>
- <title>Perguntas Frequentes - Questões Jurídicas - Questão 21</title>
-  <author>
-      <organization>ITI - Instituto Nacional de Tecnologia da Informação</organization>
-  </author>
-  <date day='5' month='02' year='2018'/>
  </front>
  </reference>
 </references>
