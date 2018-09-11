@@ -11,7 +11,7 @@
     "certificates": {
       "type": "array",
       "items": {
-        "$ref": "https://judsys.github.io/schema/signed-object.json"
+        "$ref": "https://judsys.github.io/schema/signed-certificate.json"
       }
     }
   }

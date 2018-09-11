@@ -1,0 +1,45 @@
+{
+  "$id": "https://judsys.github.io/schema/unsigned-document-signature.json",
+  "title": "JUDSYS-1 Unsigned Signature",
+  "type": "object",
+  "required": ["signer-key", "date", "reason", "implementation"],
+  "additionalProperties": true,
+  "properties": {
+    "signer-key": {
+      "type": "string",
+      "description": "The key ID of the signing key of the signer"
+    },
+    "implementation": {
+      "type": "string",
+      "description": "The names and versions of the application and the software library."
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reason": {
+      "enum": ["as-document", "sent", "created", "approved", "rejected", "delivered", "received", "timestamp", "witness", "matches-original"]
+    },
+    "location": {
+      "$ref": "https://judsys.github.io/schema/int-address.json"
+    },
+    "file": {
+      "type": "object",
+      "properties": {
+        "filename": { "type": "string" },
+        "size": { "type": "number" },
+        "hash": { "$ref": "https://judsys.github.io/schema/hash.json" },
+        "had-file": {
+          "type": "boolean",
+          "description": "If true, it means that the signer app had the file and hashed by itself. If false, it means that hash was computed by someone else"
+        }
+      }
+    },
+    "counter-signs": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/signed-signature.json"
+      }
+    }
+  }
+}

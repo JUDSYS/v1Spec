@@ -9,7 +9,7 @@ Expires: March 15, 2019
 
 
            JSON Unified Digital Signatures System Standard 1
-                            draft-judsys1-00
+                            draft-judsys1-02
 
 Abstract
 

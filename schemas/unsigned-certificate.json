@@ -1,6 +1,6 @@
 {
-  "$id": "https://judsys.github.io/schema/certificate.json",
-  "title": "JUDSYS-1 Certificate",
+  "$id": "https://judsys.github.io/schema/unsigned-certificate.json",
+  "title": "JUDSYS-1 Unsigned Certificate",
   "type": "object",
   "required": ["subject", "notBefore", "notAfter", "serial", "keys"],
   "properties": {
@@ -28,10 +28,10 @@
       "minItems": 1,
       "uniqueItems": true
     },
-    "legal-recognition": {
+    "public-faith": {
       "type": "array",
       "items": {
-        "enum": ["timestamp", "matches-original"]
+        "enum": ["timestamp", "matches-original", "delivered"]
       }
     }
   }

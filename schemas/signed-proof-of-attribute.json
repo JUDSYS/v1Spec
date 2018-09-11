@@ -1,0 +1,20 @@
+{
+  "$id": "https://judsys.github.io/schema/signed-proof-of-attribute.json",
+  "title": "JUDSYS-1 Signed Proof of Attribute",
+  "type": "object",
+  "required": ["cert", "raw", "sig"],
+  "additionalProperties": false,
+  "properties": {
+    "what": {
+      "const": "JUDSYS-1 Signed Proof of Attribute"
+    },
+    "raw": {
+      "type": "string",
+      "description": "A base64 encoding of the proof of attribute."
+    },
+    "sig": {
+      "type": "string",
+      "description": "A base64 encoding of the signature."
+    }
+  }
+}

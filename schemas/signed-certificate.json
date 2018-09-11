@@ -1,0 +1,20 @@
+{
+  "$id": "https://judsys.github.io/schema/signed-certificate.json",
+  "title": "JUDSYS-1 Signed Certificate",
+  "type": "object",
+  "required": ["cert", "raw", "sig"],
+  "additionalProperties": false,
+  "properties": {
+    "what": {
+      "const": "JUDSYS-1 Signed Certificate"
+    },
+    "raw": {
+      "type": "string",
+      "description": "A base64 encoding of the certificate."
+    },
+    "sig": {
+      "type": "string",
+      "description": "A base64 encoding of the signature."
+    }
+  }
+}

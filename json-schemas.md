@@ -9,6 +9,13 @@
 ## Proof of Attribute File (.j1a)
 
 ## Detached Digital Signature File (.j1s)
+<{{schemas/j1s.json}}
+
+## Document Signature
+### Unsigned Document Signature
+<{{schemas/unsigned-document-signature.json}}
+### Signed Document Signature
+<{{schemas/signed-document-signature.json}}
 
 ## Encrypted File (.j1e)
 
@@ -39,11 +46,17 @@ The key ID MUST be `"RSA/" + sha-3-512(N + "|" + E)` (all values are strings and
 #### RSA Private
 <{{schemas/key-rsa-private.json}}
 ### ECDSA Public Key
-## Entity (subject of issuer)
+## Entity (subject)
 <{{schemas/entity.json}}
-## Certificate
-<{{schemas/certificate.json}}
+<{{schemas/signed-certificate.json}}
 ## Address
 <{{schemas/int-address.json}}
 ## Passport
 <{{schemas/int-passport.json}}
+
+## Certificates
+### Unsigned Certificate
+<{{schemas/unsigned-certificate.json}}
+### Signed Certificate
+<{{schemas/signed-certificate.json}}
+

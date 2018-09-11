@@ -1,0 +1,31 @@
+{
+  "$id": "https://judsys.github.io/schema/j1s.json",
+  "title": "JUDSYS-1 .j1s file",
+  "type": "object",
+  "required": ["what", "certificates", "signatures"],
+  "additionalProperties": false,
+  "properties": {
+    "what": {
+      "const": "JUDSYS-1 Signature File (.j1s)"
+    },
+    "certificates": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/signed-certificate.json"
+      },
+      "description": "This MUST have exactly the necessary certificates to verify the signature file"
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/signed-proof-of-attribute.json"
+      }
+    },
+    "signatures": {
+      "type": "array",
+      "items": {
+        "$ref": "https://judsys.github.io/schema/signed-document-signature.json"
+      }
+    }
+  }
+}
